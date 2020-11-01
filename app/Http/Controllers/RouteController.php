@@ -74,6 +74,8 @@ class RouteController extends Controller
         $data = request()->all();
         $routes = new Route();
         $routes->title = $data['title'];
+        $routes->scheme_id = $data['scheme_id'];
+        $routes->scheme2_id = $data['scheme2_id'];
         $routes->x_01 = $data['x_01'];
         $routes->y_01 = $data['y_01'];
         $routes->p_x_01 = $data['p_x_01'];

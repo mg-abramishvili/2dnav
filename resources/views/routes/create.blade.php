@@ -121,6 +121,20 @@
 
             <div class="row align-items-center mb-2">
                 <dt class="col-sm-3">
+                    Схема 2
+                </dt>
+                <dd class="col-sm-9">
+                    <select name="scheme2_id" class="form-control" onchange="$('#imageToSwap2').attr('src', this.options[this.selectedIndex].title);">
+                        <option title="/img/schemeblank.jpg" selected="selected">Выберите схему</option>
+                        @foreach($schemes as $scheme)
+                            <option value="{{ $scheme->id }}" title="{{ $scheme->image }}">{{ $scheme->title }}</option>
+                        @endforeach
+                    </select>
+                </dd>
+            </div>
+
+            <div class="row align-items-center mb-2">
+                <dt class="col-sm-3">
                     x_01
                 </dt>
                 <dd class="col-sm-9">

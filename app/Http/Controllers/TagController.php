@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Store;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class TagController extends Controller
 {
     public function index()
     {
-        $stores = Store::with('tags')->get();
-        return view('stores.index', compact('stores'));
-        //dd($stores);
+        $tags = Tag::get();
+        return view('tags.index', compact('tags'));
+
     }
 
     public function create()
     {
-        $tags = Tag::all();
-        return view('stores.create', compact('tags'));
+
+        return view('tags.create');
+
     }
 
     public function edit($id)
     {
 
-        $stores = Store::find($id);
-        $tags = Tag::all();
-        return view('stores.edit', compact('stores', 'tags'));
+        $tags = Tag::find($id);
+
+        return view('tags.edit', compact('tags'));
 
 
     }
@@ -65,29 +65,26 @@ class StoreController extends Controller
 
     public function delete($id)
     {
-        $stores = Store::find($id);
-        $stores->delete();
-        return redirect('/stores');
+        $tags = Tag::find($id);
+        $tags->delete();
+        return redirect('/tags');
     }
 
     public function store()
     {
         $data = request()->all();
-        $stores = new Store();
-        $stores->title = $data['title'];
-        $stores->tag_id = $data['tag_id'];
-        //$stores->tag_id = implode(',', $data['tag_id']);
-        $stores->save();
-        return redirect('/stores');
+        $tags = new Tag();
+        $tags->title = $data['title'];
+        $tags->save();
+        return redirect('/tags');
     }
 
     public function update()
     {
         $data = request()->all();
-        $stores = Store::find($data['id']);
-        $stores->title = $data['title'];
-        $stores->tag_id = $data['tag_id'];
-        $stores->save();
-        return redirect('/stores');
+        $tags = Tag::find($data['id']);
+        $tags->title = $data['title'];
+        $tags->save();
+        return redirect('/tags');
     }
 }

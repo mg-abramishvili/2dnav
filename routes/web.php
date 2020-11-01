@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SchemeController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\FrontController;
 
@@ -20,6 +21,9 @@ Route::resource('/routes', RouteController::class);
 
 // STORES
 Route::resource('/stores', StoreController::class);
+
+// TAGS
+Route::resource('/tags', TagController::class);
 
 // ADS
 Route::resource('/ads', AdController::class);

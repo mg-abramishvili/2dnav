@@ -53,6 +53,12 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a class="nav-link" href="/stores">Магазины</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tags">Теги</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/schemes">Схемы</a>
                             </li>
                             <li class="nav-item">

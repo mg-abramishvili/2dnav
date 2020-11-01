@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Store extends Model
+class Tag extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title', 'tag_id'
+        'title',
     ];
 
-    protected $casts=['tag_id'=>'json'];
-
-    public function tags()
+    public function store()
     {
-        return $this->hasMany('App\Models\Tag', 'id', 'tag_id');
+        return $this->belongsTo('App\Models\Store', 'tag_id', 'id');
     }
 }
