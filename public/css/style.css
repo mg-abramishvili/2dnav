@@ -1,0 +1,184 @@
+.key-anim01,
+.key-anim02,
+.key-anim03,
+.key-anim04,
+.key-anim05,
+.key-anim06,
+.key-anim07,
+.key-anim08,
+.key-anim09,
+.key-anim10,
+.key-anim11,
+.key-anim12 {
+    stroke-dasharray: 10;
+    stroke-dashoffset: -2000;
+    animation: Drawpath 20s linear infinite;
+}
+
+@keyframes Drawpath {
+    from {
+        stroke-dashoffset: -2000;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+body {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    width: 324px;
+    height: 576px;
+    overflow: hidden;
+    position: relative;
+    border: 4px solid #009387;
+    margin: 0 auto;;
+}
+
+.dragscroll {
+    width: 324px;
+    height: 576px;
+    overflow: hidden;
+}
+
+.wrapper {
+    width: 800px;
+    height: 450px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.map {
+
+}
+
+.map img {
+    width: 800px;
+    height: 450px;
+    display: block;
+    margin: 0 auto;
+}
+
+.map-path {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 800px;
+    height: 450px;
+}
+
+.list {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 350px;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 100;
+    background: #009387;
+}
+
+.list input {
+    width: calc(100% - 120px);
+    margin: 0 30px;
+    line-height: 1;
+    padding: 9px 25px;
+    font-size: 11px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 3px solid #1574a0;
+}
+
+.list ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow-y: scroll;
+    height: 180px;
+}
+
+.list ul li {
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+.list ul li:last-child {
+    border-bottom: 0;
+}
+
+.list ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: rgba(255,255,255,0.1);
+    display: block;
+    padding: 14px 30px;
+    line-height: 1;
+}
+
+.list ul li a strong {
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.list ul li a span {
+    display: inline-block;
+    padding: 3px 7px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 25px;
+    font-size: 8px;
+    margin-bottom: 3px;
+}
+
+/* width */
+::-webkit-scrollbar {
+width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #1574a0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #1574a0;
+}
+
+
+.modal {
+z-index: 999;
+background: rgba(255,255,255,0.3);
+padding: 10px;
+padding-bottom: 5px;
+}
+
+.modal .close {
+position: absolute;
+top: 0;
+right: 15px;
+font-size: 30px;
+}
+
+.modal button {
+width: 18px;
+height: 18px;
+font-size: 12px;
+text-align: center;
+line-height: 18px;
+padding: 0;
+margin-bottom: 5px;
+}

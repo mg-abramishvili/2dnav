@@ -1,0 +1,791 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+html {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    cursor: none;
+}
+
+body {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+
+.container {
+    max-width: 1770px;
+}
+
+main {
+    position: relative;
+}
+
+.wrapper {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    margin: 0 auto;
+    background: url(/kadet/bg.jpg) center center;
+    background-size: cover;
+}
+
+/*.bg {
+    opacity: 0.1;
+}*/
+
+.index-item {
+    height: 200px;
+    background-color: fff;
+    margin-top: 30px;
+    display: block;
+    position: relative;
+    box-shadow: 0 1px 36px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.index-item-1,
+.index-item-2 {
+    height: 540px;
+    background-color: #d71e1b;
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.index-item-3,
+.index-item-4,
+.index-item-5,
+.index-item-6 {
+    height: 325px;
+    background-color: grey;
+    margin: 0;
+}
+
+.index-item-6,
+.index-item-7 {
+    height: 270px;
+    background-color: lightblue;
+    margin-top: 30px;
+}
+
+.index-item-6 {
+    background-color: #2C9CDB;
+}
+
+.index-item-7 {
+    background-color: #d71e1b;
+}
+
+.index-item-pic {
+    height: 100%;
+}
+
+.index-item p {
+    text-align: left;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+    padding: 15px 25px;
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: 25px;
+    color: #fff;
+    background-color: rgba(215, 30, 27, 0.85);
+    border-top: 6px solid #f8c61c;
+    border-bottom: 6px solid #f8c61c;
+}
+
+.index-item-6 p,
+.index-item-7 p {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 50px;
+    background: none;
+    border: 0;
+}
+
+.lg-toolbar {
+    background: none;
+}
+
+.lg-backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.lg-toolbar .lg-icon {
+    font-size: 100px;
+    height: 100px;
+    line-height: 100px;
+    width: 100px;
+    margin-right: 50px;
+}
+
+#lg-download,
+#lg-counter {
+    display: none;
+}
+
+.lg-actions .lg-next, .lg-actions .lg-prev {
+    font-size: 100px;
+}
+
+
+
+/* NEWS */
+
+.news {
+    margin-top: 80px;
+}
+
+.news-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    height: 900px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.news-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.news-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.news-list::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.news-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.news-list-item {
+    margin-bottom: 35px;
+}
+
+.news-list-item a {
+    display: block;
+    background-color: rgba(255,255,255,0.4);
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 1px 36px rgba(0, 0, 0, 0.2);
+}
+
+.news-list-item a:hover {
+    text-decoration: none;
+}
+
+.news-list-item a:focus {
+    text-decoration: none;
+    box-shadow: 0 1px 36px rgba(0, 0, 0, 0.3);
+    color: #F76325;
+}
+
+.news-list-item-pic {
+    height: 250px;
+    border-radius: 25px;
+}
+
+.news-list-item h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #333;
+    font-size: 40px;
+}
+
+.news-list-item-text-preview {
+    font-size: 24px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.news .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.news .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+/* NEWS */
+
+
+
+
+/* GALLERY */
+
+.gallery-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    height: 750px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.gallery-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.gallery-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.gallery-list::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.gallery-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.gallery-list {
+    margin-top: 80px;
+    padding-right: 30px;
+}
+
+.gallery-list-item-pic {
+    height: 300px;
+}
+
+.gallery-list-item h2 {
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 0;
+    margin-top: 20px;
+    height: 250px;
+    text-align: center;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-item img {
+    display: block;
+    max-height: 100%;
+}
+
+.gallery .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.gallery .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+.gallery .backbutton img {
+    width: 75px;
+}
+
+.gallery video {
+    width: 1024px;
+    height: 576px;
+    box-shadow: 0 1px 16px rgba(0,0,0,0.5);
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+.vvideo {
+    width: 1920px !important;
+    height: 1080px !important;
+    left: 0;
+    top: 0;
+    position: absolute;
+    border: 0;
+    border-radius: 0;
+    z-index: 20;
+    margin: 0 !important;
+    margin-left: -75px !important;
+}
+
+.gallery h1 {
+    margin: 50px 0;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+/* GALLERY */
+
+
+table {
+    background-color: rgba(255,255,255,0.8);
+    padding: 25px;
+}
+
+
+/* TYPE 1 */
+
+.type-1 .header {
+    margin-top: 50px;
+    height: 250px;
+    border-radius: 25px;
+}
+
+.type-1 h1 {
+    margin: 50px 0;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+.type-1 .text {
+    height: 400px;
+    overflow-y: scroll;
+    font-size: 24px;
+    line-height: 1.8;
+}
+
+.type-1 .text::-webkit-scrollbar {
+    width: 10px;
+}
+
+.type-1 .text::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.type-1 .text::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.type-1 .text::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.type-1 .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.type-1 .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+.type-1 .backbutton img {
+    width: 75px;
+}
+
+/* TYPE 1 */
+
+
+
+
+
+/* TYPE 2*/
+
+.type-2 {
+    margin-top: 60px;
+    background-color: rgba(255,255,255,0.95);
+    padding: 50px;
+}
+
+.type-2 .image {
+    height: 750px;
+    border-radius: 25px;
+}
+
+.type-2 h1 {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+.type-2 .text {
+    height: 650px;
+    overflow-y: scroll;
+    font-size: 24px;
+    line-height: 1.85;
+    padding-right: 45px;
+}
+
+.type-2 .text::-webkit-scrollbar {
+    width: 10px;
+}
+
+.type-2 .text::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.type-2 .text::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.type-2 .text::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.type-2 .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.type-2 .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+.type-2 .backbutton img {
+    width: 75px;
+}
+
+/* TYPE 2 */
+
+
+
+/* TYPE 3 */
+
+.type-3 {
+    margin-top: 80px;
+}
+
+.type-3 h1 {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+.type-3 .text {
+    height: 630px;
+    overflow-y: scroll;
+    font-size: 26px;
+    line-height: 1.85;
+    padding-right: 25px;
+}
+
+.type-3 .text::-webkit-scrollbar {
+    width: 10px;
+}
+
+.type-3 .text::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.type-3 .text::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.type-3 .text::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.type-3 #gallery .col-6:nth-of-type(1n+5) {
+    display: none;
+}
+
+.type-3 .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.type-3 .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+/* TYPE 3 */
+
+
+
+
+/* TYPE 4 */
+
+.type-4 {
+    margin-top: 60px;
+    background-color: rgba(255,255,255,0.95);
+    padding: 50px;
+}
+
+.type-4 h1 {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+.type-4 .text {
+    height: 400px;
+    overflow-y: scroll;
+    font-size: 26px;
+    line-height: 1.85;
+    padding-right: 25px;
+    margin-bottom: 40px;
+}
+
+.type-4 .text::-webkit-scrollbar {
+    width: 10px;
+}
+
+.type-4 .text::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.type-4 .text::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.type-4 .text::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.type-4 .gallery-item {
+    width: 25%;
+}
+
+.type-4 .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.type-4 .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+.type-4 .backbutton img {
+    width: 75px;
+}
+
+/* TYPE 4 */
+
+
+
+
+/* TYPE 4 */
+
+.type-5 {
+    margin-top: 80px;
+}
+
+.type-5 h1 {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+.type-5 video {
+    width: 100%;
+    height: auto;
+}
+
+.type-5 .text {
+    height: 680px;
+    overflow-y: scroll;
+    font-size: 26px;
+    line-height: 1.85;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-bottom: 40px;
+}
+
+.type-5 .text::-webkit-scrollbar {
+    width: 10px;
+}
+
+.type-5 .text::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.type-5 .text::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.type-5 .text::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.type-5 #gallery .col-6:nth-of-type(1n+5) {
+    display: none;
+}
+
+.type-5 .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.type-5 .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+/* TYPE 5 */
+
+
+
+/* TYPE 6 */
+
+.type-6 {
+    margin-top: 80px;
+}
+
+.type-6 h1 {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.type-6 .item {
+    display: block;
+    text-align: center;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 30px;
+    padding: 0 60px;
+}
+
+.type-6 .image {
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.type-6 .backbutton {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 220px;
+    height: 80px;
+    background-color: #F76325;
+    border-radius: 20px;
+    font-size: 26px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.type-6 .backbutton a {
+    display: block;
+    color: #fff;
+}
+
+.type-6 .backbutton img {
+    width: 75px;
+}
+
+/* TYPE 6 */
