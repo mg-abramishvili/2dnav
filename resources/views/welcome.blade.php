@@ -6,7 +6,6 @@
 
         <title>DreamApp Navigator</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="/js/dragscroll.js"></script>
         <script src="https://timmywil.com/panzoom/demo/panzoom.js"></script>
 
         <link rel="stylesheet" href="/css/style.css">
@@ -15,6 +14,12 @@
     <body>
 
 <div class="container">
+
+<div class="ads">
+    @foreach($ads as $ad)
+        <video src="{{$ad->adfile}}" autoplay loop muted nocontrols></video>
+    @endforeach
+</div>
 
 <!--<button id="zoomin">+</button>
 <button id="zoomout">-</button>-->
@@ -113,7 +118,7 @@
                         <button value="_" id="v40">_</button>-->
                         <br>
                     </div>
-                        <button class="globebutton" style="width: 50px;">RU/EN</button>
+                        <button class="globebutton" style="width: 220px;">RU/EN</button>
                         <button value="" id="backspace">&#x2190</button>
                         <button value="" id="clear">&times;</button>
                     </div>
@@ -121,136 +126,135 @@
             </div>
         </div>
     </div>
-    @foreach($routes as $route)
-        {{ $route->title }}
-    @endforeach
+
+    <script>
+    $(document).ready(function(){
+        $(".routesbox").hide();
+    });
+    </script>
+
     <ul id="myUL">
+        @foreach($stores as $store)
         <li>
-            <a id="map01-link">
-                <strong>Adidas</strong>
-                <span>спортивные товары</span>
-                <span>одежда</span>
+            <a id="@foreach($store->routes as $route)route{{$route->id}}@endforeach">
+                <strong>{{ $store->title }}</strong>
+                @foreach($store->tags as $tag)
+                <span>{{ $tag->title }}</span>
+                @endforeach
             </a>
         </li>
-        <li>
-            <a id="map02-link">
-                <strong>Bershka</strong>
-                <span>одежда</span>
-                <span>обувь</span>
-            </a>
-        </li>
-        <li>
-            <a id="map03-link">
-                <strong>Аптека «Планета Здоровья»</strong>
-                <span>аптека</span>
-                <span>лекарства</span>
-            </a>
-        </li>
-        <li>
-            <a id="map04-link">
-                <strong>Синема Парк</strong>
-                <span>кинотеатр</span>
-            </a>
-        </li>
-        <li>
-            <a id="map05-link">
-                <strong>Ситилинк</strong>
-                <span>бытовая техника</span>
-                <span>компьютеры</span>
-                <span>смартфоны</span>
-            </a>
-        </li>
-        <li>
-            <a id="map06-link">
-                <strong>Yota</strong>
-                <span>сотовая связь</span>
-                <span>интернет</span>
-            </a>
-        </li>
+
+        <script>
+            $("#@foreach($store->routes as $route)route{{$route->id}}@endforeach").click(function(){
+                $(".routesbox").hide();
+                $(".@foreach($store->routes as $route)route{{$route->id}}@endforeach").show();
+                panzoom.reset();
+                setTimeout(function () {
+                    panzoom.reset();
+                }, 250)
+            });        
+        </script>
+
+        @endforeach
       </ul>
 </div>
 
 
-<div class="dragscroll">
+<div>
     <div class="wrapper" id="wrapper">
-        
+        <div id="wrapper-inner">
         <div class="map" id="map">
             <img src="{{ $schememain->image }}"/>
         </div>
 
         @foreach($routes as $route)
+        <div class="routesbox route{{ $route->id }}">
         <svg class="map-path" viewBox="0 0 800 450">
             @empty(!$route->x_01)
             <path class="key-anim01" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_01 }} {{ $route->y_01 }}, undefined undefined"></path>
             <circle id="01" cx="{{ $route->x_01 }}" cy="{{ $route->y_01 }}" r="7" fill="#f33"></circle>
-            <text x="{{ $route->x_01 }}" y="{{ $route->y_01 }}" font-family="Verdana" font-size="20" fill="blue">
-                <tspan dx="-60" dy="50" font-weight="bold">ВЫ ЗДЕСЬ</tspan>
-            </text>
+            <text x='{{ $route->x_01 }}' y='{{ $route->y_01 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_02)
             <path class="key-anim02" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_02 }} {{ $route->y_02 }}, {{ $route->x_01 }} {{ $route->y_01 }}"></path>
             <circle id="02" cx="{{ $route->x_02 }}" cy="{{ $route->y_02 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_02 }}' y='{{ $route->y_02 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_03)
             <path class="key-anim03" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_03 }} {{ $route->y_03 }}, {{ $route->x_02 }} {{ $route->y_02 }}"></path>
             <circle id="03" cx="{{ $route->x_03 }}" cy="{{ $route->y_03 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_03 }}' y='{{ $route->y_03 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_04)
             <path class="key-anim04" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_04 }} {{ $route->y_04 }}, {{ $route->x_03 }} {{ $route->y_03 }}"></path>
             <circle id="03" cx="{{ $route->x_04 }}" cy="{{ $route->y_04 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_04 }}' y='{{ $route->y_04 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_05)
             <path class="key-anim05" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_05 }} {{ $route->y_05 }}, {{ $route->x_04 }} {{ $route->y_04 }}"></path>
             <circle id="03" cx="{{ $route->x_05 }}" cy="{{ $route->y_05 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_05 }}' y='{{ $route->y_05 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_06)
             <path class="key-anim06" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_06 }} {{ $route->y_06 }}, {{ $route->x_05 }} {{ $route->y_05 }}"></path>
             <circle id="03" cx="{{ $route->x_06 }}" cy="{{ $route->y_06 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_06 }}' y='{{ $route->y_06 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_07)
             <path class="key-anim07" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_07 }} {{ $route->y_07 }}, {{ $route->x_06 }} {{ $route->y_06 }}"></path>
             <circle id="03" cx="{{ $route->x_07 }}" cy="{{ $route->y_07 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_07 }}' y='{{ $route->y_07 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_08)
             <path class="key-anim08" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_08 }} {{ $route->y_08 }}, {{ $route->x_07 }} {{ $route->y_07 }}"></path>
             <circle id="03" cx="{{ $route->x_08 }}" cy="{{ $route->y_08 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_08 }}' y='{{ $route->y_08 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_09)
             <path class="key-anim09" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_09 }} {{ $route->y_09 }}, {{ $route->x_08 }} {{ $route->y_08 }}"></path>
             <circle id="03" cx="{{ $route->x_09 }}" cy="{{ $route->y_09 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_09 }}' y='{{ $route->y_09 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_10)
             <path class="key-anim10" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_10 }} {{ $route->y_10 }}, {{ $route->x_09 }} {{ $route->y_09 }}"></path>
             <circle id="03" cx="{{ $route->x_10 }}" cy="{{ $route->y_10 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_10 }}' y='{{ $route->y_10 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_11)
             <path class="key-anim11" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_11 }} {{ $route->y_11 }}, {{ $route->x_10 }} {{ $route->y_10 }}"></path>
             <circle id="03" cx="{{ $route->x_11 }}" cy="{{ $route->y_11 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_11 }}' y='{{ $route->y_11 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
 
             @empty(!$route->x_12)
             <path class="key-anim12" fill="none" stroke-width="5px" stroke="rgba(200,10,10,0.5)" d="M{{ $route->x_12 }} {{ $route->y_12 }}, {{ $route->x_11 }} {{ $route->y_11 }}"></path>
             <circle id="03" cx="{{ $route->x_12 }}" cy="{{ $route->y_12 }}" r="7" fill="#f33"></circle>
+            <text x='{{ $route->x_12 }}' y='{{ $route->y_12 }}' font-family='Verdana' font-size='20' fill='blue'><tspan dx='-60' dy='50' font-weight='bold'>ВЫ ЗДЕСЬ</tspan></text>
             @endempty
         </svg>
+        </div>
         @endforeach
 
-    </div>
+    </div></div>
 </div></div>
 
-
-
-
+<script>
+    $(document).ready(function(){
+        $("svg").find("text").hide();
+        $("svg").find("text:last").show();
+        //$("#wrapper").html($("#wrapper").html());
+    });
+</script>
 
 <script> // КЛАВИАТУРА
     $(document).ready(function(){
@@ -289,17 +293,18 @@ function()
 </script>
 
 <script> // ZOOM
-    const elem = document.getElementById('wrapper');
+    const elem = document.getElementById('wrapper-inner');
             const zoomInButton = document.getElementById('zoomin');
             const zoomOutButton = document.getElementById('zoomout');
             const resetButton = document.getElementById('reset');
             const panzoom = Panzoom(elem, {
-                duration: 700,
+                contain: 'outside',
+                duration: 200,
                 startX: 0,
                 startY: 0,
-                startScale: 0.5,
-                maxScale: 2,
-                minScale: 0.075,
+                startScale: 1.35,
+                maxScale: 6,
+                minScale: 1.35,
             });
             const parent = elem.parentElement
     // No function bind needed
@@ -339,9 +344,13 @@ if (txtValue.toUpperCase().indexOf(filter) > -1) {
 
 
 
-          
-
-
+<script>    
+$('.ads').click(function() {
+  $('.ads').hide();
+  $('.ads video').get(0).pause();
+  $('.ads video').get(0).currentTime = 0;
+});
+</script>
 
 
 </body>

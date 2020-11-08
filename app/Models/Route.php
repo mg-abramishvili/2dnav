@@ -13,6 +13,7 @@ class Route extends Model
         'title',
         'scheme_id',
         'scheme2_id',
+        'store_id',
         'x_01',
         'y_01',
         'p_x_01',
@@ -111,13 +112,8 @@ class Route extends Model
         'p_y_112',
     ];
 
-    public function marshrutesroutes_floor()
+    public function store()
     {
-        return $this->belongsTo(MarshrutesFloor::class, 'marshrutesroutes_floor_id');
-    }
-
-    public function marshrutesroutes_floorsecond()
-    {
-        return $this->belongsTo(MarshrutesFloor::class, 'marshrutesroutes_floorsecond_id');
+        return $this->belongsTo('App\Models\Store', 'id', 'store_id');
     }
 }

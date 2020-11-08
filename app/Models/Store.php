@@ -13,10 +13,13 @@ class Store extends Model
         'title', 'tag_id'
     ];
 
-    protected $casts=['tag_id'=>'json'];
-
     public function tags()
     {
         return $this->hasMany('App\Models\Tag', 'id', 'tag_id');
+    }
+
+    public function routes()
+    {
+        return $this->hasMany('App\Models\Route', 'store_id', 'id');
     }
 }

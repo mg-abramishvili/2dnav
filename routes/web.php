@@ -18,6 +18,7 @@ Route::post('schemes/file/{method}','App\Http\Controllers\SchemeController@file'
 
 // ROUTES
 Route::resource('/routes', RouteController::class);
+Route::get('routes/delete/{id}','App\Http\Controllers\RouteController@delete');
 
 // STORES
 Route::resource('/stores', StoreController::class);
@@ -27,7 +28,8 @@ Route::resource('/tags', TagController::class);
 
 // ADS
 Route::resource('/ads', AdController::class);
-
+Route::get('ads/delete/{id}','App\Http\Controllers\AdController@delete');
+Route::post('ads/file/{method}','App\Http\Controllers\AdController@file');
 
 // AUTH
 Auth::routes([

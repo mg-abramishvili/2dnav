@@ -10,6 +10,7 @@ class StoreController extends Controller
 {
     public function index()
     {
+        //$stores = Store::all();
         $stores = Store::with('tags')->get();
         return view('stores.index', compact('stores'));
         //dd($stores);
@@ -76,7 +77,6 @@ class StoreController extends Controller
         $stores = new Store();
         $stores->title = $data['title'];
         $stores->tag_id = $data['tag_id'];
-        //$stores->tag_id = implode(',', $data['tag_id']);
         $stores->save();
         return redirect('/stores');
     }

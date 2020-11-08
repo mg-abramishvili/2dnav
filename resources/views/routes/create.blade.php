@@ -135,6 +135,20 @@
 
             <div class="row align-items-center mb-2">
                 <dt class="col-sm-3">
+                    Магазин
+                </dt>
+                <dd class="col-sm-9">
+                    <select name="store_id" class="form-control">
+                        <option selected="selected">Выберите магазин</option>
+                        @foreach($stores as $store)
+                            <option value="{{ $store->id }}">{{ $store->title }}</option>
+                        @endforeach
+                    </select>
+                </dd>
+            </div>
+            <div style="display:none;">
+            <div class="row align-items-center mb-2">
+                <dt class="col-sm-3">
                     x_01
                 </dt>
                 <dd class="col-sm-9">
@@ -995,6 +1009,7 @@
                 <dd class="col-sm-9">
                     <input class="form-control" type="text" name="p_y_112" id="p_y_112">
                 </dd>
+            </div>
             </div>
 
             <button type="submit" class="btn btn-lg btn-success">Сохранить</button>

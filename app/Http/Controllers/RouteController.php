@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Route;
 use App\Models\Scheme;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -17,7 +18,8 @@ class RouteController extends Controller
     public function create()
     {
         $schemes = Scheme::get();
-        return view('routes.create', compact('schemes'));
+        $stores = Store::get();
+        return view('routes.create', compact('schemes', 'stores'));
     }
 
     public function edit($id)
@@ -76,6 +78,7 @@ class RouteController extends Controller
         $routes->title = $data['title'];
         $routes->scheme_id = $data['scheme_id'];
         $routes->scheme2_id = $data['scheme2_id'];
+        $routes->store_id = $data['store_id'];
         $routes->x_01 = $data['x_01'];
         $routes->y_01 = $data['y_01'];
         $routes->p_x_01 = $data['p_x_01'];

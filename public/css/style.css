@@ -28,32 +28,59 @@ body {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
 .container {
-    width: 324px;
-    height: 576px;
+    width: 1080px;
+    height: 1920px;
     overflow: hidden;
     position: relative;
     border: 4px solid #009387;
-    margin: 0 auto;;
+    margin: 0 auto;
+}
+
+.ads {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: #000;    
+}
+
+.ads video {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
 }
 
 .dragscroll {
-    width: 324px;
-    height: 576px;
+    width: 1080px;
+    height: 1920px;
     overflow: hidden;
 }
 
 .wrapper {
-    width: 800px;
-    height: 450px;
+    width: 1080px;
+    height: 800px;
     position: relative;
     margin: 0 auto;
+    overflow: visible;
+}
+
+#wrapper-inner {
+    width: 800px;
+    height: 600px;
 }
 
 .map {
-
+    margin-top: 100px;
 }
 
 .map img {
@@ -79,21 +106,24 @@ body {
     left: 0;
     right: 0;
     width: 100%;
-    height: 350px;
+    height: 1150px;
     background-color: rgba(0,0,0,0.2);
     z-index: 100;
     background: #009387;
 }
 
 .list input {
-    width: calc(100% - 120px);
-    margin: 0 30px;
-    line-height: 1;
-    padding: 9px 25px;
-    font-size: 11px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: calc(100% - 100px);
+    height: 70px;
+    margin: 0 50px;
+    line-height: 70px;
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     border: 3px solid #1574a0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .list ul {
@@ -101,7 +131,7 @@ body {
     margin: 0;
     list-style-type: none;
     overflow-y: scroll;
-    height: 180px;
+    height: 680px;
 }
 
 .list ul li {
@@ -118,23 +148,23 @@ body {
     font-weight: bold;
     background-color: rgba(255,255,255,0.1);
     display: block;
-    padding: 14px 30px;
+    padding: 45px 50px;
     line-height: 1;
 }
 
 .list ul li a strong {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 37px;
 }
 
 .list ul li a span {
     display: inline-block;
-    padding: 3px 7px;
+    padding: 6px 18px;
     border: 1px solid rgba(255,255,255,0.5);
     border-radius: 25px;
-    font-size: 8px;
+    font-size: 22px;
     margin-bottom: 3px;
 }
 
@@ -174,11 +204,17 @@ font-size: 30px;
 }
 
 .modal button {
-width: 18px;
-height: 18px;
-font-size: 12px;
+width: 70px;
+height: 70px;
+font-size: 45px;
 text-align: center;
-line-height: 18px;
+line-height: 45px;
 padding: 0;
 margin-bottom: 5px;
+background: rgba(255,255,255,0.5);
+box-shadow: none;
+border-radius: 15px;
+font-weight: bold;
+border: 1px solid #009387;
+color: #00302c;
 }

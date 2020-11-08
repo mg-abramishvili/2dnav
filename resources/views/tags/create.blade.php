@@ -15,7 +15,7 @@
                     Название
                 </dt>
                 <dd class="col-sm-9">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title">
+                    <input type="text" class="form-control" name="title">
                 </dd>
             </div>
 

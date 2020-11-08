@@ -18,6 +18,7 @@ class CreateRoutesTable extends Migration
             $table->string('title');
             $table->string('scheme_id');
             $table->string('scheme2_id')->nullable();
+            $table->string('store_id');
             $table->string('x_01', 4)->nullable();
             $table->string('y_01', 4)->nullable();
             $table->string('p_x_01', 4)->nullable();
