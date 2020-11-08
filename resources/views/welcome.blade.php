@@ -147,7 +147,9 @@
         <script>
             $("#@foreach($store->routes as $route)route{{$route->id}}@endforeach").click(function(){
                 $(".routesbox").hide();
+                $(".map-image").hide();
                 $(".@foreach($store->routes as $route)route{{$route->id}}@endforeach").show();
+                $(".@foreach($store->routes as $route)map-image{{$route->id}}@endforeach").show();
                 panzoom.reset();
                 setTimeout(function () {
                     panzoom.reset();
@@ -163,11 +165,19 @@
 <div>
     <div class="wrapper" id="wrapper">
         <div id="wrapper-inner">
-        <div class="map" id="map">
-            <img src="{{ $schememain->image }}"/>
-        </div>
 
         @foreach($routes as $route)
+
+        <div class="map map-image map-image{{ $route->id }}" id="map">
+            <img src="@foreach($route->schemes as $scheme){{$scheme->image}}@endforeach"/>
+            @foreach($route->schemes as $scheme)
+                @foreach($scheme->marks as $mark)
+                    <div style="position: absolute; left: {{$mark->x_01}}px; top: {{$mark->y_01}}px; z-index:10; width: 20px; height: 20px; background: url({{$mark->icon}}) center center; background-size: contain; background-repeat: no-repeat;"></div>
+                @endforeach
+            @endforeach
+        </div>
+
+        
         <div class="routesbox route{{ $route->id }}">
         <svg class="map-path" viewBox="0 0 800 450">
             @empty(!$route->x_01)

@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Scheme extends Model
+class Mark extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title', 'image',
+        'title',
+        'icon',
+        'x_01',
+        'y_01',
     ];
-
-    public function marks()
-    {
-        return $this->hasMany('App\Models\Mark', 'scheme_id', 'id');
-    }
 }

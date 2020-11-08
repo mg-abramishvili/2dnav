@@ -65,6 +65,9 @@
                                 <a class="nav-link" href="/routes">Маршруты</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/marks">Значки</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/ads">Реклама</a>
                             </li>
                             <li class="nav-item">
