@@ -71,23 +71,24 @@ class StoreController extends Controller
         return redirect('/stores');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $data = request()->all();
         $stores = new Store();
         $stores->title = $data['title'];
-        $stores->tag_id = $data['tag_id'];
         $stores->save();
+        $stores->tags()->attach($request->tags, ['store_id' => $stores->id]);
         return redirect('/stores');
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $data = request()->all();
         $stores = Store::find($data['id']);
         $stores->title = $data['title'];
-        $stores->tag_id = $data['tag_id'];
         $stores->save();
+        $stores->tags()->detach();
+        $stores->tags()->attach($request->tags, ['store_id' => $stores->id]);
         return redirect('/stores');
     }
 }

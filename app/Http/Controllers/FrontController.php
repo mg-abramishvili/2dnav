@@ -17,6 +17,6 @@ class FrontController extends Controller
         $schememain = Scheme::where('id', '3')->first();
         $ads = Ad::all();
         return view('welcome', compact('routes', 'schememain', 'stores', 'ads'));
-        //dd($routes);
+        //dd($stores);
     }
 }

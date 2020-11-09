@@ -10,11 +10,11 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'title'
     ];
 
     public function store()
     {
-        return $this->belongsTo('App\Models\Store', 'tag_id', 'id');
+        return $this->belongsToMany('App\Models\Store');
     }
 }

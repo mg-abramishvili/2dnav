@@ -10,12 +10,14 @@ class Store extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'tag_id'
+        'title'
     ];
+
+    //protected $casts=['tag_id'=>'json'];
 
     public function tags()
     {
-        return $this->hasMany('App\Models\Tag', 'id', 'tag_id');
+        return $this->belongsToMany('App\Models\Tag');
     }
 
     public function routes()

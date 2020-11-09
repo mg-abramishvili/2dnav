@@ -24,7 +24,7 @@
                     Теги
                 </dt>
                 <dd class="col-sm-9">
-                    <select name="tag_id" class="form-control">
+                    <select name="tags[]" class="form-control" multiple>
                         @foreach($tags as $tag)
                             <option value="{{ $tag->id }}">{{ $tag->title }}</option>
                         @endforeach

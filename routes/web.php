@@ -28,6 +28,7 @@ Route::post('marks/file/{method}','App\Http\Controllers\MarkController@file');
 
 // STORES
 Route::resource('/stores', StoreController::class);
+Route::get('stores/delete/{id}','App\Http\Controllers\StoreController@delete');
 
 // TAGS
 Route::resource('/tags', TagController::class);

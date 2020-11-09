@@ -27,11 +27,11 @@
                     Теги
                 </dt>
                 <dd class="col-sm-9">
-                    <select name="tag_id" class="form-control">
+                    <select name="tags[]" class="form-control" multiple>
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}" {{ ($tag->id == $stores->tag_id)? 'selected="selected"' : '' }}>{{ $tag->title }}</option>
+                            <option value="{{$tag->id}}" @foreach($stores->tags as $t) @if($tag->id == $t->id)selected="selected"@endif @endforeach>{{$tag->title}}</option>
                         @endforeach
-                    </select>
+                    </select>                        
                 </dd>
             </div>
 
