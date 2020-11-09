@@ -13,31 +13,31 @@ use App\Http\Controllers\FrontController;
 Route::get('/', [FrontController::class, 'index']);
 
 // SCHEMES
-Route::resource('/schemes', SchemeController::class);
-Route::get('schemes/delete/{id}','App\Http\Controllers\SchemeController@delete');
-Route::post('schemes/file/{method}','App\Http\Controllers\SchemeController@file');
+Route::resource('/schemes', SchemeController::class)->middleware('auth');
+Route::get('schemes/delete/{id}','App\Http\Controllers\SchemeController@delete')->middleware('auth');
+Route::post('schemes/file/{method}','App\Http\Controllers\SchemeController@file')->middleware('auth');
 
 // ROUTES
-Route::resource('/routes', RouteController::class);
-Route::get('routes/delete/{id}','App\Http\Controllers\RouteController@delete');
+Route::resource('/routes', RouteController::class)->middleware('auth');
+Route::get('routes/delete/{id}','App\Http\Controllers\RouteController@delete')->middleware('auth');
 
 // MARKS
-Route::resource('/marks', MarkController::class);
-Route::get('marks/delete/{id}','App\Http\Controllers\MarkController@delete');
-Route::post('marks/file/{method}','App\Http\Controllers\MarkController@file');
+Route::resource('/marks', MarkController::class)->middleware('auth');
+Route::get('marks/delete/{id}','App\Http\Controllers\MarkController@delete')->middleware('auth');
+Route::post('marks/file/{method}','App\Http\Controllers\MarkController@file')->middleware('auth');
 
 // STORES
-Route::resource('/stores', StoreController::class);
-Route::get('stores/delete/{id}','App\Http\Controllers\StoreController@delete');
+Route::resource('/stores', StoreController::class)->middleware('auth')->middleware('auth');
+Route::get('stores/delete/{id}','App\Http\Controllers\StoreController@delete')->middleware('auth');
 
 // TAGS
-Route::resource('/tags', TagController::class);
-Route::get('tags/delete/{id}','App\Http\Controllers\TagController@delete');
+Route::resource('/tags', TagController::class)->middleware('auth')->middleware('auth');
+Route::get('tags/delete/{id}','App\Http\Controllers\TagController@delete')->middleware('auth');
 
 // ADS
 Route::resource('/ads', AdController::class);
-Route::get('ads/delete/{id}','App\Http\Controllers\AdController@delete');
-Route::post('ads/file/{method}','App\Http\Controllers\AdController@file');
+Route::get('ads/delete/{id}','App\Http\Controllers\AdController@delete')->middleware('auth');
+Route::post('ads/file/{method}','App\Http\Controllers\AdController@file')->middleware('auth');
 
 // AUTH
 Auth::routes([
