@@ -32,6 +32,7 @@ Route::get('stores/delete/{id}','App\Http\Controllers\StoreController@delete');
 
 // TAGS
 Route::resource('/tags', TagController::class);
+Route::get('tags/delete/{id}','App\Http\Controllers\TagController@delete');
 
 // ADS
 Route::resource('/ads', AdController::class);
