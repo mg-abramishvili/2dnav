@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMarksTable extends Migration
+class CreateMarkMarkimageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateMarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('marks', function (Blueprint $table) {
+        Schema::create('mark_mark_image', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('scheme_id');
-            $table->string('x_01');
-            $table->string('y_01');
-            $table->timestamps();
+            $table->integer('mark_id');
+            $table->integer('mark_image_id');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateMarksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marks');
+        Schema::dropIfExists('mark_markimage');
     }
 }

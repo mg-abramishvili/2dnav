@@ -63,6 +63,9 @@
                             <a class="nav-link" href="/marks">Значки</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/markimages">Иконки</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/ads">Реклама</a>
                         </li>
                         <li class="nav-item">

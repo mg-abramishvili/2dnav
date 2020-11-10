@@ -121,4 +121,9 @@ class Route extends Model
     {
         return $this->hasMany('App\Models\Scheme', 'id', 'scheme_id');
     }
+
+    public function schemes2()
+    {
+        return $this->hasMany('App\Models\Scheme', 'id', 'scheme2_id');
+    }
 }

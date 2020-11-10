@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Scheme;
 use App\Models\Mark;
+use App\Models\MarkImage;
 
 class MarkController extends Controller
 {
@@ -17,7 +18,8 @@ class MarkController extends Controller
     public function create()
     {
         $schemes = Scheme::get();
-        return view('marks.create', compact('schemes'));
+        $markimages = MarkImage::all();
+        return view('marks.create', compact('schemes', 'markimages'));
     }
 
     public function edit($id)
@@ -30,38 +32,6 @@ class MarkController extends Controller
 
     }
 
-    public function file($type)
-    {
-
-        switch ($type) {
-            case 'upload':
-                return $this->upload();
-
-
-        }
-
-        return \Response::make('success', 200, [
-            'Content-Disposition' => 'inline',
-        ]);
-    }
-
-    public function upload()
-    {
-
-        if (request()->file('icon')) {
-            $file = request()->file('icon');
-
-            $filename = md5(time() . rand(1, 100000)) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path() . '/uploads', $filename);
-
-            return \Response::make('/uploads/' . $filename, 200, [
-                'Content-Disposition' => 'inline',
-            ]);
-
-        }
-
-    }
-
     public function delete($id)
     {
         $marks = Mark::find($id);
@@ -69,7 +39,7 @@ class MarkController extends Controller
         return redirect('/marks');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $data = request()->all();
         $marks = new Mark();
@@ -77,12 +47,12 @@ class MarkController extends Controller
         $marks->scheme_id = $data['scheme_id'];
         $marks->x_01 = $data['x_01'];
         $marks->y_01 = $data['y_01'];
-        $marks->icon = $data['icon'];
         $marks->save();
+        $marks->markimages()->attach($request->markimages, ['mark_id' => $marks->id]);
         return redirect('/marks');
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $data = request()->all();
         $marks = Mark::find($data['id']);
@@ -90,8 +60,9 @@ class MarkController extends Controller
         $marks->scheme_id = $data['scheme_id'];
         $marks->x_01 = $data['x_01'];
         $marks->y_01 = $data['y_01'];
-        $marks->icon = $data['icon'];
         $marks->save();
+        $marks->markimages()->detach();
+        $marks->markimages()->attach($request->markimages, ['mark_id' => $marks->id]);
         return redirect('/marks');
     }
 }

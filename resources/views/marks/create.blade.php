@@ -89,7 +89,11 @@
                     Значок
                 </dt>
                 <dd class="col-sm-9">
-                    <input class="icon" type="file" name="icon" x-ref="icon">
+                    <select name="markimages[]" class="form-control">
+                        @foreach($markimages as $markimage)
+                            <option value="{{ $markimage->id }}">{{ $markimage->title }}</option>
+                        @endforeach
+                    </select>
                 </dd>
             </div>
 
@@ -159,69 +163,5 @@
         });
     });
 </script>
-<script>
-        FilePond.registerPlugin(FilePondPluginImagePreview);
-
-        $('.icon').filepond({
-            allowMultiple: false,
-            allowReorder: false,
-            imagePreviewHeight: 140,
-            labelIdle: 'Нажмите для загрузки файлов',
-            labelFileProcessing: 'Загрузка',
-            labelFileProcessingComplete: 'Загружено',
-            labelTapToCancel: '',
-            labelTapToUndo: '',
-
-            server: {
-                remove: (filename, load) => {
-                    load('1');
-                    return  ajax_delete('deleteicon');
-
-                },
-                process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
-                    const formData = new FormData();
-                    formData.append(fieldName, file, file.name);
-                    const request = new XMLHttpRequest();
-                    request.open('POST', '/marks/file/upload');
-                    request.upload.onprogress = (e) => {
-                        progress(e.lengthComputable, e.loaded, e.total);
-                    };
-                    request.onload = function() {
-                        if (request.status >= 200 && request.status < 300) {
-                            load(request.responseText);
-                        }
-                        else {
-                            error('oh no');
-                        }
-                    };
-                    request.send(formData);
-                    return {
-                        abort: () => {
-                            request.abort();
-                            abort();
-                        }
-                    };
-                },
-                revert: (filename, load) => {
-                    load(filename)
-                },
-                load: (source, load, error, progress, abort, headers) => {
-                    var myRequest = new Request(source);
-                    fetch(myRequest).then(function(response) {
-                        response.blob().then(function(myBlob) {
-                            load(myBlob)
-                        });
-                    });
-                },
-            },
-        });
-
-        function ajax_delete(methos){
-            $.ajax({
-                url:'/marks/file/'+methos,
-                method:'POST'
-            });
-        }
-    </script>
 
 @endsection

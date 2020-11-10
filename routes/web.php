@@ -8,6 +8,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\MarkController;
+use App\Http\Controllers\MarkImageController;
 use App\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'index']);
@@ -24,7 +25,11 @@ Route::get('routes/delete/{id}','App\Http\Controllers\RouteController@delete')->
 // MARKS
 Route::resource('/marks', MarkController::class)->middleware('auth');
 Route::get('marks/delete/{id}','App\Http\Controllers\MarkController@delete')->middleware('auth');
-Route::post('marks/file/{method}','App\Http\Controllers\MarkController@file')->middleware('auth');
+
+// MARKIMAGES
+Route::resource('/markimages', MarkImageController::class)->middleware('auth');
+Route::get('markimages/delete/{id}','App\Http\Controllers\MarkImageController@delete')->middleware('auth');
+Route::post('markimages/file/{method}','App\Http\Controllers\MarkImageController@file')->middleware('auth');
 
 // STORES
 Route::resource('/stores', StoreController::class)->middleware('auth')->middleware('auth');

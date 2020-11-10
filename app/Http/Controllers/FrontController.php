@@ -13,10 +13,9 @@ class FrontController extends Controller
     public function index()
     {
         $stores = Store::with('routes', 'tags')->get();
-        $routes = Route::with('schemes.marks')->get();
+        $routes = Route::with('schemes.marks.markimages')->get();
         $schememain = Scheme::where('id', '3')->first();
         $ads = Ad::all();
         return view('welcome', compact('routes', 'schememain', 'stores', 'ads'));
-        //dd($stores);
     }
 }

@@ -83,6 +83,10 @@ body {
     margin-top: 100px;
 }
 
+.map-slide {
+    width: 100%;
+}
+
 .map img {
     width: 800px;
     height: 450px;
@@ -217,4 +221,8 @@ border-radius: 15px;
 font-weight: bold;
 border: 1px solid #009387;
 color: #00302c;
+}
+
+.flickity-prev-next-button:disabled {
+    opacity: 0;
 }

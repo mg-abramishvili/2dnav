@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mark extends Model
+class MarkImage extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'title',
-        'icon',
-        'x_01',
-        'y_01',
+        'image',
     ];
 
-    public function markimages()
+    public function marks()
     {
-        return $this->belongsToMany('App\Models\MarkImage');
+        return $this->belongsToMany('App\Models\Mark');
     }
 }
