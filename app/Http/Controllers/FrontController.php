@@ -6,6 +6,7 @@ use App\Models\Route;
 use App\Models\Store;
 use App\Models\Scheme;
 use App\Models\Ad;
+use App\Models\Setup;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -16,6 +17,7 @@ class FrontController extends Controller
         $routes = Route::with('schemes.marks.markimages')->get();
         $schememain = Scheme::where('id', '3')->first();
         $ads = Ad::all();
-        return view('welcome', compact('routes', 'schememain', 'stores', 'ads'));
+        $setup = Setup::where('id', '1')->first();
+        return view('welcome', compact('routes', 'schememain', 'stores', 'ads', 'setup'));
     }
 }

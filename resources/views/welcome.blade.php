@@ -15,7 +15,7 @@
     </head>
     <body>
 
-<div class="container">
+<div class="container" style="border-color: {{ $setup->color }};">
 
 <div class="ads">
     <video id="myvideo" nocontrols autoplay>
@@ -50,7 +50,7 @@
 <!--<button id="zoomin">+</button>
 <button id="zoomout">-</button>-->
 
-<div class="list">
+<div class="list" style="background-color: {{ $setup->color }};">
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Поиск ...">
     <div id="myKeyboard" class="modal">
         <div class="modal-content">

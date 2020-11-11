@@ -9,6 +9,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\MarkImageController;
+use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'index']);
@@ -43,6 +44,9 @@ Route::get('tags/delete/{id}','App\Http\Controllers\TagController@delete')->midd
 Route::resource('/ads', AdController::class);
 Route::get('ads/delete/{id}','App\Http\Controllers\AdController@delete')->middleware('auth');
 Route::post('ads/file/{method}','App\Http\Controllers\AdController@file')->middleware('auth');
+
+// Setup
+Route::resource('/setup', SetupController::class)->middleware('auth');
 
 // AUTH
 Auth::routes([
