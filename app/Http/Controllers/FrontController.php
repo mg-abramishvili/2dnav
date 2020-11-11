@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Route;
+use App\Models\Route02;
 use App\Models\Store;
 use App\Models\Scheme;
 use App\Models\Ad;
@@ -15,6 +16,16 @@ class FrontController extends Controller
     {
         $stores = Store::with('routes', 'tags')->get();
         $routes = Route::with('schemes.marks.markimages')->get();
+        $schememain = Scheme::where('id', '3')->first();
+        $ads = Ad::all();
+        $setup = Setup::where('id', '1')->first();
+        return view('welcome', compact('routes', 'schememain', 'stores', 'ads', 'setup'));
+    }
+
+    public function index02()
+    {
+        $stores = Store::with('routes02', 'tags')->get();
+        $routes = Route02::with('schemes.marks.markimages')->get();
         $schememain = Scheme::where('id', '3')->first();
         $ads = Ad::all();
         $setup = Setup::where('id', '1')->first();

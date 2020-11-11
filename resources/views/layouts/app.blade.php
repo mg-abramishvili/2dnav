@@ -9,8 +9,6 @@
     <title>DreamApp Navigator</title>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <link href="{{ asset('css/filepond.css') }}" rel="stylesheet">
     <link href="{{ asset('css/filepond-plugin-image-preview.css') }}" rel="stylesheet">
@@ -56,8 +54,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/schemes">Схемы</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/routes">Маршруты</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+                                Маршруты
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/routes">Маршруты от Т1</a>
+                                <a class="dropdown-item" href="/routes02">Маршруты от Т2</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/marks">Значки</a>

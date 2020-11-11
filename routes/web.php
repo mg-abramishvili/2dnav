@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SchemeController;
 use App\Http\Controllers\RouteController;
+use App\Http\Controllers\Route02Controller;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\AdController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'index']);
+Route::get('/2', [FrontController::class, 'index02']);
 
 // SCHEMES
 Route::resource('/schemes', SchemeController::class)->middleware('auth');
@@ -22,6 +24,10 @@ Route::post('schemes/file/{method}','App\Http\Controllers\SchemeController@file'
 // ROUTES
 Route::resource('/routes', RouteController::class)->middleware('auth');
 Route::get('routes/delete/{id}','App\Http\Controllers\RouteController@delete')->middleware('auth');
+
+// ROUTES02
+Route::resource('/routes02', Route02Controller::class)->middleware('auth');
+Route::get('routes02/delete/{id}','App\Http\Controllers\Route02Controller@delete')->middleware('auth');
 
 // MARKS
 Route::resource('/marks', MarkController::class)->middleware('auth');
