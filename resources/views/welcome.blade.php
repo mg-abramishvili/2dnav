@@ -84,13 +84,14 @@
             $("#map").css('opacity', '0');
             setTimeout(function () {
                 $("#sch2").trigger('click');
-            }, 250)
+            }, 250);
             setTimeout(function () {
                 $("#sch1").trigger('click');
-            }, 550)
+            }, 550);
             setTimeout(function () {
                 $("#map").css('opacity', '1');
-            }, 750)
+            }, 750);
+            $("#sch1").focus();
         });
     </script>
     @endsection

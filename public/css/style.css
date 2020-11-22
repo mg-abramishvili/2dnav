@@ -42,6 +42,7 @@ body {
     position: relative;
     border: 1px solid #3171B8;
     margin: 0 auto;
+    background-color: #3171B8;
 }
 
 .ads {
@@ -73,6 +74,7 @@ body {
     position: relative;
     margin: 0 auto;
     overflow: visible;
+    background-color: #fff;
 }
 
 #wrapper-inner {
@@ -232,6 +234,31 @@ color: #00302c;
     position: absolute;
     top: 0;
     z-index: 20;
+    left: 15px;
+    right: 15px;
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.index-map-list li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.index-map-list button {
+    background-color: #B3B5B6;
+    padding: 20px 50px;
+    color: #fff;
+    font-size: 45px;
+    box-shadow: none;
+    border: 0;
+}
+
+.index-map-list button:focus {
+    background-color: #EC4159;
+    outline: none;
 }
 
 
@@ -352,6 +379,11 @@ color: #00302c;
     background-color: #F79431;
 }
 
+.catlist-list .catlist-item a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .catlist-list .catlist-item img {
     display: block;
     width: 60px;
@@ -364,3 +396,35 @@ color: #00302c;
 }
 
 /* CATEGORIES */
+
+
+/* TAGS */
+
+.tag-page-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    padding: 0 30px;
+}
+
+.tag-page-list li {
+    margin-bottom: 50px;
+}
+
+.tag-page-list li:last-child {
+    margin-bottom: 0;
+}
+
+.tag-page-list li a {
+    display: block;
+    background-color: rgba(255,255,255,0.8);
+    padding: 45px 50px;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #255fa1;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* TAGS */

@@ -16,7 +16,8 @@ class FrontTagController extends Controller
     public function show($id)
     {
         $tag = Tag::find($id);
-        return view('front.tags.show', compact('tag'));
+        $tagsall = Tag::all();
+        return view('front.tags.show', compact('tag', 'tagsall'));
     }
 
 }
