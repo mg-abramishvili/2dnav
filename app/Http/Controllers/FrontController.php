@@ -7,6 +7,7 @@ use App\Models\Route02;
 use App\Models\Store;
 use App\Models\Scheme;
 use App\Models\Ad;
+use App\Models\Tag;
 use App\Models\Setup;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,10 @@ class FrontController extends Controller
         $routes = Route::with('schemes.marks.markimages')->get();
         $schemes = Scheme::with('marks.markimages')->get();
         $schememain = Scheme::where('id', '3')->first();
+        $tags = Tag::all();
         $ads = Ad::all();
         $setup = Setup::where('id', '1')->first();
-        return view('welcome', compact('routes', 'schemes', 'schememain', 'stores', 'ads', 'setup'));
+        return view('welcome', compact('routes', 'schemes', 'schememain', 'stores', 'tags', 'ads', 'setup'));
     }
 
     public function index02()

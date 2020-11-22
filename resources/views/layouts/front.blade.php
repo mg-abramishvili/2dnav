@@ -18,7 +18,9 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <img src="/img/logo.svg" style="width:100%;">
+                <a href="/">
+                    <img src="/img/logo.svg" style="width:100%;">
+                </a>
             </div>
             <div class="datetime">
                 <span>
@@ -29,16 +31,6 @@
         </div>
         @yield('content')
     </div>
-
-    <script>
-        $(document).ready(function(){
-            //$(".routesbox").hide();
-            panzoom.reset();
-            setTimeout(function () {
-                panzoom.reset();
-            }, 250);
-        });
-    </script>
 
     <script>
         $(document).ready(function(){
@@ -68,6 +60,8 @@
         zoomOutButton.addEventListener('click', panzoom.zoomOut)
         resetButton.addEventListener('click', panzoom.reset)
     </script>
+
+    @yield('scripts')
 
 </body>
 </html>

@@ -190,3 +190,20 @@
     </div></div>
 </div></div>
 @endsection
+
+@section('scripts')
+<script>
+        $(document).ready(function(){
+            //$(".routesbox").hide();
+            $("#map").css('opacity', '0');
+            panzoom.reset();
+            setTimeout(function () {
+            panzoom.reset();
+            }, 250);
+            $('#map').trigger('dblclick');
+            setTimeout(function () {
+                $("#map").css('opacity', '1');
+            }, 750)
+        });
+    </script>
+    @endsection

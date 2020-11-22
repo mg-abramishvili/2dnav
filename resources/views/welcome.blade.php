@@ -14,30 +14,14 @@
         </div>
         <div class="catlist">
             <div class="catlist-list">
-                <div class="catlist-item">
-                    <img src="/img/catlist01.png">
-                    <p>Одежда</p>
-                </div>
-                <div class="catlist-item">
-                    <img src="/img/catlist02.png">
-                    <p>Развлечения</p>
-                </div>
-                <div class="catlist-item">
-                    <img src="/img/catlist03.png">
-                    <p>Электроника</p>
-                </div>
-                <div class="catlist-item">
-                    <img src="/img/catlist04.png">
-                    <p>Продукты</p>
-                </div>
-                <div class="catlist-item">
-                    <img src="/img/catlist05.png">
-                    <p>Обувь</p>
-                </div>
-                <div class="catlist-item">
-                    <img src="/img/catlist06.png">
-                    <p>Кафе и рестораны</p>
-                </div>
+                @foreach($tags as $tag)
+                    <div class="catlist-item">
+                        <a href="/front-tags/{{ $tag->id }}">
+                            <img src="/img/catlist01.png">
+                            <p>{{ $tag->title }}</p>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -45,11 +29,8 @@
 
     <div>
         <div class="wrapper" id="wrapper">
-            <div id="wrapper-inner">
-            
-            <div class="map map-image" id="map">
 
-                <ul class="index-map-list">
+        <ul class="index-map-list">
                     @foreach($schemes as $scheme)
                     <li>
                         <button id="sch{{$scheme->id}}">{{$scheme->title}}</button>
@@ -57,15 +38,23 @@
                     <script>
                         $("#sch{{$scheme->id}}").click(function(){
                         $(".sch").hide();
+                        $("#map").css('opacity', '0');
                         $(".sch{{$scheme->id}}").show();
                         panzoom.reset();
                         setTimeout(function () {
                         panzoom.reset();
-                        }, 250)
+                        }, 250);
+                        setTimeout(function () {
+                            $("#map").css('opacity', '1');
+                        }, 550);
                         });        
                     </script>
                     @endforeach
                 </ul>
+
+            <div id="wrapper-inner">
+            
+            <div class="map map-image" id="map">
                 
                 @foreach($schemes as $scheme)
                 <div class="sch sch{{$scheme->id}}">
@@ -87,3 +76,21 @@
     </div>
 
 @endsection
+
+@section('scripts')
+<script>
+        $(document).ready(function(){
+            //$(".routesbox").hide();
+            $("#map").css('opacity', '0');
+            setTimeout(function () {
+                $("#sch2").trigger('click');
+            }, 250)
+            setTimeout(function () {
+                $("#sch1").trigger('click');
+            }, 550)
+            setTimeout(function () {
+                $("#map").css('opacity', '1');
+            }, 750)
+        });
+    </script>
+    @endsection

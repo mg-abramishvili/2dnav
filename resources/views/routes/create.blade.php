@@ -101,7 +101,23 @@
                     Название
                 </dt>
                 <dd class="col-sm-9">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title">
+                    <input type="text" class="form-control" name="title" id="title" value="T1 -> ">
+                </dd>
+            </div>
+
+            <div class="row align-items-center mb-2">
+                <dt class="col-sm-3">
+                    Магазин
+                </dt>
+                <dd class="col-sm-9">
+                    <select name="store_id" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">
+                        <option selected="selected">Выберите магазин</option>
+                        @foreach($stores as $store)
+                            @if(!count($store->routes))
+                                <option value="{{ $store->id }}" title="T1 -> {{ $store->title }}">{{ $store->title }}</option>
+                            @endif
+                        @endforeach
+                    </select>
                 </dd>
             </div>
 
@@ -133,21 +149,6 @@
                 </dd>
             </div>
 
-            <div class="row align-items-center mb-2">
-                <dt class="col-sm-3">
-                    Магазин
-                </dt>
-                <dd class="col-sm-9">
-                    <select name="store_id" class="form-control">
-                        <option selected="selected">Выберите магазин</option>
-                        @foreach($stores as $store)
-                            @if(!count($store->routes))
-                                <option value="{{ $store->id }}">{{ $store->title }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </dd>
-            </div>
             <div style="display:none;">
             <div class="row align-items-center mb-2">
                 <dt class="col-sm-3">

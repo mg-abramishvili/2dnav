@@ -13,6 +13,7 @@ use App\Http\Controllers\MarkImageController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\FrontRouteController;
+use App\Http\Controllers\FrontTagController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/2', [FrontController::class, 'index02']);
@@ -20,6 +21,8 @@ Route::get('/2', [FrontController::class, 'index02']);
 // FRONT ROUTES
 Route::resource('/front-routes', FrontRouteController::class);
 
+// FRONT TAGS
+Route::resource('/front-tags', FrontTagController::class);
 
 
 // SCHEMES
