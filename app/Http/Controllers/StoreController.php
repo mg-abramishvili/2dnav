@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Store;
 use App\Models\Tag;
+use App\Models\Scheme;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -19,7 +20,8 @@ class StoreController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        return view('stores.create', compact('tags'));
+        $schemes = Scheme::all();
+        return view('stores.create', compact('tags', 'schemes'));
     }
 
     public function edit($id)
@@ -27,9 +29,8 @@ class StoreController extends Controller
 
         $stores = Store::find($id);
         $tags = Tag::all();
-        return view('stores.edit', compact('stores', 'tags'));
-
-
+        $schemes = Scheme::all();
+        return view('stores.edit', compact('stores', 'tags', 'schemes'));
     }
 
     public function file($type)
@@ -76,7 +77,10 @@ class StoreController extends Controller
         $data = request()->all();
         $stores = new Store();
         $stores->title = $data['title'];
+        $stores->x_01 = $data['x_01'];
+        $stores->y_01 = $data['y_01'];
         $stores->save();
+        $stores->schemes()->attach($request->schemes, ['store_id' => $stores->id]);
         $stores->tags()->attach($request->tags, ['store_id' => $stores->id]);
         return redirect('/stores');
     }
@@ -86,7 +90,11 @@ class StoreController extends Controller
         $data = request()->all();
         $stores = Store::find($data['id']);
         $stores->title = $data['title'];
+        $stores->x_01 = $data['x_01'];
+        $stores->y_01 = $data['y_01'];
         $stores->save();
+        $stores->schemes()->detach();
+        $stores->schemes()->attach($request->schemes, ['store_id' => $stores->id]);
         $stores->tags()->detach();
         $stores->tags()->attach($request->tags, ['store_id' => $stores->id]);
         return redirect('/stores');

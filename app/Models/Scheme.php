@@ -17,4 +17,9 @@ class Scheme extends Model
     {
         return $this->hasMany('App\Models\Mark', 'scheme_id', 'id');
     }
+
+    public function store()
+    {
+        return $this->belongsToMany('App\Models\Store');
+    }
 }

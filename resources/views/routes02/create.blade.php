@@ -141,7 +141,9 @@
                     <select name="store_id" class="form-control">
                         <option selected="selected">Выберите магазин</option>
                         @foreach($stores as $store)
-                            <option value="{{ $store->id }}">{{ $store->title }}</option>
+                            @if(!count($store->routes02))
+                                <option value="{{ $store->id }}">{{ $store->title }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </dd>

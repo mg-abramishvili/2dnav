@@ -24,12 +24,8 @@ class MarkController extends Controller
 
     public function edit($id)
     {
-
         $marks = Mark::find($id);
-
         return view('marks.edit', compact('marks'));
-
-
     }
 
     public function delete($id)

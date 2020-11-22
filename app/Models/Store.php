@@ -10,7 +10,7 @@ class Store extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'title', 'x_01', 'y_01'
     ];
 
     //protected $casts=['tag_id'=>'json'];
@@ -18,6 +18,11 @@ class Store extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag');
+    }
+
+    public function schemes()
+    {
+        return $this->belongsToMany('App\Models\Scheme');
     }
 
     public function routes()

@@ -12,9 +12,15 @@ use App\Http\Controllers\MarkController;
 use App\Http\Controllers\MarkImageController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\FrontRouteController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/2', [FrontController::class, 'index02']);
+
+// FRONT ROUTES
+Route::resource('/front-routes', FrontRouteController::class);
+
+
 
 // SCHEMES
 Route::resource('/schemes', SchemeController::class)->middleware('auth');

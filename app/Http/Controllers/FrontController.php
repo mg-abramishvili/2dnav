@@ -16,10 +16,11 @@ class FrontController extends Controller
     {
         $stores = Store::with('routes', 'tags')->get();
         $routes = Route::with('schemes.marks.markimages')->get();
+        $schemes = Scheme::with('marks.markimages')->get();
         $schememain = Scheme::where('id', '3')->first();
         $ads = Ad::all();
         $setup = Setup::where('id', '1')->first();
-        return view('welcome', compact('routes', 'schememain', 'stores', 'ads', 'setup'));
+        return view('welcome', compact('routes', 'schemes', 'schememain', 'stores', 'ads', 'setup'));
     }
 
     public function index02()

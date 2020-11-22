@@ -24,12 +24,8 @@ class RouteController extends Controller
 
     public function edit($id)
     {
-
         $routes = Route::find($id);
-
         return view('routes.edit', compact('routes'));
-
-
     }
 
     public function file($type)
