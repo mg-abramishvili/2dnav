@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
 
-    <div class="catlist-list catlist-list2" style="padding: 0 20px; margin-top: 25px;">
+    <!--<div class="catlist-list catlist-list2" style="padding: 0 20px; margin-top: 25px;">
         @foreach($tagsall as $tagallitem)
             <div class="catlist-item">
                 <a href="/front-tags/{{ $tagallitem->id }}">
@@ -10,7 +10,7 @@
                 </a>
             </div>
         @endforeach
-    </div>
+    </div>-->
 
     
     <div id="myKeyboard" class="modal" style="margin-top: 60px; margin-bottom: 60px; padding: 40px;">
@@ -118,7 +118,15 @@
     <ul class="tag-page-list" id="myUL">
         @foreach($stores as $store)
             @if(count($store->routes))
-                <li><a href="@if(count($store->routes))/front-routes/@foreach($store->routes as $route){{$route->id}}@endforeach @endif">{{$store->title}}</a></li>
+                <li>
+                    <a href="@if(count($store->routes))/front-routes/@foreach($store->routes as $route){{$route->id}}@endforeach @endif">
+                        <strong style="display:block; margin-bottom: 10px;">{{$store->title}}</strong>
+
+                        @foreach($store->tags as $tag)
+                            <span style="display:inline-block;margin-right: 7px; border-radius: 10px; font-size: 20px; background-color: #ee3984; color: #fff; padding: 10px 20px;">{{$tag->title}}</span>
+                        @endforeach
+                    </a>
+                </li>
             @endif
         @endforeach
     </ul>

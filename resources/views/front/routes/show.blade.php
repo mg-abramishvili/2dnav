@@ -195,7 +195,8 @@
                 contain: true,
                 draggable: false,
                 imagesLoaded: true,
-                pageDots: false
+                pageDots: false,
+                prevNextButtons: false,
             });
         </script>
 
