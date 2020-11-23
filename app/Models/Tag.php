@@ -10,11 +10,16 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'title', 'icon'
     ];
 
     public function store()
     {
         return $this->belongsToMany('App\Models\Store');
+    }
+
+    public function markimages()
+    {
+        return $this->belongsToMany('App\Models\MarkImage');
     }
 }

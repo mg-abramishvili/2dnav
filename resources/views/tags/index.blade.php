@@ -4,10 +4,10 @@
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
-                <h1>Теги</h1>
+                <h1>Категории</h1>
             </div>
             <div class="col-6" style="text-align: right;">
-                <a href="/tags/create" class="btn btn-primary">Добавить тег</a>
+                <a href="/tags/create" class="btn btn-primary">Добавить категорию</a>
             </div>
         </div>
 

@@ -3,7 +3,17 @@
 @section('content')
 
     <div class="slider">
-        <div class="slider-slide" style="background: url(/img/slide.jpg); background-size: cover; background-position: 50% 50%;"></div>
+        @foreach($ads as $ad)
+            @if (pathinfo($ad->adfile, PATHINFO_EXTENSION) == 'mp4')
+                <div class="slider-slide">
+                    <video nocontrols autoplay muted loop style="width:100%; height: 100%;">
+                        <source src="{{$ad->adfile}}" type="video/mp4" />
+                    </video>
+                </div>
+            @else
+                <div class="slider-slide" style="background: url({{$ad->adfile}}); background-size: cover; background-position: 50% 50%;"></div>
+            @endif
+        @endforeach
     </div>
 
     <div class="categories-line"></div>
@@ -64,7 +74,7 @@
                     @endforeach
                     @foreach($scheme->store as $store)
                         @if(count($store->routes))
-                        <div style="position: absolute; left: {{$store->x_01}}px; top: {{$store->y_01}}px; z-index:10; width: 20px; height: 20px; background: red;"><a href="/front-routes/@foreach($store->routes as $route){{$route->id}}@endforeach">{{$store->title}}</a></div>
+                        <div style="position: absolute; left: {{$store->x_01}}px; top: {{$store->y_01}}px; z-index:10; width: auto; height: auto; margin-left: -12px; margin-top: -12px;"><a href="/front-routes/@foreach($store->routes as $route){{$route->id}}@endforeach" style="display: block; padding: 5px; text-decoration: none; color: #fff; font-size: 10px; background: #ee3984; border-radius: 5px; box-shadow: 0 1px 16px rgba(0,0,0,0.5);">{{$store->title}}</a></div>
                         @endif
                     @endforeach
                 </div>
@@ -92,6 +102,31 @@
                 $("#map").css('opacity', '1');
             }, 750);
             $("#sch1").focus();
+        });
+    </script>
+
+    <script>
+        $('.slider').flickity({
+        cellAlign: 'left',
+        contain: true,
+        autoPlay: 5000,
+        prevNextButtons: false,
+        });
+    </script>
+
+    <script>
+        var divs = $(".catlist-list .catlist-item");
+            for(var i = 0; i < divs.length; i+=6) {
+            divs.slice(i, i+6).wrapAll("<div class='catlist-item-slide'></div>");
+        }
+    </script>
+
+    <script>
+        $('.catlist-list').flickity({
+        cellAlign: 'left',
+        contain: true,
+        prevNextButtons: false,
+        pageDots: false,
         });
     </script>
     @endsection

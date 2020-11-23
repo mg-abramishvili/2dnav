@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
 
-    <div class="catlist-list" style="padding: 0 20px;">
+    <div class="catlist-list catlist-list2" style="padding: 0 20px;">
         @foreach($tagsall as $tagallitem)
             <div class="catlist-item">
                 <a href="/front-tags/{{ $tagallitem->id }}">
@@ -24,4 +24,19 @@
         </ul>
     @endif
 
-@endsection
+    <div class="footer">
+        <a href="/"><img src="/img/home.png"/></a>
+    </div>
+
+    @endsection
+
+    @section('scripts')
+        <script>
+            $('.catlist-list').flickity({
+            cellAlign: 'left',
+            contain: true,
+            prevNextButtons: false,
+            pageDots: false,
+            });
+        </script>
+    @endsection

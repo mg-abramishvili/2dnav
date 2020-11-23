@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\MarkImage;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -15,17 +16,15 @@ class TagController extends Controller
 
     public function create()
     {
-
-        return view('tags.create');
-
+        $markimages = MarkImage::all();
+        return view('tags.create', compact('markimages'));
     }
 
     public function edit($id)
     {
-
         $tags = Tag::find($id);
-
-        return view('tags.edit', compact('tags'));
+        $markimages = MarkImage::all();
+        return view('tags.edit', compact('tags', 'markimages'));
 
 
     }
@@ -69,21 +68,24 @@ class TagController extends Controller
         return redirect('/tags');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $data = request()->all();
         $tags = new Tag();
         $tags->title = $data['title'];
         $tags->save();
+        $tags->markimages()->attach($request->markimages, ['tag_id' => $tags->id]);
         return redirect('/tags');
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $data = request()->all();
         $tags = Tag::find($data['id']);
         $tags->title = $data['title'];
         $tags->save();
+        $tags->markimages()->detach();
+        $tags->markimages()->attach($request->markimages, ['tag_id' => $tags->id]);
         return redirect('/tags');
     }
 }

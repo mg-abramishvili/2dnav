@@ -1,5 +1,17 @@
 @extends('layouts.front')
 @section('content')
+
+<div class="catlist-list catlist-list2" style="padding: 0 20px; margin-bottom: 20px;">
+        @foreach($tagsall as $tagallitem)
+            <div class="catlist-item">
+                <a href="/front-tags/{{ $tagallitem->id }}">
+                    <img src="/img/catlist01.png">
+                    <p>{{ $tagallitem->title }}</p>
+                </a>
+            </div>
+        @endforeach
+    </div>
+
 <div>
     <div class="wrapper" id="wrapper">
         <div id="wrapper-inner">
@@ -187,23 +199,47 @@
             });
         </script>
 
-    </div></div>
-</div></div>
+    </div>
+</div>
+
+<div class="store-about">
+    @foreach($route->stores as $store)
+        <h1>{{ $store->title }}</h1>
+        @foreach($store->tags as $tag)
+            <p>{{ $tag->title }}</p>
+        @endforeach
+    @endforeach
+</div>
+
+<div class="footer">
+    <a href="/"><img src="/img/home.png"/></a>
+    <a href="javascript:history.back()"><img src="/img/back.png"/></a>
+</div>
+
 @endsection
 
 @section('scripts')
-<script>
+    <script>
         $(document).ready(function(){
-            //$(".routesbox").hide();
             $("#map").css('opacity', '0');
-            panzoom.reset();
             setTimeout(function () {
-            panzoom.reset();
+                panzoom.reset({ startScale: 2 })
             }, 250);
-            $('#map').trigger('dblclick');
+            setTimeout(function () {
+                panzoom.reset({ startScale: 1 })
+            }, 350);
             setTimeout(function () {
                 $("#map").css('opacity', '1');
             }, 750)
         });
     </script>
+
+        <script>
+            $('.catlist-list').flickity({
+            cellAlign: 'left',
+            contain: true,
+            prevNextButtons: false,
+            pageDots: false,
+            });
+        </script>
     @endsection

@@ -14,6 +14,7 @@ use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\FrontRouteController;
 use App\Http\Controllers\FrontTagController;
+use App\Http\Controllers\FrontSearchController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/2', [FrontController::class, 'index02']);
@@ -24,6 +25,8 @@ Route::resource('/front-routes', FrontRouteController::class);
 // FRONT TAGS
 Route::resource('/front-tags', FrontTagController::class);
 
+// FRONT SEARCH
+Route::get('/search', [FrontSearchController::class, 'index']);
 
 // SCHEMES
 Route::resource('/schemes', SchemeController::class)->middleware('auth');
@@ -68,5 +71,3 @@ Auth::routes([
     'register' => false,
     'reset' => false
 ]);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

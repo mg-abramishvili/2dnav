@@ -22,7 +22,7 @@ class FrontController extends Controller
         $tags = Tag::all();
         $ads = Ad::all();
         $setup = Setup::where('id', '1')->first();
-        return view('welcome', compact('routes', 'schemes', 'schememain', 'stores', 'tags', 'ads', 'setup'));
+        return view('front.welcome', compact('routes', 'schemes', 'schememain', 'stores', 'tags', 'ads', 'setup'));
     }
 
     public function index02()

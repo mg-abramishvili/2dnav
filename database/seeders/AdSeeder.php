@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class SchemeSeeder extends Seeder
+class AdSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,16 +16,16 @@ class SchemeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('schemes')->insert([
+        DB::table('ads')->insert([
             [
             'id' => '1',
-            'title' => 'Этаж 1',
-            'image' => '/img/map.png',
+            'title' => '1',
+            'adfile' => '/img/slide.jpg',
             ],
             [
             'id' => '2',
-            'title' => 'Этаж 2',
-            'image' => '/img/map2.png',
+            'title' => '2',
+            'adfile' => '/img/slide.jpg',
             ],
         ]);
     }

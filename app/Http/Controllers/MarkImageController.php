@@ -71,7 +71,7 @@ class MarkImageController extends Controller
     {
         $data = request()->all();
         $markimages = new MarkImage();
-        $markimages->title = $data['title'];
+        $markimages->title = basename($data['image']);
         $markimages->image = $data['image'];
         $markimages->save();
         return redirect('/markimages');

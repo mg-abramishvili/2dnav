@@ -4,13 +4,13 @@
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
-                <h1>Добавление значка</h1>
+                <h1>Добавление файла иконки</h1>
             </div>
         </div>
 
         <form action="/markimages" method="post" enctype="multipart/form-data">@csrf
             
-            <div class="row align-items-center mb-2">
+            <div class="row align-items-center mb-2" style="display:none;">
                 <dt class="col-sm-3">
                     Название
                 </dt>

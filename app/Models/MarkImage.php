@@ -18,4 +18,9 @@ class MarkImage extends Model
     {
         return $this->belongsToMany('App\Models\Mark');
     }
+
+    public function tag()
+    {
+        return $this->belongsToMany('App\Models\Tag');
+    }
 }

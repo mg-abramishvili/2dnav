@@ -4,10 +4,10 @@
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
-                <h1>Иконки</h1>
+                <h1>Файлы иконок</h1>
             </div>
             <div class="col-6" style="text-align: right;">
-                <a href="/markimages/create" class="btn btn-primary">Добавить значок</a>
+                <a href="/markimages/create" class="btn btn-primary">Загрузить файл иконки</a>
             </div>
         </div>
 
@@ -16,11 +16,11 @@
             <table class="table table-bordered table-hover">
                 @forelse($markimages as $markimage)
                 <tr>
+                    <td style="width:80px; background: grey;"><img src="{{$markimage->image}}" style="width:100%;"/></td>
                     <td style="text-align: left; padding-left: 20px; padding-right: 20px;">
                         {{$markimage->title}}
                     </td>
                     <td style="width: 200px;">
-                        <a href="/markimages/{{$markimage->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
                         <a href="/markimages/delete/{{$markimage->id}}" class="btn btn-sm btn-danger">Удалить</a>
                     </td>
                 </tr>

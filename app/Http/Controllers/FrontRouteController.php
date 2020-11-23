@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Route;
 use App\Models\Scheme;
 use App\Models\Store;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class FrontRouteController extends Controller
@@ -18,7 +19,8 @@ class FrontRouteController extends Controller
     public function show($id)
     {
         $route = Route::find($id);
-        return view('front.routes.show', compact('route'));
+        $tagsall = Tag::all();
+        return view('front.routes.show', compact('route', 'tagsall'));
     }
 
 }

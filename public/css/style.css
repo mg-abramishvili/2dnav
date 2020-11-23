@@ -33,6 +33,12 @@ body {
     overflow: hidden;
     margin: 0 auto;
     background-color: #fff;
+    -webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+-webkit-touch-callout: none;
+-khtml-user-select: none;
 }
 
 .container {
@@ -295,7 +301,21 @@ color: #00302c;
 /* SLIDER */
 
 .slider .slider-slide {
-    height: 500px;
+    width: 100%;
+    height: 610px;
+}
+
+.slider .flickity-page-dots {
+    text-align: right;
+    bottom: 70px;
+    right: 80px;
+}
+
+.flickity-page-dots .dot {
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
 }
 
 /* SLIDER */
@@ -306,7 +326,7 @@ color: #00302c;
 
 .categories-line {
     display: block;
-    height: 15px;
+    height: 12px;
     width: 100%;
     background: url('/img/colorline.png') center center;
     background-size: cover;
@@ -322,41 +342,45 @@ color: #00302c;
 .minislider {
     flex: 40%;
     text-align: center;
-    padding-left: 20px;
+    padding-left: 40px;
 }
 
 .minislider .minislider-slide {
-    height: 310px;
+    height: 335px;
     border-radius: 15px;
 }
 
 .catlist {
     flex: 60%;
-    text-align: center;
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .catlist-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 20px 0;
+    padding: 35px 0;
+}
+
+.catlist-item-slide {
+    width: 95%;
 }
 
 .catlist-list .catlist-item {
     background-color: #18AAE2;
-    height: 150px;
-    flex: calc(33.3333% - 20px);
+    height: 135px;
+    width: calc(33.33% - 20px);
     margin: 10px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
     border-radius: 15px;
     font-size: 20px;
     color: #fff;
     text-transform: uppercase;
-    flex-direction: column;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.catlist-list2 .catlist-item {
+    width: calc(24% - 20px);
 }
 
 .catlist-list .catlist-item:nth-of-type(2) {
@@ -386,7 +410,7 @@ color: #00302c;
 
 .catlist-list .catlist-item img {
     display: block;
-    width: 60px;
+    width: 50px;
     margin: 0 auto;
 }
 
@@ -428,3 +452,56 @@ color: #00302c;
 }
 
 /* TAGS */
+
+
+/* STORE */
+
+.store-about {
+    padding: 50px;
+}
+
+.store-about h1 {
+    margin: 0;
+    font-size: 60px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.store-about p {
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* STORE */
+
+
+/* FOOTER */
+
+.footer {
+    background-color: rgba(255,255,255,0.25);
+    padding: 20px 10px;
+    margin: 0 50px;
+    border-radius: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    display: block;
+    margin: 0 auto;
+    width: 280px;
+}
+
+.footer a {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+}
+
+.footer a img {
+    width: 100px;
+    height: 100px;
+}
+
+/* FOOTER */

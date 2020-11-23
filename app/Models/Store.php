@@ -27,7 +27,7 @@ class Store extends Model
 
     public function routes()
     {
-        return $this->hasMany('App\Models\Route', 'store_id', 'id');
+        return $this->belongsToMany('App\Models\Route');
     }
 
     public function routes02()

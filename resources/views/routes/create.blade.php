@@ -96,7 +96,7 @@
 
         <form action="/routes" method="post" enctype="multipart/form-data">@csrf
             
-            <div class="row align-items-center mb-2">
+            <div class="row align-items-center mb-2" style="display:none;">
                 <dt class="col-sm-3">
                     Название
                 </dt>
@@ -110,7 +110,7 @@
                     Магазин
                 </dt>
                 <dd class="col-sm-9">
-                    <select name="store_id" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">
+                    <select name="stores" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">
                         <option selected="selected">Выберите магазин</option>
                         @foreach($stores as $store)
                             @if(!count($store->routes))

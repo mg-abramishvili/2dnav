@@ -49,7 +49,7 @@
                             <a class="nav-link" href="/stores">Магазины</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/tags">Теги</a>
+                            <a class="nav-link" href="/tags">Категории</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/schemes">Схемы</a>
@@ -63,14 +63,17 @@
                                 <a class="dropdown-item" href="/routes02">Маршруты от Т2</a>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link" href="/marks">Значки</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/markimages">Файлы иконок</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/markimages">Иконки</a>
+                            <a class="nav-link" href="/ads">Слайдер №1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ads">Реклама</a>
+                            <a class="nav-link" href="/ads">Слайдер №2</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"

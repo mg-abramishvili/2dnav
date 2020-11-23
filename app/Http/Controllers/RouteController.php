@@ -67,14 +67,13 @@ class RouteController extends Controller
         return redirect('/routes');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $data = request()->all();
         $routes = new Route();
         $routes->title = $data['title'];
         $routes->scheme_id = $data['scheme_id'];
         $routes->scheme2_id = $data['scheme2_id'];
-        $routes->store_id = $data['store_id'];
         $routes->x_01 = $data['x_01'];
         $routes->y_01 = $data['y_01'];
         $routes->p_x_01 = $data['p_x_01'];
@@ -172,15 +171,18 @@ class RouteController extends Controller
         $routes->p_x_112 = $data['p_x_112'];
         $routes->p_y_112 = $data['p_y_112'];
         $routes->save();
+        $routes->stores()->attach($request->stores, ['route_id' => $routes->id]);
         return redirect('/routes');
     }
 
-    public function update()
+    public function update(Request $request)
     {
         $data = request()->all();
         $routes = Route::find($data['id']);
         $routes->title = $data['title'];
         $routes->save();
+        $routes->stores()->detach();
+        $routes->stores()->attach($request->stores, ['route_id' => $routes->id]);
         return redirect('/routes');
     }
 }

@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
             SetupSeeder::class,
             SchemeSeeder::class,
+            MarkimagesSeeder::class,
+            MarkimagesTagsSeeder::class,
+            AdSeeder::class,
         ]);
     }
 }

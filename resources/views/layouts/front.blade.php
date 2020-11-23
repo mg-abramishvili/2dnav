@@ -28,6 +28,18 @@
                     22.11.2020
                 </span>
             </div>
+            <script>
+                $(function() {
+                    startRefresh();
+                });
+
+                function startRefresh() {
+                    setTimeout(startRefresh,1000);
+                    $.get('/time.php', function(data) {
+                        $('.datetime').html(data);    
+                    });
+                }
+            </script>
         </div>
         @yield('content')
     </div>

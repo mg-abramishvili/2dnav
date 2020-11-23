@@ -13,7 +13,6 @@ class Route extends Model
         'title',
         'scheme_id',
         'scheme2_id',
-        'store_id',
         'x_01',
         'y_01',
         'p_x_01',
@@ -112,9 +111,9 @@ class Route extends Model
         'p_y_112',
     ];
 
-    public function store()
+    public function stores()
     {
-        return $this->belongsTo('App\Models\Store', 'id', 'store_id');
+        return $this->belongsToMany('App\Models\Store');
     }
 
     public function schemes()
