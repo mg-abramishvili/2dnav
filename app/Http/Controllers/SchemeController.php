@@ -70,8 +70,13 @@ class SchemeController extends Controller
         return redirect('/schemes');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'image' => 'required',
+        ]);
+
         $data = request()->all();
         $schemes = new Scheme();
         $schemes->title = $data['title'];
@@ -80,8 +85,13 @@ class SchemeController extends Controller
         return redirect('/schemes');
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'image' => 'required',
+        ]);
+        
         $data = request()->all();
         $schemes = Scheme::find($data['id']);
         $schemes->title = $data['title'];

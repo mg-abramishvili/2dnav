@@ -18,7 +18,14 @@
                     Название
                 </dt>
                 <dd class="col-sm-9">
-                    <input type="text" class="form-control" id="exampleFormControlInput1"  name="title" value="{{$schemes->title}}">
+                    <input type="text" class="form-control" name="title" value="{{$schemes->title}}">
+
+                    @if ($errors->has('title'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('title') }}-->
+                            Укажите название
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -28,6 +35,13 @@
                 </dt>
                 <dd class="col-sm-9">
                     <input class="image" type="file" name="image" x-ref="image">
+
+                    @if ($errors->has('image'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('image') }}-->
+                            Укажите картинку
+                        </div>
+                    @endif
                 </dd>
             </div>
 

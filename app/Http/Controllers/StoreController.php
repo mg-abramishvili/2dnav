@@ -74,6 +74,13 @@ class StoreController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'schemes' => 'required',
+            'x_01' => 'required',
+            'y_01' => 'required',
+        ]);
+
         $data = request()->all();
         $stores = new Store();
         $stores->title = $data['title'];
@@ -87,6 +94,13 @@ class StoreController extends Controller
 
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'schemes' => 'required',
+            'x_01' => 'required',
+            'y_01' => 'required',
+        ]);
+        
         $data = request()->all();
         $stores = Store::find($data['id']);
         $stores->title = $data['title'];

@@ -70,6 +70,11 @@ class TagController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'markimages' => 'required',
+        ]);
+
         $data = request()->all();
         $tags = new Tag();
         $tags->title = $data['title'];
@@ -80,6 +85,11 @@ class TagController extends Controller
 
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'markimages' => 'required',
+        ]);
+        
         $data = request()->all();
         $tags = Tag::find($data['id']);
         $tags->title = $data['title'];

@@ -87,6 +87,13 @@
         </div>
     </div>
 
+    @if ($errors->has('x_01'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('x_01') }}-->
+                            Нарисуйте маршрут
+                        </div>
+                    @endif
+
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
@@ -111,13 +118,19 @@
                 </dt>
                 <dd class="col-sm-9">
                     <select name="stores" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">
-                        <option selected="selected">Выберите магазин</option>
+                        <option disabled selected value>Выберите магазин</option>
                         @foreach($stores as $store)
                             @if(!count($store->routes))
                                 <option value="{{ $store->id }}" title="T1 -> {{ $store->title }}">{{ $store->title }}</option>
                             @endif
                         @endforeach
                     </select>
+                    @if ($errors->has('stores'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('stores') }}-->
+                            Укажите магазин
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -127,11 +140,17 @@
                 </dt>
                 <dd class="col-sm-9">
                     <select name="scheme_id" class="form-control" onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].title);">
-                        <option title="/img/schemeblank.jpg" selected="selected">Выберите схему</option>
+                        <option title="/img/schemeblank.jpg" disabled selected value>Выберите схему</option>
                         @foreach($schemes as $scheme)
                             <option value="{{ $scheme->id }}" title="{{ $scheme->image }}">{{ $scheme->title }}</option>
                         @endforeach
                     </select>
+                    @if ($errors->has('scheme_id'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('scheme_id') }}-->
+                            Укажите схему
+                        </div>
+                    @endif
                 </dd>
             </div>
 

@@ -51,6 +51,13 @@
             <svg class="map-path" viewbox="0 0 800 450"></svg>
         </div>
     </div>
+    
+                        @if ($errors->has('x_01'))
+                            <div class="alert alert-danger">
+                                <!--{{ $errors->first('x_01') }}-->
+                                Укажите точку
+                            </div>
+                        @endif
 
     <div>
         <div class="row align-items-center mb-4">
@@ -67,6 +74,13 @@
                 </dt>
                 <dd class="col-sm-9">
                     <input type="text" class="form-control" name="title">
+
+                    @if ($errors->has('title'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('title') }}-->
+                            Укажите название
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -76,11 +90,18 @@
                 </dt>
                 <dd class="col-sm-9">
                     <select name="schemes" class="form-control" onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].title);">
-                        <option title="/img/schemeblank.jpg" selected="selected">Выберите схему</option>
+                        <option title="/img/schemeblank.jpg" disabled selected value>Выберите схему</option>
                         @foreach($schemes as $scheme)
                             <option value="{{ $scheme->id }}" title="{{ $scheme->image }}">{{ $scheme->title }}</option>
                         @endforeach
                     </select>
+
+                    @if ($errors->has('schemes'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('schemes') }}-->
+                            Укажите схему
+                        </div>
+                    @endif
                 </dd>
             </div>
 

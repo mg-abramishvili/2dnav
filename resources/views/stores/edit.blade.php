@@ -60,6 +60,13 @@
         </div>
     </div>
 
+                        @if ($errors->has('x_01'))
+                            <div class="alert alert-danger">
+                                <!--{{ $errors->first('x_01') }}-->
+                                Укажите точку
+                            </div>
+                        @endif
+
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
@@ -78,6 +85,13 @@
                 </dt>
                 <dd class="col-sm-9">
                     <input type="text" class="form-control" name="title" value="{{$stores->title}}">
+
+                    @if ($errors->has('title'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('title') }}-->
+                            Укажите название
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -91,10 +105,17 @@
                             <option value="{{$scheme->id}}" title="{{ $scheme->image }}" @foreach($stores->schemes as $t) @if($scheme->id == $t->id)selected="selected"@endif @endforeach>{{$scheme->title}}</option>
                         @endforeach
                     </select>  
+
+                    @if ($errors->has('schemes'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('schemes') }}-->
+                            Укажите схему
+                        </div>
+                    @endif
                 </dd>
             </div>
 
-            <div>
+            <div style="display:none;">
                 <div class="row align-items-center mb-2">
                     <dt class="col-sm-3">
                         x_01

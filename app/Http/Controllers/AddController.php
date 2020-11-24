@@ -66,8 +66,13 @@ class AddController extends Controller
         return redirect('/adds');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'adfile' => 'required',
+        ]);
+
         $data = request()->all();
         $adds = new Ad();
         $adds->title = $data['title'];
@@ -76,8 +81,13 @@ class AddController extends Controller
         return redirect('/adds');
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'adfile' => 'required',
+        ]);
+
         $data = request()->all();
         $adds = Add::find($data['id']);
         $adds->title = $data['title'];

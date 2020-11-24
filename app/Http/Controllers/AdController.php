@@ -66,8 +66,13 @@ class AdController extends Controller
         return redirect('/ads');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'adfile' => 'required',
+        ]);
+
         $data = request()->all();
         $ads = new Ad();
         $ads->title = $data['title'];
@@ -76,8 +81,13 @@ class AdController extends Controller
         return redirect('/ads');
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'adfile' => 'required',
+        ]);
+
         $data = request()->all();
         $ads = Ad::find($data['id']);
         $ads->title = $data['title'];

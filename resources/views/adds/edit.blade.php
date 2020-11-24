@@ -19,6 +19,12 @@
                 </dt>
                 <dd class="col-sm-9">
                     <input type="text" class="form-control" name="title" value="{{$adds->title}}">
+                    @if ($errors->has('title'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('title') }}-->
+                            Укажите название
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -28,6 +34,12 @@
                 </dt>
                 <dd class="col-sm-9">
                     <input class="adfile" type="file" name="adfile" x-ref="adfile">
+                    @if ($errors->has('adfile'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('adfile') }}-->
+                            Укажите файл
+                        </div>
+                    @endif
                 </dd>
             </div>
 

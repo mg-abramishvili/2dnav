@@ -48,6 +48,12 @@
                 </dt>
                 <dd class="col-sm-9">
                     <input type="text" class="form-control" name="title">
+                    @if ($errors->has('title'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('title') }}-->
+                            Укажите название
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -68,6 +74,13 @@
                         </div>
                     @endforeach
                     </div>
+
+                    @if ($errors->has('markimages'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('markimages') }}-->
+                            Укажите иконку
+                        </div>
+                    @endif
                 </dd>
             </div>
 

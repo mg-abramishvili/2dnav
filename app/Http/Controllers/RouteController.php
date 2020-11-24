@@ -69,6 +69,12 @@ class RouteController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'stores' => 'required',
+            'scheme_id' => 'required',
+            'x_01' => 'required',
+        ]);
+
         $data = request()->all();
         $routes = new Route();
         $routes->title = $data['title'];
@@ -177,6 +183,12 @@ class RouteController extends Controller
 
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'stores' => 'required',
+            'scheme_id' => 'required',
+            'x_01' => 'required',
+        ]);
+
         $data = request()->all();
         $routes = Route::find($data['id']);
         $routes->title = $data['title'];

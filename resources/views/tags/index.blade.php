@@ -18,14 +18,14 @@
                 <tr>
                     <td style="text-align: left; padding-left: 20px; padding-right: 20px;">
                         {{$tag->title}}
-
+<!--
                         @if(sizeof($tag->store) > 0)
                         <ul>
                             @foreach($tag->store as $store)
                             <li>{{$store->title}}</li>
                             @endforeach
                         </ul>
-                        @endif
+                        @endif-->
                     </td>
                     <td style="width: 200px;">
                         <a href="/tags/{{$tag->id}}/edit" class="btn btn-sm btn-warning">Правка</a>

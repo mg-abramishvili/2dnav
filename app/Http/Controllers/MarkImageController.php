@@ -67,8 +67,12 @@ class MarkImageController extends Controller
         return redirect('/markimages');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'image' => 'required',
+        ]);
+
         $data = request()->all();
         $markimages = new MarkImage();
         $markimages->title = basename($data['image']);
@@ -77,8 +81,12 @@ class MarkImageController extends Controller
         return redirect('/markimages');
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $this->validate($request, [
+            'image' => 'required',
+        ]);
+
         $data = request()->all();
         $markimages = MarkImage::find($data['id']);
         $markimages->title = $data['title'];
