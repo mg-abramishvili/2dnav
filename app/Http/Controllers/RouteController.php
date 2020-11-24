@@ -80,6 +80,10 @@ class RouteController extends Controller
         $routes->title = $data['title'];
         $routes->scheme_id = $data['scheme_id'];
         $routes->scheme2_id = $data['scheme2_id'];
+        $routes->t_1_begin = $data['t_1_begin'];
+        $routes->t_1_end = $data['t_1_end'];
+        $routes->t_2_begin = $data['t_2_begin'];
+        $routes->t_2_end = $data['t_2_end'];
         $routes->x_01 = $data['x_01'];
         $routes->y_01 = $data['y_01'];
         $routes->p_x_01 = $data['p_x_01'];

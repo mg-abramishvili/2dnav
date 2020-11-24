@@ -168,6 +168,32 @@
                 </dd>
             </div>
 
+            <div class="row align-items-center mb-2">
+                <dt class="col-sm-3">
+                    Текстовые обозначения
+                </dt>
+                <dd class="col-sm-9">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="t_1_begin">Текст к начальной точке Схемы 1</label>
+                            <input type="text" class="form-control mb-2" name="t_1_begin" id="title" value="Вы здесь">
+                        </div>
+                        <div class="col-6">
+                            <label for="t_1_end">Текст к конечной точке Схемы 1</label>
+                            <input type="text" class="form-control mb-2" name="t_1_end" id="title" value="Вы пришли">
+                        </div>
+                        <div class="col-6">
+                            <label for="t_2_begin">Текст к начальной точке Схемы 2</label>
+                            <input type="text" class="form-control" name="t_2_begin" id="title" value="Вы здесь">
+                        </div>
+                        <div class="col-6">
+                            <label for="t_2_end">Текст к конечной точке Схемы 2</label>
+                            <input type="text" class="form-control" name="t_2_end" id="title" value="Вы пришли">
+                        </div>
+                    </div>
+                </dd>
+            </div>
+
             <div style="display:none;">
             <div class="row align-items-center mb-2">
                 <dt class="col-sm-3">

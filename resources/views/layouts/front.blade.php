@@ -47,6 +47,7 @@
     <script>
         $(document).ready(function(){
             $("svg").find("text").hide();
+            $("svg").find("text:first").show();
             $("svg").find("text:last").show();
             //$("#wrapper").html($("#wrapper").html());
         });
