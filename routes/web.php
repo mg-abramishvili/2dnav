@@ -32,10 +32,27 @@ use App\Http\Controllers\FrontR08routeController;
 use App\Http\Controllers\FrontR09routeController;
 use App\Http\Controllers\FrontR10routeController;
 use App\Http\Controllers\FrontTagController;
+use App\Http\Controllers\FrontTag2Controller;
+use App\Http\Controllers\FrontTag3Controller;
+use App\Http\Controllers\FrontTag4Controller;
+use App\Http\Controllers\FrontTag5Controller;
+use App\Http\Controllers\FrontTag6Controller;
+use App\Http\Controllers\FrontTag7Controller;
+use App\Http\Controllers\FrontTag8Controller;
+use App\Http\Controllers\FrontTag9Controller;
+use App\Http\Controllers\FrontTag10Controller;
 use App\Http\Controllers\FrontSearchController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/2', [FrontController::class, 'index02']);
+Route::get('/3', [FrontController::class, 'index03']);
+Route::get('/4', [FrontController::class, 'index04']);
+Route::get('/5', [FrontController::class, 'index05']);
+Route::get('/6', [FrontController::class, 'index06']);
+Route::get('/7', [FrontController::class, 'index07']);
+Route::get('/8', [FrontController::class, 'index08']);
+Route::get('/9', [FrontController::class, 'index09']);
+Route::get('/10', [FrontController::class, 'index10']);
 
 // FRONT R01ROUTES
 Route::resource('/front-r01routes', FrontR01routeController::class);
@@ -60,9 +77,27 @@ Route::resource('/front-r10routes', FrontR10routeController::class);
 
 // FRONT TAGS
 Route::resource('/front-tags', FrontTagController::class);
+Route::resource('/front-tags2', FrontTag2Controller::class);
+Route::resource('/front-tags3', FrontTag3Controller::class);
+Route::resource('/front-tags4', FrontTag4Controller::class);
+Route::resource('/front-tags5', FrontTag5Controller::class);
+Route::resource('/front-tags6', FrontTag6Controller::class);
+Route::resource('/front-tags7', FrontTag7Controller::class);
+Route::resource('/front-tags8', FrontTag8Controller::class);
+Route::resource('/front-tags9', FrontTag9Controller::class);
+Route::resource('/front-tags10', FrontTag10Controller::class);
 
 // FRONT SEARCH
 Route::get('/search', [FrontSearchController::class, 'index']);
+Route::get('/search2', [FrontSearchController::class, 'index2']);
+Route::get('/search3', [FrontSearchController::class, 'index3']);
+Route::get('/search4', [FrontSearchController::class, 'index4']);
+Route::get('/search5', [FrontSearchController::class, 'index5']);
+Route::get('/search6', [FrontSearchController::class, 'index6']);
+Route::get('/search7', [FrontSearchController::class, 'index7']);
+Route::get('/search8', [FrontSearchController::class, 'index8']);
+Route::get('/search9', [FrontSearchController::class, 'index9']);
+Route::get('/search10', [FrontSearchController::class, 'index10']);
 
 // SCHEMES
 Route::resource('/schemes', SchemeController::class)->middleware('auth');

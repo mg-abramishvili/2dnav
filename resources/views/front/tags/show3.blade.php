@@ -4,7 +4,7 @@
     <div class="catlist-list catlist-list2" style="padding: 0 20px;">
         @foreach($tagsall as $tagallitem)
             <div class="catlist-item">
-                <a href="/front-tags/{{ $tagallitem->id }}">
+                <a href="/front-tags2/{{ $tagallitem->id }}">
                     <img src="/img/catlist01.png">
                     <p>{{ $tagallitem->title }}</p>
                 </a>
@@ -17,15 +17,15 @@
     @if(sizeof($tag->store) > 0)
         <ul class="tag-page-list">
             @foreach($tag->store as $store)
-                @if(count($store->r01routes))
-                    <li><a href="@if(count($store->r01routes))/front-r01routes/@foreach($store->r01routes as $route){{$route->id}}@endforeach @endif">{{$store->title}}</a></li>
+                @if(count($store->r03routes))
+                    <li><a href="@if(count($store->r03routes))/front-r03routes/@foreach($store->r03routes as $route){{$route->id}}@endforeach @endif">{{$store->title}}</a></li>
                 @endif
             @endforeach
         </ul>
     @endif
 
     <div class="footer">
-        <a href="/"><img src="/img/home.png"/></a>
+        <a href="/3"><img src="/img/home.png"/></a>
     </div>
 
     @endsection

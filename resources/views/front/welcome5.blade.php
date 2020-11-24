@@ -36,7 +36,7 @@
             <div class="catlist-list">
                 @foreach($tags as $tag)
                     <div class="catlist-item">
-                        <a href="/front-tags/{{ $tag->id }}">
+                        <a href="/front-tags5/{{ $tag->id }}">
                             @foreach($tag->markimages as $markimage)
                                 <img src="{{ $markimage->image }}">
                             @endforeach
@@ -85,8 +85,8 @@
                         <div style="position: absolute; left: {{$mark->x_01}}px; top: {{$mark->y_01}}px; z-index:10; width: 20px; height: 20px; background: url(@foreach($mark->markimages as $markimage){{$markimage->image}}@endforeach) center center; background-size: contain; background-repeat: no-repeat;"></div>
                     @endforeach
                     @foreach($scheme->store as $store)
-                        @if(count($store->r01routes))
-                        <div style="position: absolute; left: {{$store->x_01}}px; top: {{$store->y_01}}px; z-index:10; width: auto; height: auto; margin-left: -12px; margin-top: -12px;"><a href="/front-r01routes/@foreach($store->r01routes as $route){{$route->id}}@endforeach" style="display: block; padding: 5px; text-decoration: none; color: #fff; font-size: 10px; background: #ee3984; border-radius: 5px; box-shadow: 0 1px 16px rgba(0,0,0,0.5);">{{$store->title}}</a></div>
+                        @if(count($store->r05routes))
+                        <div style="position: absolute; left: {{$store->x_01}}px; top: {{$store->y_01}}px; z-index:10; width: auto; height: auto; margin-left: -12px; margin-top: -12px;"><a href="/front-r05routes/@foreach($store->r05routes as $route){{$route->id}}@endforeach" style="display: block; padding: 5px; text-decoration: none; color: #fff; font-size: 10px; background: #ee3984; border-radius: 5px; box-shadow: 0 1px 16px rgba(0,0,0,0.5);">{{$store->title}}</a></div>
                         @endif
                     @endforeach
                 </div>
@@ -97,7 +97,7 @@
         </div>
 
 <div class="search">
-    <a href="/search"><img src="/img/search.png"><span>Поиск</span></a>
+    <a href="/search5"><img src="/img/search.png"><span>Поиск</span></a>
 </div>
 
         </div>

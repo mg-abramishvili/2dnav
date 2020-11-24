@@ -18,7 +18,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <a href="/">
+                <a href="#">
                     <img src="/img/logo.svg" style="width:100%;">
                 </a>
             </div>

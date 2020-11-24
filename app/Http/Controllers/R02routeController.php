@@ -44,7 +44,7 @@ class R02routeController extends Controller
         ]);
 
         $data = request()->all();
-        $r02routes = new r02route();
+        $r02routes = new R02route();
         $r02routes->title = $data['title'];
         $r02routes->scheme_id = $data['scheme_id'];
         $r02routes->scheme2_id = $data['scheme2_id'];

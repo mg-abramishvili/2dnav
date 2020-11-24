@@ -20,7 +20,7 @@ class FrontR02routeController extends Controller
     {
         $route = R02route::find($id);
         $tagsall = Tag::all();
-        return view('front.routes.show', compact('route', 'tagsall'));
+        return view('front.routes.show2', compact('route', 'tagsall'));
     }
 
 }

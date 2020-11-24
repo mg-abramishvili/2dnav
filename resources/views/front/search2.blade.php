@@ -117,9 +117,9 @@
 
     <ul class="tag-page-list" id="myUL">
         @foreach($stores as $store)
-            @if(count($store->r01routes))
+            @if(count($store->r02routes))
                 <li>
-                    <a href="@if(count($store->r01routes))/front-r01routes/@foreach($store->r01routes as $route){{$route->id}}@endforeach @endif">
+                    <a href="@if(count($store->r02routes))/front-r02routes/@foreach($store->r02routes as $route){{$route->id}}@endforeach @endif">
                         <strong style="display:block; margin-bottom: 10px;">{{$store->title}}</strong>
 
                         @foreach($store->tags as $tag)
@@ -132,7 +132,7 @@
     </ul>
 
     <div class="footer">
-        <a href="/"><img src="/img/home.png"/></a>
+        <a href="/2"><img src="/img/home.png"/></a>
     </div>
 
     @endsection
