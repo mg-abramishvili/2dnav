@@ -101,14 +101,14 @@
             </div>
         </div>
 
-        <form action="/routes" method="post" enctype="multipart/form-data">@csrf
+        <form action="/r02routes" method="post" enctype="multipart/form-data">@csrf
             
             <div class="row align-items-center mb-2" style="display:none;">
                 <dt class="col-sm-3">
                     Название
                 </dt>
                 <dd class="col-sm-9">
-                    <input type="text" class="form-control" name="title" id="title" value="T1 -> ">
+                    <input type="text" class="form-control" name="title" id="title" value="T2 -> ">
                 </dd>
             </div>
 
@@ -120,8 +120,8 @@
                     <select name="stores" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">
                         <option disabled selected value>Выберите магазин</option>
                         @foreach($stores as $store)
-                            @if(!count($store->routes))
-                                <option value="{{ $store->id }}" title="T1 -> {{ $store->title }}">{{ $store->title }}</option>
+                            @if(!count($store->r02routes))
+                                <option value="{{ $store->id }}" title="T2 -> {{ $store->title }}">{{ $store->title }}</option>
                             @endif
                         @endforeach
                     </select>

@@ -59,8 +59,8 @@
                                 Маршруты
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/routes">Маршруты от Т1</a>
-                                <a class="dropdown-item" href="/routes02">Маршруты от Т2</a>
+                                <a class="dropdown-item" href="/r01routes">Маршруты от Т1</a>
+                                <a class="dropdown-item" href="/r02routes">Маршруты от Т2</a>
                             </div>
                         </li>
                         <!--<li class="nav-item">

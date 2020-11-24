@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Route02 extends Model
+class R02route extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,6 @@ class Route02 extends Model
         'title',
         'scheme_id',
         'scheme2_id',
-        'store_id',
         'x_01',
         'y_01',
         'p_x_01',
@@ -112,9 +111,9 @@ class Route02 extends Model
         'p_y_112',
     ];
 
-    public function store()
+    public function stores()
     {
-        return $this->belongsTo('App\Models\Store', 'id', 'store_id');
+        return $this->belongsToMany('App\Models\Store');
     }
 
     public function schemes()

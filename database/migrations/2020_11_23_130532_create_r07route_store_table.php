@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRouteStoreTable extends Migration
+class CreateR07routeStoreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRouteStoreTable extends Migration
      */
     public function up()
     {
-        Schema::create('route_store', function (Blueprint $table) {
+        Schema::create('r07route_store', function (Blueprint $table) {
             $table->id();
-            $table->integer('route_id');
+            $table->integer('r07route_id');
             $table->integer('store_id');
         });
     }
@@ -27,6 +27,6 @@ class CreateRouteStoreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('route_store');
+        Schema::dropIfExists('r07route_store');
     }
 }

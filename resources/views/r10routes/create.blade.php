@@ -87,6 +87,13 @@
         </div>
     </div>
 
+    @if ($errors->has('x_01'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('x_01') }}-->
+                            Нарисуйте маршрут
+                        </div>
+                    @endif
+
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
@@ -94,14 +101,36 @@
             </div>
         </div>
 
-        <form action="/routes02" method="post" enctype="multipart/form-data">@csrf
+        <form action="/r10routes" method="post" enctype="multipart/form-data">@csrf
             
-            <div class="row align-items-center mb-2">
+            <div class="row align-items-center mb-2" style="display:none;">
                 <dt class="col-sm-3">
                     Название
                 </dt>
                 <dd class="col-sm-9">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title">
+                    <input type="text" class="form-control" name="title" id="title" value="T10 -> ">
+                </dd>
+            </div>
+
+            <div class="row align-items-center mb-2">
+                <dt class="col-sm-3">
+                    Магазин
+                </dt>
+                <dd class="col-sm-9">
+                    <select name="stores" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">
+                        <option disabled selected value>Выберите магазин</option>
+                        @foreach($stores as $store)
+                            @if(!count($store->r10routes))
+                                <option value="{{ $store->id }}" title="T10 -> {{ $store->title }}">{{ $store->title }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    @if ($errors->has('stores'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('stores') }}-->
+                            Укажите магазин
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -111,11 +140,17 @@
                 </dt>
                 <dd class="col-sm-9">
                     <select name="scheme_id" class="form-control" onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].title);">
-                        <option title="/img/schemeblank.jpg" selected="selected">Выберите схему</option>
+                        <option title="/img/schemeblank.jpg" disabled selected value>Выберите схему</option>
                         @foreach($schemes as $scheme)
                             <option value="{{ $scheme->id }}" title="{{ $scheme->image }}">{{ $scheme->title }}</option>
                         @endforeach
                     </select>
+                    @if ($errors->has('scheme_id'))
+                        <div class="alert alert-danger">
+                            <!--{{ $errors->first('scheme_id') }}-->
+                            Укажите схему
+                        </div>
+                    @endif
                 </dd>
             </div>
 
@@ -135,19 +170,30 @@
 
             <div class="row align-items-center mb-2">
                 <dt class="col-sm-3">
-                    Магазин
+                    Текстовые обозначения
                 </dt>
                 <dd class="col-sm-9">
-                    <select name="store_id" class="form-control">
-                        <option selected="selected">Выберите магазин</option>
-                        @foreach($stores as $store)
-                            @if(!count($store->routes02))
-                                <option value="{{ $store->id }}">{{ $store->title }}</option>
-                            @endif
-                        @endforeach
-                    </select>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="t_1_begin">Текст к начальной точке Схемы 1</label>
+                            <input type="text" class="form-control mb-2" name="t_1_begin" id="title" value="Вы здесь">
+                        </div>
+                        <div class="col-6">
+                            <label for="t_1_end">Текст к конечной точке Схемы 1</label>
+                            <input type="text" class="form-control mb-2" name="t_1_end" id="title" value="Вы пришли">
+                        </div>
+                        <div class="col-6">
+                            <label for="t_2_begin">Текст к начальной точке Схемы 2</label>
+                            <input type="text" class="form-control" name="t_2_begin" id="title" value="Вы здесь">
+                        </div>
+                        <div class="col-6">
+                            <label for="t_2_end">Текст к конечной точке Схемы 2</label>
+                            <input type="text" class="form-control" name="t_2_end" id="title" value="Вы пришли">
+                        </div>
+                    </div>
                 </dd>
             </div>
+
             <div style="display:none;">
             <div class="row align-items-center mb-2">
                 <dt class="col-sm-3">

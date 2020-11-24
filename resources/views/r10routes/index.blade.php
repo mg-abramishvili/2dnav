@@ -7,21 +7,21 @@
                 <h1>Маршруты</h1>
             </div>
             <div class="col-6" style="text-align: right;">
-                <a href="/routes/create" class="btn btn-primary">Добавить маршрут</a>
+                <a href="/r10routes/create" class="btn btn-primary">Добавить маршрут</a>
             </div>
         </div>
 
         <div class="page">
         
             <table class="table table-bordered table-hover">
-                @forelse($routes as $route)
+                @forelse($r10routes as $route)
                 <tr>
                     <td style="text-align: left; padding-left: 20px; padding-right: 20px;">
                         {{$route->title}}
                     </td>
                     <td style="width: 200px;">
-                        <a href="/routes/{{$route->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
-                        <a href="/routes/delete/{{$route->id}}" class="btn btn-sm btn-danger">Удалить</a>
+                        <a href="/r10routes/{{$route->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
+                        <a href="/r10routes/delete/{{$route->id}}" class="btn btn-sm btn-danger">Удалить</a>
                     </td>
                 </tr>
                 @empty

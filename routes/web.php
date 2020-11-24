@@ -3,8 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SchemeController;
-use App\Http\Controllers\RouteController;
-use App\Http\Controllers\Route02Controller;
+use App\Http\Controllers\R01routeController;
+use App\Http\Controllers\R02routeController;
+use App\Http\Controllers\R03routeController;
+use App\Http\Controllers\R04routeController;
+use App\Http\Controllers\R05routeController;
+use App\Http\Controllers\R06routeController;
+use App\Http\Controllers\R07routeController;
+use App\Http\Controllers\R08routeController;
+use App\Http\Controllers\R09routeController;
+use App\Http\Controllers\R10routeController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\AdController;
@@ -13,15 +21,42 @@ use App\Http\Controllers\MarkController;
 use App\Http\Controllers\MarkImageController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\FrontController;
-use App\Http\Controllers\FrontRouteController;
+use App\Http\Controllers\FrontR01routeController;
+use App\Http\Controllers\FrontR02routeController;
+use App\Http\Controllers\FrontR03routeController;
+use App\Http\Controllers\FrontR04routeController;
+use App\Http\Controllers\FrontR05routeController;
+use App\Http\Controllers\FrontR06routeController;
+use App\Http\Controllers\FrontR07routeController;
+use App\Http\Controllers\FrontR08routeController;
+use App\Http\Controllers\FrontR09routeController;
+use App\Http\Controllers\FrontR10routeController;
 use App\Http\Controllers\FrontTagController;
 use App\Http\Controllers\FrontSearchController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/2', [FrontController::class, 'index02']);
 
-// FRONT ROUTES
-Route::resource('/front-routes', FrontRouteController::class);
+// FRONT R01ROUTES
+Route::resource('/front-r01routes', FrontR01routeController::class);
+// FRONT R02ROUTES
+Route::resource('/front-r02routes', FrontR02routeController::class);
+// FRONT R03ROUTES
+Route::resource('/front-r03routes', FrontR03routeController::class);
+// FRONT R04ROUTES
+Route::resource('/front-r04routes', FrontR04routeController::class);
+// FRONT R05ROUTES
+Route::resource('/front-r05routes', FrontR05routeController::class);
+// FRONT R06ROUTES
+Route::resource('/front-r06routes', FrontR06routeController::class);
+// FRONT R07ROUTES
+Route::resource('/front-r07routes', FrontR07routeController::class);
+// FRONT R08ROUTES
+Route::resource('/front-r08routes', FrontR08routeController::class);
+// FRONT R09ROUTES
+Route::resource('/front-r09routes', FrontR09routeController::class);
+// FRONT R10ROUTES
+Route::resource('/front-r10routes', FrontR10routeController::class);
 
 // FRONT TAGS
 Route::resource('/front-tags', FrontTagController::class);
@@ -34,13 +69,36 @@ Route::resource('/schemes', SchemeController::class)->middleware('auth');
 Route::get('schemes/delete/{id}','App\Http\Controllers\SchemeController@delete')->middleware('auth');
 Route::post('schemes/file/{method}','App\Http\Controllers\SchemeController@file')->middleware('auth');
 
-// ROUTES
-Route::resource('/routes', RouteController::class)->middleware('auth');
-Route::get('routes/delete/{id}','App\Http\Controllers\RouteController@delete')->middleware('auth');
-
-// ROUTES02
-Route::resource('/routes02', Route02Controller::class)->middleware('auth');
-Route::get('routes02/delete/{id}','App\Http\Controllers\Route02Controller@delete')->middleware('auth');
+// R01ROUTES
+Route::resource('/r01routes', R01routeController::class)->middleware('auth');
+Route::get('r01routes/delete/{id}','App\Http\Controllers\R01routeController@delete')->middleware('auth');
+// R02ROUTES
+Route::resource('/r02routes', R02routeController::class)->middleware('auth');
+Route::get('r02routes/delete/{id}','App\Http\Controllers\R02routeController@delete')->middleware('auth');
+// R03ROUTES
+Route::resource('/r03routes', R03routeController::class)->middleware('auth');
+Route::get('r03routes/delete/{id}','App\Http\Controllers\R03routeController@delete')->middleware('auth');
+// R04ROUTES
+Route::resource('/r04routes', R04routeController::class)->middleware('auth');
+Route::get('r04routes/delete/{id}','App\Http\Controllers\R04routeController@delete')->middleware('auth');
+// R05ROUTES
+Route::resource('/r05routes', R05routeController::class)->middleware('auth');
+Route::get('r05routes/delete/{id}','App\Http\Controllers\R05routeController@delete')->middleware('auth');
+// R06ROUTES
+Route::resource('/r06routes', R06routeController::class)->middleware('auth');
+Route::get('r06routes/delete/{id}','App\Http\Controllers\R06routeController@delete')->middleware('auth');
+// R07ROUTES
+Route::resource('/r07routes', R07routeController::class)->middleware('auth');
+Route::get('r07routes/delete/{id}','App\Http\Controllers\R07routeController@delete')->middleware('auth');
+// R08ROUTES
+Route::resource('/r08routes', R08routeController::class)->middleware('auth');
+Route::get('r08routes/delete/{id}','App\Http\Controllers\R08routeController@delete')->middleware('auth');
+// R09ROUTES
+Route::resource('/r09routes', R09routeController::class)->middleware('auth');
+Route::get('r09routes/delete/{id}','App\Http\Controllers\R09routeController@delete')->middleware('auth');
+// R10ROUTES
+Route::resource('/r10routes', R10routeController::class)->middleware('auth');
+Route::get('r10routes/delete/{id}','App\Http\Controllers\R10routeController@delete')->middleware('auth');
 
 // MARKS
 Route::resource('/marks', MarkController::class)->middleware('auth');

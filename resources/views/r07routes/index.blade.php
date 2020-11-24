@@ -4,24 +4,24 @@
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
-                <h1>Маршруты от Т2</h1>
+                <h1>Маршруты</h1>
             </div>
             <div class="col-6" style="text-align: right;">
-                <a href="/routes02/create" class="btn btn-primary">Добавить маршрут</a>
+                <a href="/r07routes/create" class="btn btn-primary">Добавить маршрут</a>
             </div>
         </div>
 
         <div class="page">
         
             <table class="table table-bordered table-hover">
-                @forelse($routes02 as $route)
+                @forelse($r07routes as $route)
                 <tr>
                     <td style="text-align: left; padding-left: 20px; padding-right: 20px;">
                         {{$route->title}}
                     </td>
                     <td style="width: 200px;">
-                        <a href="/routes02/{{$route->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
-                        <a href="/routes02/delete/{{$route->id}}" class="btn btn-sm btn-danger">Удалить</a>
+                        <a href="/r07routes/{{$route->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
+                        <a href="/r07routes/delete/{{$route->id}}" class="btn btn-sm btn-danger">Удалить</a>
                     </td>
                 </tr>
                 @empty
