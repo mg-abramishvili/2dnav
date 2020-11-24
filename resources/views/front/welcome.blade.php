@@ -20,7 +20,17 @@
     <div class="categories">
         
         <div class="minislider">
-            <div class="minislider-slide" style="background: url(/img/zara.jpg); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;"></div>
+            @foreach($adds as $add)
+            @if (pathinfo($add->adfile, PATHINFO_EXTENSION) == 'mp4')
+                <div class="minislider-slide">
+                    <video nocontrols autoplay muted loop style="width:100%; height: 100%;">
+                        <source src="{{$add->adfile}}" type="video/mp4" />
+                    </video>
+                </div>
+            @else
+                <div class="minislider-slide" style="background: url({{$add->adfile}}); background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;"></div>
+            @endif
+            @endforeach
         </div>
         <div class="catlist">
             <div class="catlist-list">
@@ -81,7 +91,13 @@
                 @endforeach
             </div>
 
+        
         </div>
+
+<div class="search">
+    <a href="/search"><img src="/img/search.png"><span>Поиск</span></a>
+</div>
+
         </div>
     </div>
 
@@ -111,6 +127,18 @@
         contain: true,
         autoPlay: 5000,
         prevNextButtons: false,
+        wrapAround: true
+        });
+    </script>
+
+<script>
+        $('.minislider').flickity({
+        cellAlign: 'left',
+        contain: true,
+        autoPlay: 3000,
+        prevNextButtons: false,
+        pageDots: false,
+        wrapAround: true
         });
     </script>
 

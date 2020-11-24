@@ -8,6 +8,7 @@ use App\Http\Controllers\Route02Controller;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\AddController;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\MarkImageController;
 use App\Http\Controllers\SetupController;
@@ -62,6 +63,11 @@ Route::get('tags/delete/{id}','App\Http\Controllers\TagController@delete')->midd
 Route::resource('/ads', AdController::class);
 Route::get('ads/delete/{id}','App\Http\Controllers\AdController@delete')->middleware('auth');
 Route::post('ads/file/{method}','App\Http\Controllers\AdController@file')->middleware('auth');
+
+// ADS 2
+Route::resource('/adds', AddController::class);
+Route::get('adds/delete/{id}','App\Http\Controllers\AddController@delete')->middleware('auth');
+Route::post('adds/file/{method}','App\Http\Controllers\AddController@file')->middleware('auth');
 
 // Setup
 Route::resource('/setup', SetupController::class)->middleware('auth');

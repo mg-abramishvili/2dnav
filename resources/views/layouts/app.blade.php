@@ -73,7 +73,7 @@
                             <a class="nav-link" href="/ads">Слайдер №1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ads">Слайдер №2</a>
+                            <a class="nav-link" href="/adds">Слайдер №2</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"

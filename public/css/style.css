@@ -89,7 +89,7 @@ user-select: none;
 }
 
 .map {
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 .map-slide {
@@ -348,6 +348,7 @@ color: #00302c;
 .minislider .minislider-slide {
     height: 335px;
     border-radius: 15px;
+    width: 100%;
 }
 
 .catlist {
@@ -505,3 +506,36 @@ color: #00302c;
 }
 
 /* FOOTER */
+
+
+
+.search {
+    position: absolute;
+    background-color: #3171B8;
+    bottom: 150px;
+    right: 30px;
+    padding: 20px 40px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.search img {
+    width: 50px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.search a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.search span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
