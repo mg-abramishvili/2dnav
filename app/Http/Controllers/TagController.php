@@ -10,7 +10,7 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::with('store.routes')->get();
+        $tags = Tag::with('store')->get();
         return view('tags.index', compact('tags'));
     }
 
