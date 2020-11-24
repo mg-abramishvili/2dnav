@@ -69,6 +69,8 @@ class StoreController extends Controller
     {
         $stores = Store::find($id);
         $stores->delete();
+        $stores->schemes()->detach();
+        $stores->tags()->detach();
         return redirect('/stores');
     }
 

@@ -32,6 +32,7 @@ class MarkController extends Controller
     {
         $marks = Mark::find($id);
         $marks->delete();
+        $marks->markimages()->detach();
         return redirect('/marks');
     }
 

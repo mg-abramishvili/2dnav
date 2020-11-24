@@ -32,6 +32,7 @@ class R02routeController extends Controller
     {
         $r02routes = R02route::find($id);
         $r02routes->delete();
+        $r02routes->stores()->detach();
         return redirect('/r02routes');
     }
 

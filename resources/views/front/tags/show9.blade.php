@@ -4,7 +4,7 @@
     <div class="catlist-list catlist-list2" style="padding: 0 20px;">
         @foreach($tagsall as $tagallitem)
             <div class="catlist-item">
-                <a href="/front-tags2/{{ $tagallitem->id }}">
+                <a href="/front-tags9/{{ $tagallitem->id }}">
                     <img src="/img/catlist01.png">
                     <p>{{ $tagallitem->title }}</p>
                 </a>

@@ -65,6 +65,7 @@ class TagController extends Controller
     {
         $tags = Tag::find($id);
         $tags->delete();
+        $tags->markimages()->detach();
         return redirect('/tags');
     }
 
