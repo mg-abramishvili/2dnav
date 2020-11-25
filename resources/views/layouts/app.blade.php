@@ -23,10 +23,10 @@
 <body>
     <div id="app">
         @auth
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    DreamApp Navigator
+                    <img src="/img/adminlogo.svg" style="width:250px;margin-bottom: 10px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -99,9 +99,11 @@
             </div>
         </nav>
         @endauth
-        <main class="py-4">
+        <main class="pb-4">
             <div class="container">
-                @yield('content')
+                <div class="container-inner">
+                    @yield('content')
+                </div>
             </div>
         </main>
     </div>

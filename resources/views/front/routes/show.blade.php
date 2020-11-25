@@ -196,7 +196,7 @@
                 draggable: false,
                 imagesLoaded: true,
                 pageDots: false,
-                //prevNextButtons: false,
+                prevNextButtons: false,
             });
         </script>
 
@@ -210,6 +210,29 @@
             <p>{{ $tag->title }}</p>
         @endforeach
     @endforeach
+
+    <style>
+        .prevnexrroutslide {
+            position: absolute;
+            font-size: 50px;
+            font-weight: 700;
+            box-shadow: none;
+            border: 0;
+            padding: 15px 45px;
+            background-color: #FBCA27;
+            color: #fff;
+            z-index: 20;
+            top: 1000px;
+            right: 50px;
+            left: 50px;
+            margin: 0 auto;
+            width: 150px;
+            border-radius: 10px;
+        }
+    </style>
+
+    <button id="prev-route-slide" class="prevnexrroutslide"><<</button>
+    <button id="next-route-slide" class="prevnexrroutslide">>></button>
 </div>
 
 <div class="footer">
@@ -241,6 +264,48 @@
             contain: true,
             prevNextButtons: false,
             pageDots: false,
+            });
+        </script>
+
+        <script>
+            var $carousel = $('.map-image{{ $route->id }}').flickity();
+
+$('#prev-route-slide').on( 'click', function() {
+    $("#map").css('opacity', '0');
+    panzoom.reset({ startScale: 1 })
+    setTimeout(function () {
+        panzoom.reset({ startScale: 1.1 })
+    }, 250);
+    setTimeout(function () {
+        panzoom.reset({ startScale: 1 });
+        $("#map").css('opacity', '1');
+    }, 500);
+    $carousel.flickity('previous');
+});
+$('#next-route-slide').on( 'click', function() {
+    $("#map").css('opacity', '0');
+    panzoom.reset({ startScale: 1 })
+    setTimeout(function () {
+        panzoom.reset({ startScale: 1.1 })
+    }, 250);
+    setTimeout(function () {
+        panzoom.reset({ startScale: 1 });
+        $("#map").css('opacity', '1');
+    }, 500);
+    $carousel.flickity('next');
+});
+        </script>
+
+        <script>
+            $carousel.on( 'select.flickity', function( event, index ) {
+                if (index == 0) {
+                    $('#prev-route-slide').hide();
+                    $('#next-route-slide').show();
+                }
+                if (index == 1) {
+                    $('#prev-route-slide').show();
+                    $('#next-route-slide').hide();
+                }
             });
         </script>
     @endsection
