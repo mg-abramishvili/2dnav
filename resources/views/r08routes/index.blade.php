@@ -20,7 +20,6 @@
                         {{$route->title}}
                     </td>
                     <td style="width: 200px;">
-                        <a href="/r08routes/{{$route->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
                         <a href="/r08routes/delete/{{$route->id}}" class="btn btn-sm btn-danger">Удалить</a>
                     </td>
                 </tr>
