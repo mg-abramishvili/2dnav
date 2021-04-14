@@ -170,3 +170,7 @@ Auth::routes([
     'register' => false,
     'reset' => false
 ]);
+
+Route::get('/{vue?}', function () {
+    return view('layouts.vue');
+})->where('vue', '[\/\w\.-]*');

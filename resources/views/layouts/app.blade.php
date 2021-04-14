@@ -9,14 +9,14 @@
     <title>DreamApp Navigator</title>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <link href="{{ asset('css/filepond.css') }}" rel="stylesheet">
     <link href="{{ asset('css/filepond-plugin-image-preview.css') }}" rel="stylesheet">
     <script src="{{ asset('js/filepond-plugin-image-preview.js') }}"></script>
     <script src="{{ asset('js/filepond.js') }}"></script>
     <script src="{{ asset('js/filepond.jquery.js') }}"></script>
-
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
