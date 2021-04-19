@@ -133,7 +133,7 @@
         });
     </script>
 
-<script>
+    <script>
         $('.minislider').flickity({
         cellAlign: 'left',
         contain: true,

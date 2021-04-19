@@ -63,17 +63,135 @@
 
 /* BUTTONS BAR */
 
-/* MAP */
+/* ROUTES */
 
-.map {
-    width: 800px;
-    height: 450px;
-    zoom: 1.5;
-    margin: 0 auto;
+.key-anim01,
+.key-anim02,
+.key-anim03,
+.key-anim04,
+.key-anim05,
+.key-anim06,
+.key-anim07,
+.key-anim08,
+.key-anim09,
+.key-anim10,
+.key-anim11,
+.key-anim12 {
+    stroke-dasharray: 10;
+    stroke-dashoffset: -2000;
+    animation: Drawpath 20s linear infinite;
 }
 
-.map img {
+@keyframes Drawpath {
+    from {
+        stroke-dashoffset: -2000;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.wrapperm {
+    width: 800px;
+    height: 450px;
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+    background-color: #fff;
+}
+
+#wrapper-inner {
+    width: 800px;
+    height: 450px;
+}
+
+.map {
+    margin-top: -4vh;
+}
+
+.map-slide {
     width: 100%;
 }
 
-/* MAP */
+.map img {
+    width: 800px;
+    height: 450px;
+    display: block;
+    margin: 0 auto;
+}
+
+.map-path {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 800px;
+    height: 450px;
+}
+
+.muzei-route-sidebar {
+    background-color: #d6d6d6;
+    padding: 3vh;
+    background-color: #976545;
+}
+
+.muzei-route-sidebar input {
+    width: 100%;
+    padding: 0.5vh;
+    font-size: 2vh;
+}
+
+.routes-index {
+    padding: 4vh;
+}
+
+.keyboard {
+    margin-top: 0.5vh;
+    margin-bottom: 3vh;
+}
+
+.keyboard button {
+    width: 3.25vh;
+    height: 3.25vh;
+    line-height: 3.25vh;
+    margin-bottom: 0.5vh;
+    background-color: #fff;
+    font-size: 1.5vh;
+    text-align: center;
+    padding: 0;
+    border: 0.1vh solid;
+}
+
+.keyboard .globebutton {
+    width: 7vh;
+}
+
+.keyboard .spacebutton {
+    width: 10vh;
+}
+
+#myUL {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    height: 50vh;
+    overflow-y: auto;
+}
+
+#myUL li {
+    display: block;
+    background-color: #fff;
+    margin-bottom: 1vh;
+}
+
+#myUL li a {
+    display: block;
+    color: #222;
+    font-size: 2vh;
+    font-weight: 700;
+    border: 0.25vh solid #96dbfc;
+    padding: 1vh 2vh;
+}
+
+/* ROUTES */
