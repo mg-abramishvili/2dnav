@@ -59,16 +59,8 @@
                                 Маршруты
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/r01routes">Маршруты от Т1</a>
-                                <a class="dropdown-item" href="/r02routes">Маршруты от Т2</a>
-                                <a class="dropdown-item" href="/r03routes">Маршруты от Т3</a>
-                                <a class="dropdown-item" href="/r04routes">Маршруты от Т4</a>
-                                <a class="dropdown-item" href="/r05routes">Маршруты от Т5</a>
-                                <a class="dropdown-item" href="/r06routes">Маршруты от Т6</a>
-                                <a class="dropdown-item" href="/r07routes">Маршруты от Т7</a>
-                                <a class="dropdown-item" href="/r08routes">Маршруты от Т8</a>
-                                <a class="dropdown-item" href="/r09routes">Маршруты от Т9</a>
-                                <a class="dropdown-item" href="/r10routes">Маршруты от Т10</a>
+                                <a class="dropdown-item" href="/routes_t/1">Маршруты от Т1</a>
+                                <a class="dropdown-item" href="/routes_t/2">Маршруты от Т2</a>
                             </div>
                         </li>
                         <!--<li class="nav-item">

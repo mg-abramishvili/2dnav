@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             MarkimagesSeeder::class,
             MarkimagesTagsSeeder::class,
             AdSeeder::class,
-            AddSeeder::class,
         ]);
     }
 }

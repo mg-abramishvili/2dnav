@@ -31,7 +31,7 @@
                             placeholder="Поиск..."
                             >
                             <ul id="myUL" style="margin-top: 0.5vh;">
-                                <li v-for="routeListItem in filtered_r01routes" :key="routeListItem.id" @click="SelectRoute(routeListItem)">
+                                <li v-for="routeListItem in filtered_routes" :key="routeListItem.id" @click="SelectRoute(routeListItem)">
                                     <a>{{ routeListItem.title }}</a>
                                 </li>
                             </ul>
@@ -162,7 +162,7 @@
 
                                 <!-- STORES -->
                                 <div v-for="store in stores" :key="store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px' }">
-                                    <span v-for="store_route in store.r01routes" :key="store_route.id" @click="SelectRoute(store_route)">
+                                    <span v-for="store_route in store.routes" :key="store_route.id" @click="SelectRoute(store_route)">
                                         {{ store.title }}
                                     </span>
                                 </div>
@@ -187,7 +187,7 @@
                 banners: [],
                 schemes: [],
                 map: {},
-                r01routes: {},
+                routes: {},
                 route: {},
                 stores: {},
                 selectedItemID: '',
@@ -211,10 +211,10 @@
                 .then(json => {
                     this.stores = json;
                 });
-            fetch('/api/r01routes')
+            fetch('/api/routes')
                 .then(response => response.json())
                 .then(json => {
-                    this.r01routes = json.data;
+                    this.routes = json.data;
                     this.loading = false;
                 });
             fetch('/api/banners/')
@@ -224,11 +224,11 @@
                 });
         },
         computed: {
-            filtered_r01routes: function () {
+            filtered_routes: function () {
                 if (this.input.trim() === '') {
-                    return this.r01routes;
+                    return this.routes;
                 } else {
-                    return this.r01routes.filter(item => {
+                    return this.routes.filter(item => {
                     return item.title.toLowerCase().indexOf(this.input.toLowerCase()) >= 0;
                     });
                 }
@@ -240,7 +240,7 @@
                 this.selectedItem = routeListItem.title;
                 this.selectedItemSchemeID = routeListItem.scheme_id;
                 this.selectedItemScheme2ID = routeListItem.scheme2_id;
-                fetch(`/api/r01route/${this.selectedItemID}`)
+                fetch(`/api/route/${this.selectedItemID}`)
                 .then(response => response.json())
                 .then(json => {
                     this.route = json;
@@ -344,7 +344,7 @@
     .search_panel {
         position: absolute;
         z-index: 10;
-        width: 100%;
+        width: 50vw;
         top: 0;
         margin-top: 0;
         background: #fff;

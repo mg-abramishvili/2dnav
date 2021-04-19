@@ -310,7 +310,7 @@ __webpack_require__.r(__webpack_exports__);
       banners: [],
       schemes: [],
       map: {},
-      r01routes: {},
+      routes: {},
       route: {},
       stores: {},
       selectedItemID: '',
@@ -336,10 +336,10 @@ __webpack_require__.r(__webpack_exports__);
     }).then(function (json) {
       _this.stores = json;
     });
-    fetch('/api/r01routes').then(function (response) {
+    fetch('/api/routes').then(function (response) {
       return response.json();
     }).then(function (json) {
-      _this.r01routes = json.data;
+      _this.routes = json.data;
       _this.loading = false;
     });
     fetch('/api/banners/').then(function (response) {
@@ -349,13 +349,13 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   computed: {
-    filtered_r01routes: function filtered_r01routes() {
+    filtered_routes: function filtered_routes() {
       var _this2 = this;
 
       if (this.input.trim() === '') {
-        return this.r01routes;
+        return this.routes;
       } else {
-        return this.r01routes.filter(function (item) {
+        return this.routes.filter(function (item) {
           return item.title.toLowerCase().indexOf(_this2.input.toLowerCase()) >= 0;
         });
       }
@@ -369,7 +369,7 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedItem = routeListItem.title;
       this.selectedItemSchemeID = routeListItem.scheme_id;
       this.selectedItemScheme2ID = routeListItem.scheme2_id;
-      fetch("/api/r01route/".concat(this.selectedItemID)).then(function (response) {
+      fetch("/api/route/".concat(this.selectedItemID)).then(function (response) {
         return response.json();
       }).then(function (json) {
         _this3.route = json;
@@ -530,7 +530,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about[data-v-f2b6376c] {\n    height: 10vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #fff;\n    text-align: center;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 0.5vh 2vh;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.253);\n    transform-origin: 0 0;\n    margin-top: -4vh;\n    margin-bottom: 11vh;\n}\n#myUL[data-v-f2b6376c] {\n    height: 28vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100%;\n    top: 0;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n", ""]);
+exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about[data-v-f2b6376c] {\n    height: 10vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #fff;\n    text-align: center;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 0.5vh 2vh;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.253);\n    transform-origin: 0 0;\n    margin-top: -4vh;\n    margin-bottom: 11vh;\n}\n#myUL[data-v-f2b6376c] {\n    height: 28vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 50vw;\n    top: 0;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n", ""]);
 
 // exports
 
@@ -23413,7 +23413,7 @@ var render = function() {
                           staticStyle: { "margin-top": "0.5vh" },
                           attrs: { id: "myUL" }
                         },
-                        _vm._l(_vm.filtered_r01routes, function(routeListItem) {
+                        _vm._l(_vm.filtered_routes, function(routeListItem) {
                           return _c(
                             "li",
                             {
@@ -25132,7 +25132,7 @@ var render = function() {
                               top: store.y_01 + "px"
                             }
                           },
-                          _vm._l(store.r01routes, function(store_route) {
+                          _vm._l(store.routes, function(store_route) {
                             return _c(
                               "span",
                               {
