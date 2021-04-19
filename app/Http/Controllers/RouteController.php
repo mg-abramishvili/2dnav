@@ -33,7 +33,7 @@ class RouteController extends Controller
     {
         $routes_t = $request->id;
         $schemes = Scheme::get();
-        $stores = Store::with('routes')->get();
+        $stores = Store::all();
         return view('routes.create', compact('schemes', 'stores', 'routes_t'));
     }
 

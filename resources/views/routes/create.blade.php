@@ -126,19 +126,10 @@
                     Магазин
                 </dt>
                 <dd class="col-sm-9">
-                    <select name="stores" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">
-                        <option disabled selected value>Выберите магазин</option>
+                    <select name="stores" class="form-control" onchange="$('#title').attr('value', this.options[this.selectedIndex].title);">                        
+                        <option disabled selected value>Выберите магазин </option>
                         @foreach($stores as $store)
-                            @if($store->routes->count())
-                                @foreach($store->routes as $s_route)
-                                    @if($s_route->kiosk_number == $routes_t)
-                                    @else
-                                        <option value="{{ $store->id }}" title="T{{ $routes_t }} -> {{ $store->title }}">{{ $store->title }}</option>
-                                    @endif
-                                @endforeach
-                            @else
-                                <option value="{{ $store->id }}" title="T{{ $routes_t }} -> {{ $store->title }}">{{ $store->title }}</option>
-                            @endif
+                            <option @foreach ($store->routes as $s_route) @if($s_route->kiosk_number == $routes_t) style="display:none;" @endif @endforeach value="{{ $store->id }}" title="T{{ $routes_t }} -> {{ $store->title }}">{{ $store->title }}</option>
                         @endforeach
                     </select>
                     @if ($errors->has('stores'))
