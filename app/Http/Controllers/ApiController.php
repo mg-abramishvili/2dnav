@@ -23,15 +23,15 @@ class ApiController extends Controller
 
     public function stores()
     {
-        return Store::with('r01routes')->get();
+        return Store::with('routes')->get();
     }
 
-    public function r01routes()
+    public function routes()
 	{
 		return RouteResource::collection(Route::with('schemes')->orderBy('created_at', 'asc')->get());
 	}
 	
-	public function r01routeItem($id)
+	public function routeItem($id)
     {
         return Route::where('id', $id)->with('schemes', 'schemes2')->first();
     }

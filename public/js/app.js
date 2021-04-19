@@ -25125,7 +25125,7 @@ var render = function() {
                         return _c(
                           "div",
                           {
-                            key: store.id,
+                            key: "store" + store.id,
                             staticClass: "map-marker",
                             style: {
                               left: store.x_01 + "px",

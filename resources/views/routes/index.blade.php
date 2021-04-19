@@ -12,7 +12,7 @@
                 </h1>
             </div>
             <div class="col-6" style="text-align: right;">
-                <a href="/routes/create" class="btn btn-primary">Добавить маршрут</a>
+                <a href="/routes_t_create/{{ $routes_t }}" class="btn btn-primary">Добавить маршрут</a>
             </div>
         </div>
 

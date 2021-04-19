@@ -20,6 +20,7 @@ Route::post('schemes/file/{method}','App\Http\Controllers\SchemeController@file'
 // ROUTES
 Route::resource('/routes', RouteController::class)->middleware('auth');
 Route::get('/routes_t/{id}', 'App\Http\Controllers\RouteController@index_custom')->middleware('auth');
+Route::get('/routes_t_create/{id}', 'App\Http\Controllers\RouteController@create_custom')->middleware('auth');
 Route::get('routes/delete/{id}','App\Http\Controllers\RouteController@delete')->middleware('auth');
 
 // MARKS

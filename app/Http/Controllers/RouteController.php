@@ -29,18 +29,26 @@ class RouteController extends Controller
         return view('routes.create', compact('schemes', 'stores'));
     }
 
+    public function create_custom(Request $request)
+    {
+        $routes_t = $request->id;
+        $schemes = Scheme::get();
+        $stores = Store::with('routes')->get();
+        return view('routes.create', compact('schemes', 'stores', 'routes_t'));
+    }
+
     public function edit($id)
     {
         $routes = Route::find($id);
         return view('routes.edit', compact('routes'));
     }
 
-    public function delete($id)
+    public function delete($id, Request $request)
     {
         $routes = Route::find($id);
         $routes->delete();
         $routes->stores()->detach();
-        return redirect('/routes');
+        return redirect('/login');
     }
 
     public function store(Request $request)
@@ -159,23 +167,6 @@ class RouteController extends Controller
         $routes->p_y_112 = $data['p_y_112'];
         $routes->save();
         $routes->stores()->attach($request->stores, ['route_id' => $routes->id]);
-        return redirect('/routes');
-    }
-
-    public function update(Request $request)
-    {
-        $this->validate($request, [
-            'stores' => 'required',
-            'scheme_id' => 'required',
-            'x_01' => 'required',
-        ]);
-
-        $data = request()->all();
-        $routes = Route::find($data['id']);
-        $routes->title = $data['title'];
-        $routes->save();
-        $routes->stores()->detach();
-        $routes->stores()->attach($request->stores, ['route_id' => $routes->id]);
-        return redirect('/routes');
+        return redirect('/routes_t/'.$data['kiosk_number']);
     }
 }

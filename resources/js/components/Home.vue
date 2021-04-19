@@ -161,7 +161,7 @@
                                 </svg>
 
                                 <!-- STORES -->
-                                <div v-for="store in stores" :key="store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px' }">
+                                <div v-for="store in stores" :key="'store' + store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px' }">
                                     <span v-for="store_route in store.routes" :key="store_route.id" @click="SelectRoute(store_route)">
                                         {{ store.title }}
                                     </span>
