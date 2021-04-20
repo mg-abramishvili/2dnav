@@ -54,16 +54,18 @@
                             </div>
                         </div>
 
-                        <div class="col-12" style="order: 1;"> 
-                            <div class="route_about">
-                                <div v-for="scheme in schemes" :key="scheme.id">
-                                    <div v-if="scheme.id == selectedItemSchemeID && current_slide === 1" class="scheme_title scheme_title_first">{{ scheme.title}}</div>
-                                    <div v-if="scheme.id == selectedItemScheme2ID  && current_slide === 2" class="scheme_title scheme_title_second">{{ scheme.title}}</div>
-                                </div>
+                        <div class="col-12" style="padding: 4vh"> 
+                            <div v-if="route_about" class="route_about">
                                 <h5 v-if="selectedItem" style="display:block;">
                                     <span v-for="rt in route.stores" :key="'rt' + rt.id">
-                                        {{ rt.title }}
-                                        <img :src="rt.logo">
+                                        <img :src="rt.logo" class="display: inline-block; vertical-align:middle;">
+                                        <i style="display:inline-block; vertical-align:middle;">
+                                            <div v-for="scheme in schemes" :key="scheme.id">
+                                                <div v-if="scheme.id == selectedItemSchemeID && current_slide === 1" class="scheme_title scheme_title_first">{{ scheme.title}}</div>
+                                                <div v-if="scheme.id == selectedItemScheme2ID  && current_slide === 2" class="scheme_title scheme_title_second">{{ scheme.title}}</div>
+                                            </div>
+                                            {{ rt.title }}
+                                        </i>
                                     </span>
                                 </h5>
                             </div>
@@ -221,6 +223,7 @@
                 current_slide: 1,
                 category_panel: false,
                 search_panel: false,
+                route_about: false,
             }
         },
         created() {
@@ -274,6 +277,7 @@
                 this.selectedItem = routeListItem.title;
                 this.selectedItemSchemeID = routeListItem.scheme_id;
                 this.selectedItemScheme2ID = routeListItem.scheme2_id;
+                this.route_about = true;
                 fetch(`/api/route/${this.selectedItemID}`)
                 .then(response => response.json())
                 .then(json => {
@@ -340,8 +344,9 @@
         left: 0;
     }
 
-    .route_about {
-        height: 10vh;
+    .route_about span {
+        display:block;
+        width: 100%;
     }
 
     .prevnextbutton {
@@ -352,25 +357,44 @@
 
     .route_about {
         color: #333;
-        text-align: center;
         position: absolute;
-        top: 2vh;
+        bottom: -32vh;
+        border: 0.1vh solid #888;
+        padding: 2vh;
+        left: 4vh;
+        right: 4vh;
+        height: 12vh;
+    }
+
+    .route_about img {
+        width: auto;
+        height: auto;
+        max-width: 30vw;
+        max-height: 8vh;
+        margin-right: 5vh;
+    }
+
+    .route_about i {
+        font-style: normal;
+        font-size: 3vh;
     }
 
     .input {
         width: 100%;
-        padding: 0.5vh 2vh;
+        padding: 2vh 2vh;
+        font-size: 2.5vh;
+        border: 0.2vh solid #A1A1A1;
     }
 
     #map {
         transform: scale(1.5);
         transform-origin: 0 0;
-        margin-top: 4vh;
-        margin-bottom: 11vh;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     #myUL {
-        height: 28vh;
+        height: 45vh;
     }
 
     .map-marker {
@@ -385,12 +409,13 @@
     .search_panel {
         position: absolute;
         z-index: 10;
-        width: 71vw;
-        height: 80vh;
-        top: 20vh;
+        width: 100vw;
+        height: 85vh;
+        top: 15vh;
         margin-top: 0;
         background: #fff;
         padding: 1.5vh;
+        margin-left: -29vw;
     }
 
     .prevnextbutton {
@@ -430,12 +455,13 @@
     .category_panel {
         position: absolute;
         z-index: 10;
-        width: 71vw;
-        height: 80vh;
-        top: 20vh;
+        width: 100vw;
+        height: 85vh;
+        top: 15vh;
         margin-top: 0;
         background: #fff;
         padding: 1.5vh;
+        margin-left: -29vw;
     }
 
     .category_item {

@@ -67,8 +67,37 @@
 /* BUTTONS BAR */
 
 .buttons-bar {
-    background-color: gray;
-    height: 20vh;
+    height: 12vh;
+    padding-top: 3vh;
+    padding-left: 4vh;
+    padding-right: 4vh;
+}
+
+.buttons-bar .col-3 {
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.buttons-bar button {
+    width: 100%;
+    background: none;
+    border: 0;
+    border-left: 0.2vh solid #68D94C;
+    border-top: 0.2vh solid #68D94C;
+    border-bottom: 0.2vh solid #68D94C;
+    font-size: 2.5vh;
+    box-shadow: none;
+    height: 9vh;
+}
+
+.buttons-bar .col-3:last-child button {
+    border-right: 0.2vh solid #68D94C;
+}
+
+.buttons-bar button:focus {
+    background-color: #68D94C;
+    outline: none;
 }
 
 /* BUTTONS BAR */
@@ -205,3 +234,9 @@
 }
 
 /* ROUTES */
+
+.hg-theme-default .hg-button,
+.hg-theme-default .hg-button.hg-standardBtn {
+    height: 5vh !important;
+    font-size: 3vh !important;
+}
