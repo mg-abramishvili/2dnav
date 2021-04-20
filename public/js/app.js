@@ -325,6 +325,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -346,7 +357,8 @@ __webpack_require__.r(__webpack_exports__);
       current_slide: 1,
       category_panel: false,
       search_panel: false,
-      route_about: false
+      route_about: false,
+      current_floor: '1'
     };
   },
   created: function created() {
@@ -402,34 +414,26 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.search_panel = false;
+      this.route_about = true;
       this.selectedItemID = routeListItem.id;
       this.selectedItem = routeListItem.title;
       this.selectedItemSchemeID = routeListItem.scheme_id;
+      this.current_floor = routeListItem.scheme_id.toString();
       this.selectedItemScheme2ID = routeListItem.scheme2_id;
-      this.route_about = true;
       fetch("/api/route/".concat(this.selectedItemID)).then(function (response) {
         return response.json();
       }).then(function (json) {
         _this3.route = json;
-        document.querySelectorAll('.scheme_images').forEach(function (el) {
-          el.style.visibility = 'hidden';
-        });
-        document.getElementById('scheme_image_' + routeListItem.scheme_id).style.visibility = 'visible';
+        _this3.current_slide = routeListItem.scheme_id.toString();
         _this3.current_slide = 1;
       });
     },
     PrevScheme: function PrevScheme(selectedItemSchemeID) {
-      document.querySelectorAll('.scheme_images').forEach(function (el) {
-        el.style.visibility = 'hidden';
-      });
-      document.getElementById('scheme_image_' + selectedItemSchemeID).style.visibility = 'visible';
+      this.current_floor = selectedItemSchemeID.toString();
       this.current_slide = 1;
     },
     NextScheme: function NextScheme(selectedItemScheme2ID) {
-      document.querySelectorAll('.scheme_images').forEach(function (el) {
-        el.style.visibility = 'hidden';
-      });
-      document.getElementById('scheme_image_' + selectedItemScheme2ID).style.visibility = 'visible';
+      this.current_floor = selectedItemScheme2ID.toString();
       this.current_slide = 2;
     },
     onChange: function onChange(input) {
@@ -451,6 +455,10 @@ __webpack_require__.r(__webpack_exports__);
     category_panel_button: function category_panel_button() {
       this.search_panel = false;
       this.category_panel = true;
+    },
+    SelectFloor: function SelectFloor(scheme) {
+      this.current_floor = scheme.id.toString();
+      this.current_slide = 0;
     }
   },
   components: {
@@ -574,7 +582,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about span[data-v-f2b6376c] {\n    display:block;\n    width: 100%;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #333;\n    position: absolute;\n    bottom: -32vh;\n    border: 0.1vh solid #888;\n    padding: 2vh;\n    left: 4vh;\n    right: 4vh;\n    height: 12vh;\n}\n.route_about img[data-v-f2b6376c] {\n    width: auto;\n    height: auto;\n    max-width: 30vw;\n    max-height: 8vh;\n    margin-right: 5vh;\n}\n.route_about i[data-v-f2b6376c] {\n    font-style: normal;\n    font-size: 3vh;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 2vh 2vh;\n    font-size: 2.5vh;\n    border: 0.2vh solid #A1A1A1;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.5);\n    transform-origin: 0 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n#myUL[data-v-f2b6376c] {\n    height: 45vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n.category_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.category_item[data-v-f2b6376c] {\n    height: 15vh;\n    padding: 2vh;\n    margin: 2vh;\n    border: 0.1vh solid #888;\n}\n", ""]);
+exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about span[data-v-f2b6376c] {\n    display:block;\n    width: 100%;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #333;\n    position: absolute;\n    bottom: -32vh;\n    border: 0.1vh solid #888;\n    padding: 2vh;\n    left: 4vh;\n    right: 4vh;\n    height: 12vh;\n}\n.route_about img[data-v-f2b6376c] {\n    width: auto;\n    height: auto;\n    max-width: 30vw;\n    max-height: 8vh;\n    margin-right: 5vh;\n}\n.route_about i[data-v-f2b6376c] {\n    font-style: normal;\n    font-size: 3vh;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 2vh 2vh;\n    font-size: 2.5vh;\n    border: 0.2vh solid #A1A1A1;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.5);\n    transform-origin: 0 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n#myUL[data-v-f2b6376c] {\n    height: 45vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n    min-width: 25px;\n    min-height: 25px;\n    z-index: 5;\n}\n.map-marker span[data-v-f2b6376c] {\n    display: block;\n    background-color: yellow;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n.category_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.category_item[data-v-f2b6376c] {\n    height: 15vh;\n    padding: 2vh;\n    margin: 2vh;\n    border: 0.1vh solid #888;\n}\n.floor_buttons[data-v-f2b6376c] {\n    position: absolute;\n    right: 4vh;\n    top: 35vh;\n    z-index: 5;\n}\n", ""]);
 
 // exports
 
@@ -23626,6 +23634,32 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
+                  { staticClass: "floor_buttons" },
+                  _vm._l(_vm.schemes, function(scheme) {
+                    return _c(
+                      "button",
+                      {
+                        key: scheme.id,
+                        on: {
+                          click: function($event) {
+                            return _vm.SelectFloor(scheme)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(scheme.title) +
+                            "\n                            "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
                   {
                     staticStyle: {
                       position: "relative",
@@ -23644,10 +23678,15 @@ var render = function() {
                           attrs: { id: "scheme_image_" + scheme.id }
                         },
                         [
-                          _c("img", {
-                            staticStyle: { width: "800px", height: "450px" },
-                            attrs: { src: scheme.image }
-                          })
+                          scheme.id.toString() === _vm.current_floor
+                            ? _c("img", {
+                                staticStyle: {
+                                  width: "800px",
+                                  height: "450px"
+                                },
+                                attrs: { src: scheme.image }
+                              })
+                            : _vm._e()
                         ]
                       )
                     }),
@@ -25215,15 +25254,33 @@ var render = function() {
                             top: store.y_01 + "px"
                           }
                         },
-                        _vm._l(store.routes, function(store_route) {
-                          return _c("span", {
-                            key: store_route.id,
-                            on: {
-                              click: function($event) {
-                                return _vm.SelectRoute(store_route)
-                              }
-                            }
-                          })
+                        _vm._l(store.schemes, function(s_scheme) {
+                          return _c("div", { key: s_scheme.id }, [
+                            s_scheme.pivot.scheme_id === _vm.current_floor
+                              ? _c(
+                                  "div",
+                                  _vm._l(store.routes, function(store_route) {
+                                    return _c(
+                                      "span",
+                                      {
+                                        key: store_route.id,
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.SelectRoute(store_route)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                             \n                                        "
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              : _vm._e()
+                          ])
                         }),
                         0
                       )

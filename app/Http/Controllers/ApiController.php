@@ -30,7 +30,7 @@ class ApiController extends Controller
 
     public function stores()
     {
-        return Store::with('routes')->get();
+        return Store::with('routes', 'schemes')->get();
     }
 
     public function tags()

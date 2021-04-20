@@ -77,9 +77,15 @@
                                 Продолжить маршрут
                             </button>
 
+                            <div class="floor_buttons">
+                                <button v-for="scheme in schemes" :key="scheme.id" @click="SelectFloor(scheme)">
+                                    {{ scheme.title }}
+                                </button>
+                            </div>
+
                             <div id="map" style="position: relative; width: 800px; height: 450px;">
                                 <div v-for="scheme in schemes" :key="scheme.id" :id="'scheme_image_' + scheme.id" class="scheme_images">
-                                    <img :src="scheme.image" style="width:800px; height:450px;">
+                                    <img v-if="scheme.id.toString() === current_floor" :src="scheme.image" style="width:800px; height:450px;">
                                 </div>
 
                                 <svg v-if="current_slide === 1" class="map-path svg1" viewBox="0 0 800 450">
@@ -184,9 +190,14 @@
 
                                 <!-- STORES -->
                                 <div v-for="store in stores" :key="'store' + store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px' }">
-                                    <span v-for="store_route in store.routes" :key="store_route.id" @click="SelectRoute(store_route)">
-                                        <!--{{ store.title }}-->
-                                    </span>
+                                    <div v-for="s_scheme in store.schemes" :key="s_scheme.id">
+                                        <div v-if="s_scheme.pivot.scheme_id === current_floor">
+                                            <span v-for="store_route in store.routes" :key="store_route.id" @click="SelectRoute(store_route)">
+                                                <!--{{ store.title }}-->
+                                                &nbsp;
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             
                             </div>
@@ -224,6 +235,7 @@
                 category_panel: false,
                 search_panel: false,
                 route_about: false,
+                current_floor: '1'
             }
         },
         created() {
@@ -273,40 +285,26 @@
         methods: {
             SelectRoute(routeListItem) {
                 this.search_panel = false;
+                this.route_about = true;
                 this.selectedItemID = routeListItem.id;
                 this.selectedItem = routeListItem.title;
                 this.selectedItemSchemeID = routeListItem.scheme_id;
+                this.current_floor = routeListItem.scheme_id.toString();
                 this.selectedItemScheme2ID = routeListItem.scheme2_id;
-                this.route_about = true;
                 fetch(`/api/route/${this.selectedItemID}`)
                 .then(response => response.json())
                 .then(json => {
                     this.route = json;
-                    document.querySelectorAll('.scheme_images').forEach(function(el) {
-                    el.style.visibility = 'hidden';
-                });
-                document.getElementById('scheme_image_' + routeListItem.scheme_id)
-                .style.visibility = 'visible';
-
-                this.current_slide = 1;
+                    this.current_slide = routeListItem.scheme_id.toString();
+                    this.current_slide = 1;
                 });
             },
             PrevScheme(selectedItemSchemeID) {
-                document.querySelectorAll('.scheme_images').forEach(function(el) {
-                    el.style.visibility = 'hidden';
-                });
-                document.getElementById('scheme_image_' + selectedItemSchemeID)
-                .style.visibility = 'visible';
-
+                this.current_floor = selectedItemSchemeID.toString();
                 this.current_slide = 1;
             },
             NextScheme(selectedItemScheme2ID) {
-                document.querySelectorAll('.scheme_images').forEach(function(el) {
-                    el.style.visibility = 'hidden';
-                });
-                document.getElementById('scheme_image_' + selectedItemScheme2ID)
-                .style.visibility = 'visible';
-
+                this.current_floor = selectedItemScheme2ID.toString();
                 this.current_slide = 2;
             },
             onChange(input) {
@@ -329,6 +327,10 @@
             category_panel_button() {
                 this.search_panel = false;
                 this.category_panel = true;
+            },
+            SelectFloor(scheme) {
+                this.current_floor = scheme.id.toString();
+                this.current_slide = 0;
             },
         },
         components: {
@@ -404,6 +406,14 @@
         height: auto;
         margin-left: -12px;
         margin-top: -12px;
+        min-width: 25px;
+        min-height: 25px;
+        z-index: 5;
+    }
+
+    .map-marker span {
+        display: block;
+        background-color: yellow;
     }
 
     .search_panel {
@@ -469,5 +479,12 @@
         padding: 2vh;
         margin: 2vh;
         border: 0.1vh solid #888;
+    }
+
+    .floor_buttons {
+        position: absolute;
+        right: 4vh;
+        top: 35vh;
+        z-index: 5;
     }
 </style>
