@@ -312,6 +312,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -553,7 +558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about[data-v-f2b6376c] {\n    height: 10vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #333;\n    text-align: center;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 0.5vh 2vh;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.5);\n    transform-origin: 0 0;\n    margin-top: -4vh;\n    margin-bottom: 11vh;\n}\n#myUL[data-v-f2b6376c] {\n    height: 28vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 71vw;\n    top: 20vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n", ""]);
+exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about[data-v-f2b6376c] {\n    height: 10vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #333;\n    text-align: center;\n    position: absolute;\n    top: 2vh;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 0.5vh 2vh;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.5);\n    transform-origin: 0 0;\n    margin-top: 4vh;\n    margin-bottom: 11vh;\n}\n#myUL[data-v-f2b6376c] {\n    height: 28vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 71vw;\n    top: 20vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n", ""]);
 
 // exports
 
@@ -23524,9 +23529,21 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _vm.selectedItem
-                        ? _c("h5", { staticStyle: { display: "block" } }, [
-                            _vm._v(_vm._s(_vm.selectedItem))
-                          ])
+                        ? _c(
+                            "h5",
+                            { staticStyle: { display: "block" } },
+                            _vm._l(_vm.route.stores, function(rt) {
+                              return _c("span", { key: "rt" + rt.id }, [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(rt.title) +
+                                    "\n                                    "
+                                ),
+                                _c("img", { attrs: { src: rt.logo } })
+                              ])
+                            }),
+                            0
+                          )
                         : _vm._e()
                     ],
                     2

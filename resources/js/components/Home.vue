@@ -54,7 +54,12 @@
                                     <div v-if="scheme.id == selectedItemSchemeID && current_slide === 1" class="scheme_title scheme_title_first">{{ scheme.title}}</div>
                                     <div v-if="scheme.id == selectedItemScheme2ID  && current_slide === 2" class="scheme_title scheme_title_second">{{ scheme.title}}</div>
                                 </div>
-                                <h5 v-if="selectedItem" style="display:block;">{{selectedItem}}</h5>
+                                <h5 v-if="selectedItem" style="display:block;">
+                                    <span v-for="rt in route.stores" :key="'rt' + rt.id">
+                                        {{ rt.title }}
+                                        <img :src="rt.logo">
+                                    </span>
+                                </h5>
                             </div>
 
                             <button v-if="current_slide === 2" @click="PrevScheme(selectedItemSchemeID)" class="prevnextbutton prev_button">
@@ -336,6 +341,8 @@
     .route_about {
         color: #333;
         text-align: center;
+        position: absolute;
+        top: 2vh;
     }
 
     .input {
@@ -346,7 +353,7 @@
     #map {
         transform: scale(1.5);
         transform-origin: 0 0;
-        margin-top: -4vh;
+        margin-top: 4vh;
         margin-bottom: 11vh;
     }
 
