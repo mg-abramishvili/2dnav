@@ -9,23 +9,13 @@ use Illuminate\Support\Str;
 
 class AdSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::table('ads')->insert([
             [
             'id' => '1',
             'title' => '1',
-            'adfile' => '/img/slide.jpg',
-            ],
-            [
-            'id' => '2',
-            'title' => '2',
-            'adfile' => '/img/slide.jpg',
+            'adfile' => '/img/banner.jpg',
             ],
         ]);
     }

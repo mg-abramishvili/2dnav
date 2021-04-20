@@ -33,25 +33,35 @@
 }
 
 .col-4-f {
-    -ms-flex: 0 0 30%;
-    flex: 0 0 30%;
-    max-width: 30%;
+    -ms-flex: 0 0 29%;
+    flex: 0 0 29%;
+    max-width: 29%;
 }
 
 .col-8-f {
-    -ms-flex: 0 0 70%;
-    flex: 0 0 70%;
-    max-width: 70%;
+    -ms-flex: 0 0 71%;
+    flex: 0 0 71%;
+    max-width: 71%;
 }
 
 .sidebar-header {
-    height: 12vh;
+    height: 15vh;
+    padding-top: 2vh;
+}
+
+.sidebar-header img {
+    width: auto;
+    height: auto;
+    max-width: 30vw;
+    max-height: 11vh;
+    display: block;
+    margin: 0 auto;
 }
 
 .sidebar-banner-slide {
     background-size: cover;
     background-position: 50% 50%;
-    height: 88vh;
+    height: 85vh;
 }
 
 /* BUTTONS BAR */

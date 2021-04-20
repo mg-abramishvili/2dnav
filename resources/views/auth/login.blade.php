@@ -67,7 +67,7 @@
                     </form>
                    
                 </div> 
-            </div><a href="/" style="display:block; text-align: center; margin-top: 20px;">Вернуться на главную страницу</a>
+            </div><a href="/vue-index" style="display:block; text-align: center; margin-top: 20px;">Вернуться на главную страницу</a>
         </div>
     </div>
 </div>

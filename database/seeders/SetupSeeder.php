@@ -9,16 +9,14 @@ use Illuminate\Support\Str;
 
 class SetupSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::table('setups')->insert([
-            'id' => '1',
-            'color' => '#009387',
+            [
+                'id' => '1',
+                'logo' => '/img/logo.svg',
+                'color' => '#009387',
+            ],
         ]);
     }
 }

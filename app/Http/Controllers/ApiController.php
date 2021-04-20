@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setup;
 use App\Models\Ad;
 use App\Models\Scheme;
 use App\Models\Store;
@@ -11,9 +12,14 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
+    public function setup()
+    {
+        return Setup::where('id', '1')->first();
+    }
+
     public function schemes()
     {
-        return Scheme::all();
+        return Scheme::orderBy('id', 'desc')->get();
     }
 
     public function banners()

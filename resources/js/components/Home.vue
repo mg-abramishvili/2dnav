@@ -6,7 +6,7 @@
                 <div class="col-4-f">
                     <div class="sidebar">
                         <div class="sidebar-header">
-                            logo
+                            <img :src="setup.logo">
                         </div>
                         <div v-for="banner in banners" :key="banner.id" class="sidebar-banner-slide" v-bind:style="{ 'background-image': 'url(' + banner.adfile + ')' }">
                         </div>
@@ -14,15 +14,21 @@
                 </div>
                 <div class="col-8-f">
                     <div class="buttons-bar">
-                        buttons
+                        <div class="row">
+                            <div class="col-3">
+                                <button @click="home_panel_button()">Дом</button>
+                            </div>
+                            <div class="col-3">
+                                <button @click="search_panel_button()">Поиск</button>
+                            </div>
+                            <div class="col-3">
+                                <button @click="category_panel_button()">Категории</button>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="row" style="padding: 2vh; padding-top: 0;">
                         <div v-if="search_panel" class="search_panel">
-                            <button
-                            @click="search_panel_button_close()"
-                            style="position: absolute; width: 4vh; height: 4vh; background-color: #976545; color: #fff; font-size: 3vh; line-height: 3vh; text-align: center; border: 0; border-radius: 100%; right: 0; margin-top: -3vh; margin-right: -1.5vh;"
-                            >&times;</button>
 
                             <input
                             :value="input"
@@ -37,7 +43,10 @@
                             </ul>
                             <SimpleKeyboard @onChange="onChange" @onKeyPress="onKeyPress" :input="input"/>
                         </div>
-                        <button v-if="search_panel === false" @click="search_panel_button()" class="search_button">Поиск</button>
+
+                        <div v-if="category_panel">
+                            категории
+                        </div>
 
                         <div class="col-12" style="order: 1;"> 
                             <div class="route_about">
@@ -163,7 +172,7 @@
                                 <!-- STORES -->
                                 <div v-for="store in stores" :key="'store' + store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px' }">
                                     <span v-for="store_route in store.routes" :key="store_route.id" @click="SelectRoute(store_route)">
-                                        {{ store.title }}
+                                        <!--{{ store.title }}-->
                                     </span>
                                 </div>
                             
@@ -184,6 +193,7 @@
     export default {
         data() {
             return {
+                setup: {},
                 banners: [],
                 schemes: [],
                 map: {},
@@ -197,10 +207,16 @@
                 selectedItem: '',
                 input: '',
                 current_slide: 1,
+                category_panel: false,
                 search_panel: false,
             }
         },
         created() {
+            fetch('/api/setup/')
+                .then(response => response.json())
+                .then(json => {
+                    this.setup = json;
+                });
             fetch('/api/schemes/')
                 .then(response => response.json())
                 .then(json => {
@@ -236,6 +252,7 @@
         },
         methods: {
             SelectRoute(routeListItem) {
+                this.search_panel = false;
                 this.selectedItemID = routeListItem.id;
                 this.selectedItem = routeListItem.title;
                 this.selectedItemSchemeID = routeListItem.scheme_id;
@@ -280,13 +297,18 @@
             onInputChange(input) {
                 this.input = input.target.value;
             },
-
+            home_panel_button() {
+                this.category_panel = false;
+                this.search_panel = false;
+            },
             search_panel_button() {
+                this.category_panel = false;
                 this.search_panel = true;
             },
-            search_panel_button_close() {
+            category_panel_button() {
                 this.search_panel = false;
-            }
+                this.category_panel = true;
+            },
         },
         components: {
             SimpleKeyboard
@@ -312,7 +334,7 @@
     }
 
     .route_about {
-        color: #fff;
+        color: #333;
         text-align: center;
     }
 
@@ -322,7 +344,7 @@
     }
 
     #map {
-        transform: scale(1.253);
+        transform: scale(1.5);
         transform-origin: 0 0;
         margin-top: -4vh;
         margin-bottom: 11vh;
@@ -344,8 +366,8 @@
     .search_panel {
         position: absolute;
         z-index: 10;
-        width: 50vw;
-        top: 0;
+        width: 71vw;
+        top: 20vh;
         margin-top: 0;
         background: #fff;
         padding: 1.5vh;

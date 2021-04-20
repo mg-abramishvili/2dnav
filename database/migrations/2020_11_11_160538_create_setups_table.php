@@ -6,25 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSetupsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('setups', function (Blueprint $table) {
             $table->id();
+            $table->string('logo');
             $table->string('color');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('setups');

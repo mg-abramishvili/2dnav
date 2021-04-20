@@ -303,10 +303,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      setup: {},
       banners: [],
       schemes: [],
       map: {},
@@ -320,12 +330,18 @@ __webpack_require__.r(__webpack_exports__);
       selectedItem: '',
       input: '',
       current_slide: 1,
+      category_panel: false,
       search_panel: false
     };
   },
   created: function created() {
     var _this = this;
 
+    fetch('/api/setup/').then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      _this.setup = json;
+    });
     fetch('/api/schemes/').then(function (response) {
       return response.json();
     }).then(function (json) {
@@ -365,6 +381,7 @@ __webpack_require__.r(__webpack_exports__);
     SelectRoute: function SelectRoute(routeListItem) {
       var _this3 = this;
 
+      this.search_panel = false;
       this.selectedItemID = routeListItem.id;
       this.selectedItem = routeListItem.title;
       this.selectedItemSchemeID = routeListItem.scheme_id;
@@ -402,11 +419,17 @@ __webpack_require__.r(__webpack_exports__);
     onInputChange: function onInputChange(input) {
       this.input = input.target.value;
     },
+    home_panel_button: function home_panel_button() {
+      this.category_panel = false;
+      this.search_panel = false;
+    },
     search_panel_button: function search_panel_button() {
+      this.category_panel = false;
       this.search_panel = true;
     },
-    search_panel_button_close: function search_panel_button_close() {
+    category_panel_button: function category_panel_button() {
       this.search_panel = false;
+      this.category_panel = true;
     }
   },
   components: {
@@ -530,7 +553,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about[data-v-f2b6376c] {\n    height: 10vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #fff;\n    text-align: center;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 0.5vh 2vh;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.253);\n    transform-origin: 0 0;\n    margin-top: -4vh;\n    margin-bottom: 11vh;\n}\n#myUL[data-v-f2b6376c] {\n    height: 28vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 50vw;\n    top: 0;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n", ""]);
+exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about[data-v-f2b6376c] {\n    height: 10vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: 1vh;\n    z-index: 10;\n}\n.route_about[data-v-f2b6376c] {\n    color: #333;\n    text-align: center;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 0.5vh 2vh;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.5);\n    transform-origin: 0 0;\n    margin-top: -4vh;\n    margin-bottom: 11vh;\n}\n#myUL[data-v-f2b6376c] {\n    height: 28vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 71vw;\n    top: 20vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: #976545;\n    color: #fff;\n    font-size: 1.25vh;\n    padding: 0.5vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 30vw;\n    border-radius: 1vh;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n", ""]);
 
 // exports
 
@@ -23341,7 +23364,7 @@ var render = function() {
             { staticClass: "sidebar" },
             [
               _c("div", { staticClass: "sidebar-header" }, [
-                _vm._v("\n                        logo\n                    ")
+                _c("img", { attrs: { src: _vm.setup.logo } })
               ]),
               _vm._v(" "),
               _vm._l(_vm.banners, function(banner) {
@@ -23358,7 +23381,49 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-8-f" }, [
           _c("div", { staticClass: "buttons-bar" }, [
-            _vm._v("\n                    buttons\n                ")
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-3" }, [
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.home_panel_button()
+                      }
+                    }
+                  },
+                  [_vm._v("Дом")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-3" }, [
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.search_panel_button()
+                      }
+                    }
+                  },
+                  [_vm._v("Поиск")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-3" }, [
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.category_panel_button()
+                      }
+                    }
+                  },
+                  [_vm._v("Категории")]
+                )
+              ])
+            ])
           ]),
           _vm._v(" "),
           _c(
@@ -23373,33 +23438,6 @@ var render = function() {
                     "div",
                     { staticClass: "search_panel" },
                     [
-                      _c(
-                        "button",
-                        {
-                          staticStyle: {
-                            position: "absolute",
-                            width: "4vh",
-                            height: "4vh",
-                            "background-color": "#976545",
-                            color: "#fff",
-                            "font-size": "3vh",
-                            "line-height": "3vh",
-                            "text-align": "center",
-                            border: "0",
-                            "border-radius": "100%",
-                            right: "0",
-                            "margin-top": "-3vh",
-                            "margin-right": "-1.5vh"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.search_panel_button_close()
-                            }
-                          }
-                        },
-                        [_vm._v("×")]
-                      ),
-                      _vm._v(" "),
                       _c("input", {
                         staticClass: "input",
                         attrs: { placeholder: "Поиск..." },
@@ -23442,19 +23480,12 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _vm.search_panel === false
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "search_button",
-                      on: {
-                        click: function($event) {
-                          return _vm.search_panel_button()
-                        }
-                      }
-                    },
-                    [_vm._v("Поиск")]
-                  )
+              _vm.category_panel
+                ? _c("div", [
+                    _vm._v(
+                      "\n                        категории\n                    "
+                    )
+                  ])
                 : _vm._e(),
               _vm._v(" "),
               _c(
@@ -25133,24 +25164,14 @@ var render = function() {
                             }
                           },
                           _vm._l(store.routes, function(store_route) {
-                            return _c(
-                              "span",
-                              {
-                                key: store_route.id,
-                                on: {
-                                  click: function($event) {
-                                    return _vm.SelectRoute(store_route)
-                                  }
+                            return _c("span", {
+                              key: store_route.id,
+                              on: {
+                                click: function($event) {
+                                  return _vm.SelectRoute(store_route)
                                 }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(store.title) +
-                                    "\n                                "
-                                )
-                              ]
-                            )
+                              }
+                            })
                           }),
                           0
                         )

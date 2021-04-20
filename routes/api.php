@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::get('setup','App\Http\Controllers\ApiController@setup');
+
 Route::get('schemes','App\Http\Controllers\ApiController@schemes');
 
 Route::get('stores','App\Http\Controllers\ApiController@stores');

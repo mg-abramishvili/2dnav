@@ -9,23 +9,23 @@ use Illuminate\Support\Str;
 
 class SchemeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::table('schemes')->insert([
             [
             'id' => '1',
             'title' => 'Этаж 1',
-            'image' => '/img/map.png',
+            'image' => '/img/urs/01.png',
             ],
             [
             'id' => '2',
             'title' => 'Этаж 2',
-            'image' => '/img/map2.png',
+            'image' => '/img/urs/02.png',
+            ],
+            [
+            'id' => '3',
+            'title' => 'Этаж 3',
+            'image' => '/img/urs/03.png',
             ],
         ]);
     }
