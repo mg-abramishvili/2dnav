@@ -6,6 +6,7 @@ use App\Models\Setup;
 use App\Models\Ad;
 use App\Models\Scheme;
 use App\Models\Store;
+use App\Models\Tag;
 use App\Models\Route;
 use App\Http\Resources\RouteResource;
 use Illuminate\Http\Request;
@@ -30,6 +31,11 @@ class ApiController extends Controller
     public function stores()
     {
         return Store::with('routes')->get();
+    }
+
+    public function tags()
+    {
+        return Tag::all();
     }
 
     public function routes()

@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     
-                    <div class="row" style="padding: 2vh; padding-top: 0;">
+                    <div>
                         <div v-if="search_panel" class="search_panel">
 
                             <input
@@ -44,8 +44,14 @@
                             <SimpleKeyboard @onChange="onChange" @onKeyPress="onKeyPress" :input="input"/>
                         </div>
 
-                        <div v-if="category_panel">
-                            категории
+                        <div v-if="category_panel" class="category_panel">
+                            <div class="row">
+                                <div v-for="tag in tags" :key="tag.id" class="col-3">
+                                    <div class="category_item">
+                                        {{ tag.title }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-12" style="order: 1;"> 
@@ -205,6 +211,7 @@
                 routes: {},
                 route: {},
                 stores: {},
+                tags: {},
                 selectedItemID: '',
                 selectedItemSchemeID: '',
                 selectedItemScheme2ID: '',
@@ -231,6 +238,11 @@
                 .then(response => response.json())
                 .then(json => {
                     this.stores = json;
+                });
+            fetch('/api/tags/')
+                .then(response => response.json())
+                .then(json => {
+                    this.tags = json;
                 });
             fetch('/api/routes')
                 .then(response => response.json())
@@ -374,6 +386,7 @@
         position: absolute;
         z-index: 10;
         width: 71vw;
+        height: 80vh;
         top: 20vh;
         margin-top: 0;
         background: #fff;
@@ -412,5 +425,23 @@
         padding: 1vh 2vh;
         font-size: 1.5vh;
         z-index: 10;
+    }
+
+    .category_panel {
+        position: absolute;
+        z-index: 10;
+        width: 71vw;
+        height: 80vh;
+        top: 20vh;
+        margin-top: 0;
+        background: #fff;
+        padding: 1.5vh;
+    }
+
+    .category_item {
+        height: 15vh;
+        padding: 2vh;
+        margin: 2vh;
+        border: 0.1vh solid #888;
     }
 </style>
