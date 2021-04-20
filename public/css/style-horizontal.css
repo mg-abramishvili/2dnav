@@ -89,6 +89,7 @@
     font-size: 2.5vh;
     box-shadow: none;
     height: 9vh;
+    position: relative;
 }
 
 .buttons-bar .col-3:last-child button {
@@ -96,8 +97,19 @@
 }
 
 .buttons-bar button:focus {
-    background-color: #68D94C;
+    background-color: rgb(226, 226, 226);
     outline: none;
+}
+
+.buttons-bar button img {
+    width: auto;
+    height: auto;
+    max-width: 6vh;
+    height: 6vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 /* BUTTONS BAR */

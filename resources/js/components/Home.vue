@@ -16,13 +16,19 @@
                     <div class="buttons-bar">
                         <div class="row">
                             <div class="col-3">
-                                <button @click="home_panel_button()">Дом</button>
+                                <button @click="home_panel_button()">
+                                    <img src="/img/urs/map.svg">
+                                </button>
                             </div>
                             <div class="col-3">
-                                <button @click="search_panel_button()">Поиск</button>
+                                <button @click="search_panel_button()">
+                                    <img src="/img/urs/search.svg">
+                                </button>
                             </div>
                             <div class="col-3">
-                                <button @click="category_panel_button()">Категории</button>
+                                <button @click="category_panel_button()">
+                                    <img src="/img/urs/cats.svg">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -36,11 +42,13 @@
                             @input="onInputChange"
                             placeholder="Поиск..."
                             >
-                            <ul id="myUL" style="margin-top: 0.5vh;">
-                                <li v-for="routeListItem in filtered_routes" :key="routeListItem.id" @click="SelectRoute(routeListItem)">
-                                    <a>{{ routeListItem.title }}</a>
-                                </li>
-                            </ul>
+                            <div id="myUL" class="row" style="margin-top: 0.5vh;">
+                                <div v-for="routeListItem in filtered_routes" :key="routeListItem.id" @click="SelectRoute(routeListItem)" class="col-3">
+                                    <div v-for="rl_st in routeListItem.stores" :key="rl_st.id" class="rl_st_item">
+                                        <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + rl_st.logo + ')' }"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <SimpleKeyboard @onChange="onChange" @onKeyPress="onKeyPress" :input="input"/>
                         </div>
 
@@ -61,8 +69,8 @@
                                         <img :src="rt.logo" class="display: inline-block; vertical-align:middle;">
                                         <i style="display:inline-block; vertical-align:middle;">
                                             <div v-for="scheme in schemes" :key="scheme.id">
-                                                <div v-if="scheme.id == selectedItemSchemeID && current_slide === 1" class="scheme_title scheme_title_first">{{ scheme.title}}</div>
-                                                <div v-if="scheme.id == selectedItemScheme2ID  && current_slide === 2" class="scheme_title scheme_title_second">{{ scheme.title}}</div>
+                                                <div v-if="scheme.id == selectedItemSchemeID && current_slide === 1" class="scheme_title scheme_title_first">Уровень {{ scheme.title}}</div>
+                                                <div v-if="scheme.id == selectedItemScheme2ID  && current_slide === 2" class="scheme_title scheme_title_second">Уровень {{ scheme.title}}</div>
                                             </div>
                                             {{ rt.title }}
                                         </i>
@@ -78,7 +86,7 @@
                             </button>
 
                             <div class="floor_buttons">
-                                <button v-for="scheme in schemes" :key="scheme.id" @click="SelectFloor(scheme)">
+                                <button v-for="scheme in schemes.slice().reverse()" :key="scheme.id" @click="SelectFloor(scheme)">
                                     {{ scheme.title }}
                                 </button>
                             </div>
@@ -331,6 +339,7 @@
             SelectFloor(scheme) {
                 this.current_floor = scheme.id.toString();
                 this.current_slide = 0;
+                this.route_about = false;
             },
         },
         components: {
@@ -349,12 +358,6 @@
     .route_about span {
         display:block;
         width: 100%;
-    }
-
-    .prevnextbutton {
-        position: absolute;
-        bottom: 1vh;
-        z-index: 10;
     }
 
     .route_about {
@@ -414,6 +417,7 @@
     .map-marker span {
         display: block;
         background-color: yellow;
+        background-color: transparent;
     }
 
     .search_panel {
@@ -429,14 +433,19 @@
     }
 
     .prevnextbutton {
-        background-color: #976545;
+        position: absolute;
+        bottom: -16vh;
+        z-index: 1;
+    }
+
+    .prevnextbutton {
+        background-color: rgb(148, 148, 148);
         color: #fff;
-        font-size: 1.25vh;
-        padding: 0.5vh 2vh;
+        font-size: 1.75vh;
+        padding: 1vh 2vh;
         display: block;
         margin: 0 auto;
-        width: 30vw;
-        border-radius: 1vh;
+        width: 20vw;
         left: 0;
         right: 0;
         border: 0;
@@ -448,6 +457,29 @@
 
     #myUL li a {
         font-size: 1.5vh;
+    }
+
+    #myUL {
+        margin-right: -1vh;
+        margin-left: -1vh;
+    }
+
+    #myUL .col-3 {
+        padding-right: 1vh;
+        padding-left: 1vh;
+    }
+
+    .rl_st_item {
+        padding: 3vh;
+        border: 0.2vh solid #a1a1a1;
+        margin-top: 2vh;
+    }
+
+    .rl_st_item_image {
+        height: 15vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
     }
 
     .search_button {
@@ -484,7 +516,26 @@
     .floor_buttons {
         position: absolute;
         right: 4vh;
-        top: 35vh;
+        top: 20vh;
         z-index: 5;
+    }
+
+    .floor_buttons button {
+        display: block;
+        width: 8vh;
+        height: 8vh;
+        border: 0.2vh solid #68D94C;
+        background: none;
+        font-size: 3vh;
+        margin-bottom: 2vh;
+        border-radius: 1vh;
+        font-weight: bold;
+        color: #68D94C;
+    }
+
+    .floor_buttons button:focus {
+        outline: none;
+        background-color: #ccc;
+        color: #fff;
     }
 </style>

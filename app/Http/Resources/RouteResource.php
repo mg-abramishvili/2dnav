@@ -19,6 +19,7 @@ class RouteResource extends JsonResource
 			'title' => $this->title,
 			'scheme_id' => $this->scheme_id,
 			'scheme2_id' => $this->scheme2_id,
+            'stores' => $this->stores,
 		];
         //return parent::toArray($request);
     }

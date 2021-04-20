@@ -40,7 +40,7 @@ class ApiController extends Controller
 
     public function routes()
 	{
-		return RouteResource::collection(Route::with('schemes')->orderBy('created_at', 'asc')->get());
+		return RouteResource::collection(Route::with('schemes', 'stores')->orderBy('created_at', 'asc')->get());
 	}
 	
 	public function routeItem($id)
