@@ -81,6 +81,8 @@ class StoreController extends Controller
             'schemes' => 'required',
             'x_01' => 'required',
             'y_01' => 'required',
+            'd_w' => 'required',
+            'd_h' => 'required',
         ]);
 
         $data = request()->all();
@@ -88,6 +90,8 @@ class StoreController extends Controller
         $stores->title = $data['title'];
         $stores->x_01 = $data['x_01'];
         $stores->y_01 = $data['y_01'];
+        $stores->d_w = $data['d_w'];
+        $stores->d_h = $data['d_h'];
         $stores->save();
         $stores->schemes()->attach($request->schemes, ['store_id' => $stores->id]);
         $stores->tags()->attach($request->tags, ['store_id' => $stores->id]);

@@ -344,6 +344,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -591,7 +592,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about span[data-v-f2b6376c] {\n    display:block;\n    width: 100%;\n}\n.route_about[data-v-f2b6376c] {\n    color: #333;\n    position: absolute;\n    bottom: -32vh;\n    border: 0.1vh solid #888;\n    padding: 2vh;\n    left: 4vh;\n    right: 4vh;\n    height: 12vh;\n}\n.route_about img[data-v-f2b6376c] {\n    width: auto;\n    height: auto;\n    max-width: 30vw;\n    max-height: 8vh;\n    margin-right: 5vh;\n}\n.route_about i[data-v-f2b6376c] {\n    font-style: normal;\n    font-size: 3vh;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 2vh 2vh;\n    font-size: 2.5vh;\n    border: 0.2vh solid #A1A1A1;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.5);\n    transform-origin: 0 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n#myUL[data-v-f2b6376c] {\n    height: 45vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    margin-left: -12px;\n    margin-top: -12px;\n    min-width: 25px;\n    min-height: 25px;\n    z-index: 5;\n}\n.map-marker span[data-v-f2b6376c] {\n    display: block;\n    background-color: yellow;\n    background-color: transparent;\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: -16vh;\n    z-index: 1;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: rgb(148, 148, 148);\n    color: #fff;\n    font-size: 1.75vh;\n    padding: 1vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 20vw;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n#myUL[data-v-f2b6376c] {\n    margin-right: -1vh;\n    margin-left: -1vh;\n}\n#myUL .col-3[data-v-f2b6376c] {\n    padding-right: 1vh;\n    padding-left: 1vh;\n}\n.rl_st_item[data-v-f2b6376c] {\n    padding: 3vh;\n    border: 0.2vh solid #a1a1a1;\n    margin-top: 2vh;\n}\n.rl_st_item_image[data-v-f2b6376c] {\n    height: 15vh;\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-position: 50% 50%;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n.category_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.category_item[data-v-f2b6376c] {\n    height: 15vh;\n    padding: 2vh;\n    margin: 2vh;\n    border: 0.1vh solid #888;\n}\n.floor_buttons[data-v-f2b6376c] {\n    position: absolute;\n    right: 4vh;\n    top: 20vh;\n    z-index: 5;\n}\n.floor_buttons button[data-v-f2b6376c] {\n    display: block;\n    width: 8vh;\n    height: 8vh;\n    border: 0.2vh solid #68D94C;\n    background: none;\n    font-size: 3vh;\n    margin-bottom: 2vh;\n    border-radius: 1vh;\n    font-weight: bold;\n    color: #68D94C;\n}\n.floor_buttons button[data-v-f2b6376c]:focus {\n    outline: none;\n    background-color: #ccc;\n    color: #fff;\n}\n", ""]);
+exports.push([module.i, "\n.scheme_images[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n.route_about span[data-v-f2b6376c] {\n    display:block;\n    width: 100%;\n}\n.route_about[data-v-f2b6376c] {\n    color: #333;\n    position: absolute;\n    bottom: -32vh;\n    border: 0.1vh solid #888;\n    padding: 2vh;\n    left: 4vh;\n    right: 4vh;\n    height: 12vh;\n}\n.route_about img[data-v-f2b6376c] {\n    width: auto;\n    height: auto;\n    max-width: 30vw;\n    max-height: 8vh;\n    margin-right: 5vh;\n}\n.route_about i[data-v-f2b6376c] {\n    font-style: normal;\n    font-size: 3vh;\n}\n.input[data-v-f2b6376c] {\n    width: 100%;\n    padding: 2vh 2vh;\n    font-size: 2.5vh;\n    border: 0.2vh solid #A1A1A1;\n}\n#map[data-v-f2b6376c] {\n    transform: scale(1.5);\n    transform-origin: 0 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n#myUL[data-v-f2b6376c] {\n    height: 45vh;\n}\n.map-marker[data-v-f2b6376c] {\n    position: absolute;\n    z-index:10;\n    width: auto;\n    height: auto;\n    min-width: 25px;\n    min-height: 25px;\n    z-index: 5;\n}\n.map-marker span[data-v-f2b6376c] {\n    display: block;\n    height: 100%;\n    /*background-color: rgba(255, 255, 0, 0.5);*/\n}\n.search_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    position: absolute;\n    bottom: -16vh;\n    z-index: 1;\n}\n.prevnextbutton[data-v-f2b6376c] {\n    background-color: rgb(148, 148, 148);\n    color: #fff;\n    font-size: 1.75vh;\n    padding: 1vh 2vh;\n    display: block;\n    margin: 0 auto;\n    width: 20vw;\n    left: 0;\n    right: 0;\n    border: 0;\n}\n.prevnextbutton[data-v-f2b6376c]:focus {\n    outline: none;\n}\n#myUL li a[data-v-f2b6376c] {\n    font-size: 1.5vh;\n}\n#myUL[data-v-f2b6376c] {\n    margin-right: -1vh;\n    margin-left: -1vh;\n}\n#myUL .col-3[data-v-f2b6376c] {\n    padding-right: 1vh;\n    padding-left: 1vh;\n}\n.rl_st_item[data-v-f2b6376c] {\n    padding: 3vh;\n    border: 0.2vh solid #a1a1a1;\n    margin-top: 2vh;\n}\n.rl_st_item_image[data-v-f2b6376c] {\n    height: 15vh;\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-position: 50% 50%;\n}\n.search_button[data-v-f2b6376c] {\n    position: absolute;\n    top: 0;\n    right: 0;\n    background-color: rgba(255,255,255,0.5);\n    border: 0;\n    color: #222;\n    padding: 1vh 2vh;\n    font-size: 1.5vh;\n    z-index: 10;\n}\n.category_panel[data-v-f2b6376c] {\n    position: absolute;\n    z-index: 10;\n    width: 100vw;\n    height: 85vh;\n    top: 15vh;\n    margin-top: 0;\n    background: #fff;\n    padding: 1.5vh;\n    margin-left: -29vw;\n}\n.category_item[data-v-f2b6376c] {\n    height: 15vh;\n    padding: 2vh;\n    margin: 2vh;\n    border: 0.1vh solid #888;\n}\n.floor_buttons[data-v-f2b6376c] {\n    position: absolute;\n    right: 4vh;\n    top: 20vh;\n    z-index: 5;\n}\n.floor_buttons button[data-v-f2b6376c] {\n    display: block;\n    width: 8vh;\n    height: 8vh;\n    border: 0.2vh solid #68D94C;\n    background: none;\n    font-size: 3vh;\n    margin-bottom: 2vh;\n    border-radius: 1vh;\n    font-weight: bold;\n    color: #68D94C;\n}\n.floor_buttons button[data-v-f2b6376c]:focus {\n    outline: none;\n    background-color: #ccc;\n    color: #fff;\n}\n", ""]);
 
 // exports
 
@@ -25287,15 +25288,16 @@ var render = function() {
                           staticClass: "map-marker",
                           style: {
                             left: store.x_01 + "px",
-                            top: store.y_01 + "px"
+                            top: store.y_01 + "px",
+                            width: store.d_w + "px",
+                            height: store.d_h + "px"
                           }
                         },
-                        _vm._l(store.schemes, function(s_scheme) {
-                          return _c("div", { key: s_scheme.id }, [
-                            s_scheme.pivot.scheme_id === _vm.current_floor
-                              ? _c(
-                                  "div",
-                                  _vm._l(store.routes, function(store_route) {
+                        [
+                          _vm._l(store.schemes, function(s_scheme) {
+                            return [
+                              s_scheme.pivot.scheme_id === _vm.current_floor
+                                ? _vm._l(store.routes, function(store_route) {
                                     return _c(
                                       "span",
                                       {
@@ -25307,18 +25309,47 @@ var render = function() {
                                         }
                                       },
                                       [
-                                        _vm._v(
-                                          "\n                                             \n                                        "
+                                        _c(
+                                          "svg",
+                                          {
+                                            attrs: {
+                                              viewBox:
+                                                "0 0" +
+                                                " " +
+                                                store.d_w +
+                                                " " +
+                                                store.d_h
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "text",
+                                              {
+                                                staticStyle: {
+                                                  "text-transform": "uppercase",
+                                                  color: "#fff"
+                                                },
+                                                attrs: {
+                                                  x: store.d_w / 2,
+                                                  y: store.d_h / 2,
+                                                  "text-anchor": "middle",
+                                                  "alignment-baseline":
+                                                    "middle",
+                                                  "font-size": store.d_w * 0.15
+                                                }
+                                              },
+                                              [_vm._v(_vm._s(store.title))]
+                                            )
+                                          ]
                                         )
                                       ]
                                     )
-                                  }),
-                                  0
-                                )
-                              : _vm._e()
-                          ])
-                        }),
-                        0
+                                  })
+                                : _vm._e()
+                            ]
+                          })
+                        ],
+                        2
                       )
                     })
                   ],

@@ -197,15 +197,16 @@
                                 </svg>
 
                                 <!-- STORES -->
-                                <div v-for="store in stores" :key="'store' + store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px' }">
-                                    <div v-for="s_scheme in store.schemes" :key="s_scheme.id">
-                                        <div v-if="s_scheme.pivot.scheme_id === current_floor">
+                                <div v-for="store in stores" :key="'store' + store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                    <template v-for="s_scheme in store.schemes">
+                                        <template v-if="s_scheme.pivot.scheme_id === current_floor">
                                             <span v-for="store_route in store.routes" :key="store_route.id" @click="SelectRoute(store_route)">
-                                                <!--{{ store.title }}-->
-                                                &nbsp;
+                                                <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
+                                                    <text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>
+                                                </svg>
                                             </span>
-                                        </div>
-                                    </div>
+                                        </template>
+                                    </template>
                                 </div>
                             
                             </div>
@@ -407,8 +408,6 @@
         z-index:10;
         width: auto;
         height: auto;
-        margin-left: -12px;
-        margin-top: -12px;
         min-width: 25px;
         min-height: 25px;
         z-index: 5;
@@ -416,8 +415,8 @@
 
     .map-marker span {
         display: block;
-        background-color: yellow;
-        background-color: transparent;
+        height: 100%;
+        /*background-color: rgba(255, 255, 0, 0.5);*/
     }
 
     .search_panel {

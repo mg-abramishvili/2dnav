@@ -19,6 +19,8 @@ class CreateStoresTable extends Migration
             $table->string('logo')->nullable();
             $table->string('x_01');
             $table->string('y_01');
+            $table->string('d_w');
+            $table->string('d_h');
             $table->timestamps();
         });
     }
