@@ -7,9 +7,9 @@
             color: white;
             font-size: 14px;
             font-family: sans-serif;
-            padding: 15px;
             margin: 0;
-            width: 120px;
+            width: 80px;
+            height: 80px;
             box-sizing: border-box;
             text-align: center;
         }
@@ -78,7 +78,7 @@
         <div class="resize-container">
             <a href="#" id="button"></a>
             <div class="resize-drag">
-               &times;
+               <!--&times;-->
             </div>
         </div>
     </div>
