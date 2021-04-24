@@ -27,11 +27,6 @@
     border: 1px solid #ccc;
 }
 
-.sidebar {
-    background-color: rgb(78, 201, 78);
-    height: 100vh;
-}
-
 .col-4-f {
     -ms-flex: 0 0 29%;
     flex: 0 0 29%;
@@ -44,11 +39,17 @@
     max-width: 71%;
 }
 
+
+
+/* SIDEBAR */
+.sidebar {
+    background-color: rgb(78, 201, 78);
+    height: 100vh;
+}
 .sidebar-header {
     height: 15vh;
     padding-top: 2vh;
 }
-
 .sidebar-header img {
     width: auto;
     height: auto;
@@ -57,28 +58,27 @@
     display: block;
     margin: 0 auto;
 }
-
 .sidebar-banner-slide {
     background-size: cover;
     background-position: 50% 50%;
     height: 85vh;
 }
+/* SIDEBAR */
+
+
 
 /* BUTTONS BAR */
-
 .buttons-bar {
     height: 12vh;
     padding-top: 3vh;
     padding-left: 4vh;
     padding-right: 4vh;
 }
-
 .buttons-bar .col-3 {
     -ms-flex: 0 0 20%;
     flex: 0 0 20%;
     max-width: 20%;
 }
-
 .buttons-bar button {
     width: 100%;
     background: none;
@@ -91,16 +91,13 @@
     height: 9vh;
     position: relative;
 }
-
 .buttons-bar .col-3:last-child button {
     border-right: 0.2vh solid #68D94C;
 }
-
 .buttons-bar button:focus {
     background-color: rgb(226, 226, 226);
     outline: none;
 }
-
 .buttons-bar button img {
     width: auto;
     height: auto;
@@ -111,11 +108,100 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
-
 /* BUTTONS BAR */
 
-/* ROUTES */
 
+
+/* SEARCH PANEL */
+.search_panel {
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
+    height: 85vh;
+    top: 15vh;
+    margin-top: 0;
+    background: #fff;
+    padding: 1.5vh;
+    margin-left: -29vw;
+}
+.input {
+    width: 100%;
+    padding: 2vh 2vh;
+    font-size: 2.5vh;
+    border: 0.2vh solid #A1A1A1;
+}
+#myUL {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    height: 50vh;
+    overflow-y: auto;
+}
+#myUL li {
+    display: block;
+    background-color: #fff;
+    margin-bottom: 1vh;
+}
+#myUL li a {
+    display: block;
+    color: #222;
+    font-size: 2vh;
+    font-weight: 700;
+    border: 0.25vh solid #96dbfc;
+    padding: 1vh 2vh;
+}
+#myUL {
+    height: 45vh;
+}
+#myUL li a {
+    font-size: 1.5vh;
+}
+#myUL {
+    margin-right: -1vh;
+    margin-left: -1vh;
+}
+#myUL .col-3 {
+    padding-right: 1vh;
+    padding-left: 1vh;
+}
+.rl_st_item {
+    padding: 3vh;
+    border: 0.2vh solid #a1a1a1;
+    margin-top: 2vh;
+}
+.rl_st_item_image {
+    height: 15vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+/* SEARCH PANEL */
+
+
+
+/* CATEGORIES PANEL */
+.category_panel {
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
+    height: 85vh;
+    top: 15vh;
+    margin-top: 0;
+    background: #fff;
+    padding: 1.5vh;
+    margin-left: -29vw;
+}
+.category_item {
+    height: 15vh;
+    padding: 2vh;
+    margin: 2vh;
+    border: 0.1vh solid #888;
+}
+/* CATEGORIES PANEL */
+
+
+
+/* ROUTES & MAP */
 .key-anim01,
 .key-anim02,
 .key-anim03,
@@ -132,7 +218,6 @@
     stroke-dashoffset: -2000;
     animation: Drawpath 20s linear infinite;
 }
-
 @keyframes Drawpath {
     from {
         stroke-dashoffset: -2000;
@@ -141,7 +226,6 @@
         stroke-dashoffset: 0;
     }
 }
-
 .wrapperm {
     width: 800px;
     height: 450px;
@@ -150,27 +234,22 @@
     overflow: visible;
     background-color: #fff;
 }
-
 #wrapper-inner {
     width: 800px;
     height: 450px;
 }
-
 .map {
     margin-top: -4vh;
 }
-
 .map-slide {
     width: 100%;
 }
-
 .map img {
     width: 800px;
     height: 450px;
     display: block;
     margin: 0 auto;
 }
-
 .map-path {
     position: absolute;
     left: 0;
@@ -180,75 +259,112 @@
     width: 800px;
     height: 450px;
 }
-
-.muzei-route-sidebar {
-    background-color: #d6d6d6;
-    padding: 3vh;
-    background-color: #976545;
+.scheme_images {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-
-.muzei-route-sidebar input {
-    width: 100%;
-    padding: 0.5vh;
-    font-size: 2vh;
+#map {
+    transform: scale(1.5);
+    transform-origin: 0 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
-
-.routes-index {
-    padding: 4vh;
+.map-marker {
+    position: absolute;
+    z-index:10;
+    width: auto;
+    height: auto;
+    min-width: 25px;
+    min-height: 25px;
+    z-index: 5;
 }
-
-.keyboard {
-    margin-top: 0.5vh;
-    margin-bottom: 3vh;
-}
-
-.keyboard button {
-    width: 3.25vh;
-    height: 3.25vh;
-    line-height: 3.25vh;
-    margin-bottom: 0.5vh;
-    background-color: #fff;
-    font-size: 1.5vh;
-    text-align: center;
-    padding: 0;
-    border: 0.1vh solid;
-}
-
-.keyboard .globebutton {
-    width: 7vh;
-}
-
-.keyboard .spacebutton {
-    width: 10vh;
-}
-
-#myUL {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    height: 50vh;
-    overflow-y: auto;
-}
-
-#myUL li {
+.map-marker span {
     display: block;
-    background-color: #fff;
-    margin-bottom: 1vh;
+    height: 100%;
+    /*background-color: rgba(255, 255, 0, 0.5);*/
 }
-
-#myUL li a {
-    display: block;
-    color: #222;
-    font-size: 2vh;
-    font-weight: 700;
-    border: 0.25vh solid #96dbfc;
+.prevnextbutton {
+    position: absolute;
+    bottom: -16vh;
+    z-index: 1;
+}
+.prevnextbutton {
+    background-color: rgb(148, 148, 148);
+    color: #fff;
+    font-size: 1.75vh;
     padding: 1vh 2vh;
+    display: block;
+    margin: 0 auto;
+    width: 20vw;
+    left: 0;
+    right: 0;
+    border: 0;
 }
+.prevnextbutton:focus {
+    outline: none;
+}
+.floor_buttons {
+    position: absolute;
+    right: 4vh;
+    top: 20vh;
+    z-index: 5;
+}
+.floor_buttons button {
+    display: block;
+    width: 8vh;
+    height: 8vh;
+    border: 0.2vh solid #68D94C;
+    background: none;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    border-radius: 1vh;
+    font-weight: bold;
+    color: #68D94C;
+}
+.floor_buttons button:focus {
+    outline: none;
+    background-color: #ccc;
+    color: #fff;
+}
+/* ROUTES & MAP */
 
-/* ROUTES */
 
+
+/* ROUTE_ABOUT */
+.route_about span {
+    display:block;
+    width: 100%;
+}
+.route_about {
+    color: #333;
+    position: absolute;
+    bottom: -32vh;
+    border: 0.1vh solid #888;
+    padding: 2vh;
+    left: 4vh;
+    right: 4vh;
+    height: 12vh;
+}
+.route_about img {
+    width: auto;
+    height: auto;
+    max-width: 30vw;
+    max-height: 8vh;
+    margin-right: 5vh;
+}
+.route_about i {
+    font-style: normal;
+    font-size: 3vh;
+}
+/* ROUTE_ABOUT */
+
+
+
+/* KEYBOARD */
 .hg-theme-default .hg-button,
 .hg-theme-default .hg-button.hg-standardBtn {
     height: 5vh !important;
     font-size: 3vh !important;
 }
+/* KEYBOARD */
