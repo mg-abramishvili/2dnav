@@ -36,6 +36,8 @@
                 <div>
                     <SearchPanel v-show="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
 
+                    <CategoryPanel v-show="category_panel" />
+
                     <div class="col-12" style="padding: 4vh">
 
                         <div id="map" style="position: relative; width: 800px; height: 450px;">
@@ -84,6 +86,7 @@
     import CurrentRoutePathSlide1 from './CurrentRoutePathSlide1';
     import CurrentRoutePathSlide2 from './CurrentRoutePathSlide2';
     import SearchPanel from './SearchPanel';
+    import CategoryPanel from './CategoryPanel';
 
     export default {
         data() {
@@ -179,12 +182,17 @@
             search_panel_button() {
                 this.category_panel = false;
                 this.search_panel = true;
+            },
+            category_panel_button() {
+                this.search_panel = false;
+                this.category_panel = true;
             }
         },
         components: {
             CurrentRoutePathSlide1,
             CurrentRoutePathSlide2,
-            SearchPanel
+            SearchPanel,
+            CategoryPanel
         }
     }
 </script>
