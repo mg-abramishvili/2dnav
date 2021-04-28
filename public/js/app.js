@@ -134,11 +134,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       tags: {},
-      input: ''
+      stores: {},
+      category_panel_index: true
     };
   },
   created: function created() {
@@ -153,8 +168,19 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   methods: {
     SelectStoreRoute: function SelectStoreRoute(store_route) {
-      this.input = '', this.$emit('category_panel_store_route', {
+      this.category_panel_index = true;
+      this.$emit('category_panel_store_route', {
         category_panel_store_route: store_route
+      });
+    },
+    FilterCategory: function FilterCategory(tag) {
+      var _this2 = this;
+
+      this.category_panel_index = false;
+      fetch("/api/stores_category_filter/".concat(tag.title)).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        _this2.stores = json;
       });
     }
   },
@@ -480,6 +506,19 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (json) {
         _this3.current_store_route = json;
         _this3.current_slide = 1;
+      });
+    },
+    onCategoryPanelStoreRoute: function onCategoryPanelStoreRoute(data) {
+      var _this4 = this;
+
+      this.category_panel = false;
+      this.current_store_route = data.category_panel_store_route.id;
+      this.current_floor = data.category_panel_store_route.scheme_id;
+      fetch("/api/route/".concat(this.current_store_route)).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        _this4.current_store_route = json;
+        _this4.current_slide = 1;
       });
     },
     SelectFloor: function SelectFloor(scheme) {
@@ -23467,18 +23506,77 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "category_panel" }, [
-    _c(
-      "div",
-      { staticClass: "row" },
-      _vm._l(_vm.tags, function(tag) {
-        return _c("div", { key: tag.id, staticClass: "col-3" }, [
-          _c("div", { staticClass: "category_item" }, [
-            _vm._v("\n                " + _vm._s(tag.title) + "\n            ")
-          ])
+    _vm.category_panel_index
+      ? _c("div", { staticClass: "category_panel_index" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.tags, function(tag) {
+              return _c("div", { key: tag.id, staticClass: "col-3" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "category_item",
+                    on: {
+                      click: function($event) {
+                        return _vm.FilterCategory(tag)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(tag.title) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ])
+            }),
+            0
+          )
         ])
-      }),
-      0
-    )
+      : _c("div", { staticClass: "category_panel_inner" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.stores, function(store) {
+              return _c(
+                "div",
+                { key: store.id, staticClass: "col-3" },
+                _vm._l(store.routes, function(store_route) {
+                  return _c(
+                    "div",
+                    {
+                      key: store_route.id,
+                      staticClass: "rl_st_item",
+                      on: {
+                        click: function($event) {
+                          return _vm.SelectStoreRoute(store_route)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "rl_st_item_image",
+                        style: {
+                          "background-image": "url(" + store_route.logo + ")"
+                        }
+                      }),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(store.title) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            }),
+            0
+          )
+        ])
   ])
 }
 var staticRenderFns = []
@@ -24966,7 +25064,8 @@ var render = function() {
                   value: _vm.category_panel,
                   expression: "category_panel"
                 }
-              ]
+              ],
+              on: { category_panel_store_route: _vm.onCategoryPanelStoreRoute }
             }),
             _vm._v(" "),
             _c(

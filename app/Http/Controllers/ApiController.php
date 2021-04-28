@@ -33,6 +33,13 @@ class ApiController extends Controller
         return Store::with('routes', 'schemes')->get();
     }
 
+    public function stores_category_filter($title, Request $request)
+    {
+        return Store::with('routes', 'schemes')->whereHas('tags', function($q) use($title) {
+            $q->where('title', '=', $title);
+        })->get();
+    }
+
     public function tags()
     {
         return Tag::all();

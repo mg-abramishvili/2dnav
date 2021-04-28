@@ -36,7 +36,7 @@
                 <div>
                     <SearchPanel v-show="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
 
-                    <CategoryPanel v-show="category_panel" />
+                    <CategoryPanel v-show="category_panel" @category_panel_store_route="onCategoryPanelStoreRoute"/>
 
                     <div class="col-12" style="padding: 4vh">
 
@@ -156,6 +156,17 @@
                 this.search_panel = false
                 this.current_store_route = data.search_panel_store_route.id;
                 this.current_floor = data.search_panel_store_route.scheme_id
+                fetch(`/api/route/${this.current_store_route}`)
+                .then(response => response.json())
+                .then(json => {
+                    this.current_store_route = json;
+                    this.current_slide = 1;
+                });
+            },
+            onCategoryPanelStoreRoute(data) {
+                this.category_panel = false
+                this.current_store_route = data.category_panel_store_route.id;
+                this.current_floor = data.category_panel_store_route.scheme_id
                 fetch(`/api/route/${this.current_store_route}`)
                 .then(response => response.json())
                 .then(json => {
