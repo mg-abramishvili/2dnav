@@ -197,10 +197,6 @@
     margin: 2vh;
     border: 0.1vh solid #888;
 }
-
-.category_panel_inner {
-    
-}
 /* CATEGORIES PANEL */
 
 
@@ -335,33 +331,24 @@
 
 
 
-/* ROUTE_ABOUT */
-.route_about span {
-    display:block;
-    width: 100%;
-}
-.route_about {
-    color: #333;
+/* STORE_ROUTE_ABOUT */
+.store_route_about {
     position: absolute;
-    bottom: -32vh;
-    border: 0.1vh solid #888;
-    padding: 2vh;
-    left: 4vh;
-    right: 4vh;
-    height: 12vh;
+    left: 0;
+    top: 15vh;
+    background-color: rgb(245, 245, 245);
+    width: calc(29% + 2px);
+    height: calc(100vh - 15vh);
+    padding: 3vh;
 }
-.route_about img {
+
+.store_route_about img {
     width: auto;
     height: auto;
-    max-width: 30vw;
-    max-height: 8vh;
-    margin-right: 5vh;
+    max-width: 25vw;
+    max-height: 30vh;
 }
-.route_about i {
-    font-style: normal;
-    font-size: 3vh;
-}
-/* ROUTE_ABOUT */
+/* STORE_ROUTE_ABOUT */
 
 
 

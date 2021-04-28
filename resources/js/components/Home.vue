@@ -38,6 +38,8 @@
 
                     <CategoryPanel v-show="category_panel" @category_panel_store_route="onCategoryPanelStoreRoute"/>
 
+                    <RouteStoreAbout v-show="route_store_about_panel" v-bind:current_store_route="current_store_route" />
+
                     <div class="col-12" style="padding: 4vh">
 
                         <div id="map" style="position: relative; width: 800px; height: 450px;">
@@ -87,6 +89,7 @@
     import CurrentRoutePathSlide2 from './CurrentRoutePathSlide2';
     import SearchPanel from './SearchPanel';
     import CategoryPanel from './CategoryPanel';
+    import RouteStoreAbout from './RouteStoreAbout';
 
     export default {
         data() {
@@ -100,6 +103,7 @@
 
                 search_panel: false,
                 category_panel: false,
+                route_store_about_panel: false,
 
                 current_floor: '1',
                 current_store_route: {},
@@ -143,6 +147,7 @@
         methods: {
             SelectStoreRoute(store_route) {
                 this.search_panel = false
+                this.route_store_about_panel = true
                 this.current_store_route = store_route.id
                 this.current_floor = store_route.scheme_id
                 fetch(`/api/route/${this.current_store_route}`)
@@ -154,6 +159,7 @@
             },
             onSearchPanelStoreRoute(data) {
                 this.search_panel = false
+                this.route_store_about_panel = true
                 this.current_store_route = data.search_panel_store_route.id;
                 this.current_floor = data.search_panel_store_route.scheme_id
                 fetch(`/api/route/${this.current_store_route}`)
@@ -165,6 +171,7 @@
             },
             onCategoryPanelStoreRoute(data) {
                 this.category_panel = false
+                this.route_store_about_panel = true
                 this.current_store_route = data.category_panel_store_route.id;
                 this.current_floor = data.category_panel_store_route.scheme_id
                 fetch(`/api/route/${this.current_store_route}`)
@@ -203,7 +210,8 @@
             CurrentRoutePathSlide1,
             CurrentRoutePathSlide2,
             SearchPanel,
-            CategoryPanel
+            CategoryPanel,
+            RouteStoreAbout
         }
     }
 </script>

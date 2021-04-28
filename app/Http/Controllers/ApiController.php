@@ -30,7 +30,12 @@ class ApiController extends Controller
 
     public function stores()
     {
-        return Store::with('routes', 'schemes')->get();
+        return Store::with('routes', 'schemes', 'tags')->get();
+    }
+
+    public function storeItem($id)
+    {
+        return Store::where('id', $id)->with('tags')->first();
     }
 
     public function stores_category_filter($title, Request $request)

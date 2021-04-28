@@ -8,6 +8,7 @@ Route::get('setup','App\Http\Controllers\ApiController@setup');
 Route::get('schemes','App\Http\Controllers\ApiController@schemes');
 
 Route::get('stores','App\Http\Controllers\ApiController@stores');
+Route::get('/store/{id}','App\Http\Controllers\ApiController@storeItem');
 Route::get('stores_category_filter/{title}','App\Http\Controllers\ApiController@stores_category_filter');
 
 Route::get('tags','App\Http\Controllers\ApiController@tags');
