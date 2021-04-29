@@ -6,13 +6,15 @@
         @input="onInputChange"
         placeholder="Поиск..."
         >
+        <div id="myUL_wrapper">
         <div id="myUL" class="row" style="margin-top: 0.5vh;">
-            <div v-for="store in filtered_stores" :key="store.id" class="col-3">
+            <div v-for="store in filtered_stores" :key="store.id" class="col-2">
                 <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
-                    <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store_route.logo + ')' }"></div>
+                    <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store.logo + ')' }"></div>
                     {{ store.title }}
                 </div>
             </div>
+        </div>
         </div>
         <SimpleKeyboard @onChange="onChange" @onKeyPress="onKeyPress" :input="input"/>
     </div>

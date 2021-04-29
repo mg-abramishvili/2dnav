@@ -640,6 +640,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -25412,49 +25414,49 @@ var render = function() {
         on: { input: _vm.onInputChange }
       }),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "row",
-          staticStyle: { "margin-top": "0.5vh" },
-          attrs: { id: "myUL" }
-        },
-        _vm._l(_vm.filtered_stores, function(store) {
-          return _c(
-            "div",
-            { key: store.id, staticClass: "col-3" },
-            _vm._l(store.routes, function(store_route) {
-              return _c(
-                "div",
-                {
-                  key: store_route.id,
-                  staticClass: "rl_st_item",
-                  on: {
-                    click: function($event) {
-                      return _vm.SelectStoreRoute(store_route)
+      _c("div", { attrs: { id: "myUL_wrapper" } }, [
+        _c(
+          "div",
+          {
+            staticClass: "row",
+            staticStyle: { "margin-top": "0.5vh" },
+            attrs: { id: "myUL" }
+          },
+          _vm._l(_vm.filtered_stores, function(store) {
+            return _c(
+              "div",
+              { key: store.id, staticClass: "col-2" },
+              _vm._l(store.routes, function(store_route) {
+                return _c(
+                  "div",
+                  {
+                    key: store_route.id,
+                    staticClass: "rl_st_item",
+                    on: {
+                      click: function($event) {
+                        return _vm.SelectStoreRoute(store_route)
+                      }
                     }
-                  }
-                },
-                [
-                  _c("div", {
-                    staticClass: "rl_st_item_image",
-                    style: {
-                      "background-image": "url(" + store_route.logo + ")"
-                    }
-                  }),
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(store.title) +
-                      "\n            "
-                  )
-                ]
-              )
-            }),
-            0
-          )
-        }),
-        0
-      ),
+                  },
+                  [
+                    _c("div", {
+                      staticClass: "rl_st_item_image",
+                      style: { "background-image": "url(" + store.logo + ")" }
+                    }),
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(store.title) +
+                        "\n            "
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          }),
+          0
+        )
+      ]),
       _vm._v(" "),
       _c("SimpleKeyboard", {
         attrs: { input: _vm.input },

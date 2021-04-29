@@ -130,37 +130,17 @@
     font-size: 2.5vh;
     border: 0.2vh solid #A1A1A1;
 }
-#myUL {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    height: 50vh;
-    overflow-y: auto;
-}
-#myUL li {
-    display: block;
-    background-color: #fff;
-    margin-bottom: 1vh;
-}
-#myUL li a {
-    display: block;
-    color: #222;
-    font-size: 2vh;
-    font-weight: 700;
-    border: 0.25vh solid #96dbfc;
-    padding: 1vh 2vh;
-}
-#myUL {
+#myUL_wrapper {
     height: 45vh;
-}
-#myUL li a {
-    font-size: 1.5vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-bottom: 4vh;
 }
 #myUL {
     margin-right: -1vh;
     margin-left: -1vh;
 }
-#myUL .col-3 {
+#myUL .col-2 {
     padding-right: 1vh;
     padding-left: 1vh;
 }
@@ -168,9 +148,10 @@
     padding: 3vh;
     border: 0.2vh solid #a1a1a1;
     margin-top: 2vh;
+    text-align: center;
 }
 .rl_st_item_image {
-    height: 15vh;
+    height: 9vh;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50% 50%;
