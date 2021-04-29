@@ -8,6 +8,7 @@ use App\Models\Scheme;
 use App\Models\Store;
 use App\Models\Tag;
 use App\Models\Route;
+use App\Models\Special;
 use App\Http\Resources\RouteResource;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class ApiController extends Controller
 
     public function storeItem($id)
     {
-        return Store::where('id', $id)->with('tags')->first();
+        return Store::where('id', $id)->with('tags', 'schemes', 'specials')->first();
     }
 
     public function stores_category_filter($title, Request $request)
@@ -47,7 +48,7 @@ class ApiController extends Controller
 
     public function tags()
     {
-        return Tag::all();
+        return Tag::with('markimages')->get();
     }
 
     public function routes()
@@ -58,5 +59,10 @@ class ApiController extends Controller
 	public function routeItem($id)
     {
         return Route::where('id', $id)->with('stores', 'schemes', 'schemes2')->first();
+    }
+
+    public function specials()
+    {
+        return Special::with('stores.routes')->get();
     }
 }

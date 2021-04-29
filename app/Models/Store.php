@@ -29,4 +29,9 @@ class Store extends Model
     {
         return $this->belongsToMany('App\Models\Route');
     }
+
+    public function specials()
+    {
+        return $this->belongsToMany('App\Models\Special');
+    }
 }

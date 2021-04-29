@@ -5,7 +5,10 @@
             <div class="row">
                 <div v-for="tag in tags" :key="tag.id" class="col-3">
                     <div class="category_item" @click="FilterCategory(tag)">
-                        {{ tag.title }}
+                        <div v-for="markimage in tag.markimages">
+                            <div class="category_item_image" v-bind:style="{ 'background-image': 'url(' + markimage.image + ')' }"></div>
+                        </div>
+                        <p>{{ tag.title }}</p>
                     </div>
                 </div>
             </div>
@@ -15,7 +18,7 @@
             <div class="row">
                 <div v-for="store in stores" :key="store.id" class="col-3">
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
-                        <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store_route.logo + ')' }"></div>
+                        <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store.logo + ')' }"></div>
                         {{ store.title }}
                     </div>
                 </div>

@@ -30,6 +30,11 @@
                                 <img src="/img/urs/cats.svg">
                             </button>
                         </div>
+                        <div class="col-3">
+                            <button @click="special_panel_button()">
+                                <img src="/img/urs/sale.svg">
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -37,6 +42,8 @@
                     <SearchPanel v-show="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
 
                     <CategoryPanel v-show="category_panel" @category_panel_store_route="onCategoryPanelStoreRoute"/>
+
+                    <SpecialPanel v-show="special_panel" @special_panel_store_route="onSpecialPanelStoreRoute"/>
 
                     <RouteStoreAbout v-show="route_store_about_panel" v-bind:current_store_route="current_store_route" />
 
@@ -55,7 +62,7 @@
                                     <template v-if="s_scheme.pivot.scheme_id === current_floor">
                                         <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)">
                                             <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
-                                                <text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>
+                                                <!--<text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>-->
                                             </svg>
                                         </span>
                                     </template>
@@ -89,6 +96,7 @@
     import CurrentRoutePathSlide2 from './CurrentRoutePathSlide2';
     import SearchPanel from './SearchPanel';
     import CategoryPanel from './CategoryPanel';
+    import SpecialPanel from './SpecialPanel';
     import RouteStoreAbout from './RouteStoreAbout';
 
     export default {
@@ -103,6 +111,7 @@
 
                 search_panel: false,
                 category_panel: false,
+                special_panel: false,
                 route_store_about_panel: false,
 
                 current_floor: '1',
@@ -169,6 +178,18 @@
                     this.current_slide = 1;
                 });
             },
+            onSpecialPanelStoreRoute(data) {
+                this.special_panel = false
+                this.route_store_about_panel = true
+                this.current_store_route = data.special_panel_store_route.id;
+                this.current_floor = data.special_panel_store_route.scheme_id
+                fetch(`/api/route/${this.current_store_route}`)
+                .then(response => response.json())
+                .then(json => {
+                    this.current_store_route = json;
+                    this.current_slide = 1;
+                });
+            },
             onCategoryPanelStoreRoute(data) {
                 this.category_panel = false
                 this.route_store_about_panel = true
@@ -196,14 +217,23 @@
             home_panel_button() {
                 this.category_panel = false;
                 this.search_panel = false;
+                this.special_panel = false;
+                this.route_store_about_panel = false;
             },
             search_panel_button() {
                 this.category_panel = false;
+                this.special_panel = false;
                 this.search_panel = true;
             },
             category_panel_button() {
                 this.search_panel = false;
+                this.special_panel = false;
                 this.category_panel = true;
+            },
+            special_panel_button() {
+                this.search_panel = false;
+                this.category_panel = false;
+                this.special_panel = true;
             }
         },
         components: {
@@ -211,6 +241,7 @@
             CurrentRoutePathSlide2,
             SearchPanel,
             CategoryPanel,
+            SpecialPanel,
             RouteStoreAbout
         }
     }
