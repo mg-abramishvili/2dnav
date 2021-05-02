@@ -6,6 +6,9 @@ window.moment = require('moment');
 Vue.prototype.$moment = moment;
 moment.locale('ru');
 
+import axios from 'axios'
+window.axios = require('axios');
+
 import App from './App.vue';
 import VueRouter from 'vue-router';
 import {routes} from './routes';

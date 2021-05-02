@@ -58,7 +58,7 @@ class ApiController extends Controller
 	
 	public function routeItem($id)
     {
-        return Route::where('id', $id)->with('stores', 'schemes', 'schemes2')->first();
+        return Route::where('id', $id)->with('stores.tags', 'schemes', 'schemes2')->first();
     }
 
     public function specials()

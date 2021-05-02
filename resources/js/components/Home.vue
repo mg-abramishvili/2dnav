@@ -45,7 +45,7 @@
 
                     <SpecialPanel v-show="special_panel" @special_panel_store_route="onSpecialPanelStoreRoute"/>
 
-                    <RouteStoreAbout v-show="route_store_about_panel" v-bind:current_store_route="current_store_route" />
+                    <RouteStoreAbout v-show="route_store_about_panel" v-bind:current_store_route="current_store_route.stores" />
 
                     <div class="col-12" style="padding: 4vh">
 
@@ -105,9 +105,7 @@
                 setup: {},
                 banners: [],
                 schemes: [],
-                routes: {},
                 stores: {},
-                tags: {},
 
                 search_panel: false,
                 category_panel: false,
@@ -120,36 +118,26 @@
             }
         },
         created() {
-            fetch('/api/setup/')
-                .then(response => response.json())
-                .then(json => {
-                    this.setup = json;
-                });
-            fetch('/api/schemes/')
-                .then(response => response.json())
-                .then(json => {
-                    this.schemes = json;
-                });
-            fetch('/api/stores/')
-                .then(response => response.json())
-                .then(json => {
-                    this.stores = json;
-                });
-            fetch('/api/tags/')
-                .then(response => response.json())
-                .then(json => {
-                    this.tags = json;
-                });
-            fetch('/api/routes')
-                .then(response => response.json())
-                .then(json => {
-                    this.routes = json.data;
-                });
-            fetch('/api/banners/')
-                .then(response => response.json())
-                .then(json => {
-                    this.banners = json;
-                });
+            axios
+                .get('/api/setup')
+                .then(response => (
+                    this.setup = response.data
+                ));
+            axios
+                .get('/api/schemes')
+                .then(response => (
+                    this.schemes = response.data
+                ));
+            axios
+                .get('/api/stores')
+                .then(response => (
+                    this.stores = response.data
+                ));
+            axios
+                .get('/api/banners')
+                .then(response => (
+                    this.banners = response.data
+                ));
         },
         computed: {
         },
