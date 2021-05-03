@@ -2550,7 +2550,7 @@ __webpack_require__.r(__webpack_exports__);
         return this.stores;
       } else {
         return this.stores.filter(function (item) {
-          return item.title.toLowerCase().indexOf(_this2.input.toLowerCase()) >= 0;
+          return item.title.toLowerCase().indexOf(_this2.input.toLowerCase()) >= 0 || item.keywords.toLowerCase().indexOf(_this2.input.toLowerCase()) >= 0;
         });
       }
     }

@@ -43,7 +43,8 @@
                     return this.stores;
                 } else {
                     return this.stores.filter(item => {
-                    return item.title.toLowerCase().indexOf(this.input.toLowerCase()) >= 0;
+                        return item.title.toLowerCase().indexOf(this.input.toLowerCase()) >= 0 ||
+                               item.keywords.toLowerCase().indexOf(this.input.toLowerCase()) >= 0;
                     });
                 }
             }

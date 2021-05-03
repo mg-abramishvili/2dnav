@@ -149,6 +149,21 @@
                 </dd>
             </div>
 
+            <div class="row align-items-center mb-2">    
+                <dt class="col-sm-3">
+                    Поисковые слова
+                </dt>
+                <dd class="col-sm-9">
+                    <input type="text" class="form-control" name="keywords">
+
+                    @if ($errors->has('keywords'))
+                        <div class="alert alert-danger">
+                            Укажите поисковые слова
+                        </div>
+                    @endif
+                </dd>
+            </div>
+
             <div>
                 <div class="row align-items-center mb-2">
                     <dt class="col-sm-3">

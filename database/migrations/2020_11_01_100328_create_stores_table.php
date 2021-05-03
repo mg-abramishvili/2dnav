@@ -17,6 +17,7 @@ class CreateStoresTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('logo')->nullable();
+            $table->string('keywords')->default('');
             $table->string('x_01');
             $table->string('y_01');
             $table->string('d_w');

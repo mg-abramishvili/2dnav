@@ -88,6 +88,7 @@ class StoreController extends Controller
         $data = request()->all();
         $stores = new Store();
         $stores->title = $data['title'];
+        $stores->keywords = $data['keywords'];
         $stores->x_01 = $data['x_01'];
         $stores->y_01 = $data['y_01'];
         $stores->d_w = $data['d_w'];
@@ -110,6 +111,7 @@ class StoreController extends Controller
         $data = request()->all();
         $stores = Store::find($data['id']);
         $stores->title = $data['title'];
+        $stores->keywords = $data['keywords'];
         $stores->x_01 = $data['x_01'];
         $stores->y_01 = $data['y_01'];
         $stores->save();
