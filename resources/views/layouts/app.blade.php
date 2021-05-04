@@ -46,13 +46,13 @@
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a class="nav-link" href="/stores">Магазины</a>
+                            <a class="nav-link" href="/stores">Помещения</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/tags">Категории</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/schemes">Схемы</a>
+                            <a class="nav-link" href="/schemes">Схемы здания</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
@@ -60,21 +60,21 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="/routes_t/1">Маршруты от Т1</a>
-                                <a class="dropdown-item" href="/routes_t/2">Маршруты от Т2</a>
+                                <!--<a class="dropdown-item" href="/routes_t/2">Маршруты от Т2</a>-->
                             </div>
                         </li>
                         <!--<li class="nav-item">
                             <a class="nav-link" href="/marks">Значки</a>
                         </li>-->
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link" href="/markimages">Файлы иконок</a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
-                            <a class="nav-link" href="/ads">Слайдер №1</a>
+                            <a class="nav-link" href="/ads">Баннеры</a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link" href="/adds">Слайдер №2</a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();

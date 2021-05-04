@@ -4,10 +4,10 @@
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
-                <h1>Магазины</h1>
+                <h1>Помещения</h1>
             </div>
             <div class="col-6" style="text-align: right;">
-                <a href="/stores/create" class="btn btn-primary">Добавить магазин</a>
+                <a href="/stores/create" class="btn btn-primary">Добавить помещение</a>
             </div>
         </div>
 
@@ -27,7 +27,9 @@
                     </td>
                     <td style="width: 200px;">
                         <a href="/stores/{{$store->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
-                        <a href="/stores/delete/{{$store->id}}" class="btn btn-sm btn-danger">Удалить</a>
+                        @if($store->routes->count() <= 0)
+                            <a href="/stores/delete/{{$store->id}}" class="btn btn-sm btn-danger">Удалить</a>
+                        @endif
                     </td>
                 </tr>
                 @empty

@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+    <style>
+        .table tr:first-child .btn {
+            display: none;
+        }
+    </style>
+
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">

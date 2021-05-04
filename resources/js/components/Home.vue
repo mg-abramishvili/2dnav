@@ -169,6 +169,7 @@
         methods: {
             SelectStoreRoute(store_route) {
                 this.search_panel = false
+                this.atms = false
                 this.route_store_about_panel = true
                 this.current_store_route = store_route.id
                 this.current_floor = store_route.scheme_id
@@ -181,6 +182,7 @@
             },
             onSearchPanelStoreRoute(data) {
                 this.search_panel = false
+                this.atms = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.search_panel_store_route.id;
                 this.current_floor = data.search_panel_store_route.scheme_id
@@ -193,6 +195,7 @@
             },
             onSpecialPanelStoreRoute(data) {
                 this.special_panel = false
+                this.atms = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.special_panel_store_route.id;
                 this.current_floor = data.special_panel_store_route.scheme_id
@@ -205,6 +208,7 @@
             },
             onCategoryPanelStoreRoute(data) {
                 this.category_panel = false
+                this.atms = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.category_panel_store_route.id;
                 this.current_floor = data.category_panel_store_route.scheme_id

@@ -2368,6 +2368,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.search_panel = false;
+      this.atms = false;
       this.route_store_about_panel = true;
       this.current_store_route = store_route.id;
       this.current_floor = store_route.scheme_id;
@@ -2382,6 +2383,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.search_panel = false;
+      this.atms = false;
       this.route_store_about_panel = true;
       this.current_store_route = data.search_panel_store_route.id;
       this.current_floor = data.search_panel_store_route.scheme_id;
@@ -2396,6 +2398,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       this.special_panel = false;
+      this.atms = false;
       this.route_store_about_panel = true;
       this.current_store_route = data.special_panel_store_route.id;
       this.current_floor = data.special_panel_store_route.scheme_id;
@@ -2410,6 +2413,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       this.category_panel = false;
+      this.atms = false;
       this.route_store_about_panel = true;
       this.current_store_route = data.category_panel_store_route.id;
       this.current_floor = data.category_panel_store_route.scheme_id;

@@ -296,6 +296,13 @@
     width: 800px;
     height: 450px;
 }
+.map-path circle {
+    r: 4;
+}
+.map-path circle:first-of-type,
+.map-path circle:last-of-type {
+    r: 7;
+}
 .scheme_images {
     position: absolute;
     top: 0;

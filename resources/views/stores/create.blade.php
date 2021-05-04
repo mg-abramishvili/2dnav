@@ -93,7 +93,7 @@
     <div>
         <div class="row align-items-center mb-4">
             <div class="col-6">
-                <h1>Добавление магазина</h1>
+                <h1>Новое помещение</h1>
             </div>
         </div>
 
@@ -138,7 +138,7 @@
 
             <div class="row align-items-center mb-2">
                 <dt class="col-sm-3">
-                    Теги
+                    Категория
                 </dt>
                 <dd class="col-sm-9">
                     <select name="tags[]" class="form-control" multiple>

@@ -29,7 +29,9 @@
                     </td>
                     <td style="width: 200px;">
                         <a href="/tags/{{$tag->id}}/edit" class="btn btn-sm btn-warning">Правка</a>
+                        @if($tag->store->count() <= 0)
                         <a href="/tags/delete/{{$tag->id}}" class="btn btn-sm btn-danger">Удалить</a>
+                        @endif
                     </td>
                 </tr>
                 @empty
