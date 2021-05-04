@@ -57,17 +57,17 @@
                             <CurrentRoutePathSlide1 v-if="current_slide === 1" v-bind:current_store_route="current_store_route"/>
                             <CurrentRoutePathSlide2 v-if="current_slide === 2" v-bind:current_store_route="current_store_route"/>
 
-                            <div v-for="store in stores" :key="'store' + store.id" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                            <template v-for="store in stores">
                                 <template v-for="s_scheme in store.schemes">
                                     <template v-if="s_scheme.pivot.scheme_id === current_floor">
-                                        <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)">
+                                        <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
                                             <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
                                                 <!--<text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>-->
                                             </svg>
                                         </span>
                                     </template>
                                 </template>
-                            </div>
+                            </template>
                         </div>
 
                         <button v-if="current_slide === 2" @click="PrevScheme(current_store_route)" class="prevnextbutton prev_button">

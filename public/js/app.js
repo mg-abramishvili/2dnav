@@ -27162,54 +27162,47 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     _vm._l(_vm.stores, function(store) {
-                      return _c(
-                        "div",
-                        {
-                          key: "store" + store.id,
-                          staticClass: "map-marker",
-                          style: {
-                            left: store.x_01 + "px",
-                            top: store.y_01 + "px",
-                            width: store.d_w + "px",
-                            height: store.d_h + "px"
-                          }
-                        },
-                        [
-                          _vm._l(store.schemes, function(s_scheme) {
-                            return [
-                              s_scheme.pivot.scheme_id === _vm.current_floor
-                                ? _vm._l(store.routes, function(store_route) {
-                                    return _c(
-                                      "span",
-                                      {
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.SelectStoreRoute(
-                                              store_route
-                                            )
-                                          }
-                                        }
+                      return [
+                        _vm._l(store.schemes, function(s_scheme) {
+                          return [
+                            s_scheme.pivot.scheme_id === _vm.current_floor
+                              ? _vm._l(store.routes, function(store_route) {
+                                  return _c(
+                                    "span",
+                                    {
+                                      staticClass: "map-marker",
+                                      style: {
+                                        left: store.x_01 + "px",
+                                        top: store.y_01 + "px",
+                                        width: store.d_w + "px",
+                                        height: store.d_h + "px"
                                       },
-                                      [
-                                        _c("svg", {
-                                          attrs: {
-                                            viewBox:
-                                              "0 0" +
-                                              " " +
-                                              store.d_w +
-                                              " " +
-                                              store.d_h
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  })
-                                : _vm._e()
-                            ]
-                          })
-                        ],
-                        2
-                      )
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.SelectStoreRoute(
+                                            store_route
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("svg", {
+                                        attrs: {
+                                          viewBox:
+                                            "0 0" +
+                                            " " +
+                                            store.d_w +
+                                            " " +
+                                            store.d_h
+                                        }
+                                      })
+                                    ]
+                                  )
+                                })
+                              : _vm._e()
+                          ]
+                        })
+                      ]
                     })
                   ],
                   2
