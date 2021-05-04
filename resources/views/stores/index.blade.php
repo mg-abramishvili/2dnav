@@ -18,11 +18,12 @@
                 <tr>
                     <td style="text-align: left; padding-left: 20px; padding-right: 20px;">
                         {{$store->title}}
-
+                        <!--
                         <br>
                         @foreach($store->tags as $tag)
                             <span>{{ $tag->title }}</span>
                         @endforeach
+                        -->
                     </td>
                     <td style="width: 200px;">
                         <a href="/stores/{{$store->id}}/edit" class="btn btn-sm btn-warning">Правка</a>

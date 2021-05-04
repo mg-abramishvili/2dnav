@@ -108,6 +108,9 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.buttons-bar-bottom {
+    margin-top: 22vh;
+}
 /* BUTTONS BAR */
 
 
@@ -317,6 +320,13 @@
     display: block;
     height: 100%;
     /*background-color: rgba(255, 255, 0, 0.5);*/
+}
+.map-marker img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
 }
 .prevnextbutton {
     position: absolute;

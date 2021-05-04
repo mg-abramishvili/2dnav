@@ -2300,6 +2300,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2319,7 +2342,8 @@ __webpack_require__.r(__webpack_exports__);
       route_store_about_panel: false,
       current_floor: '1',
       current_store_route: {},
-      current_slide: 1
+      current_slide: 1,
+      atms: false
     };
   },
   created: function created() {
@@ -2428,6 +2452,9 @@ __webpack_require__.r(__webpack_exports__);
       this.search_panel = false;
       this.category_panel = false;
       this.special_panel = true;
+    },
+    atms_button: function atms_button() {
+      this.atms = true;
     }
   },
   components: {
@@ -27166,39 +27193,77 @@ var render = function() {
                         _vm._l(store.schemes, function(s_scheme) {
                           return [
                             s_scheme.pivot.scheme_id === _vm.current_floor
-                              ? _vm._l(store.routes, function(store_route) {
-                                  return _c(
-                                    "span",
-                                    {
-                                      staticClass: "map-marker",
-                                      style: {
-                                        left: store.x_01 + "px",
-                                        top: store.y_01 + "px",
-                                        width: store.d_w + "px",
-                                        height: store.d_h + "px"
-                                      },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.SelectStoreRoute(
+                              ? [
+                                  _vm._l(store.tags, function(store_tag) {
+                                    return [
+                                      store_tag.title === "банкоматы" &&
+                                      _vm.atms
+                                        ? _vm._l(store.routes, function(
                                             store_route
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("svg", {
-                                        attrs: {
-                                          viewBox:
-                                            "0 0" +
-                                            " " +
-                                            store.d_w +
-                                            " " +
-                                            store.d_h
-                                        }
-                                      })
+                                          ) {
+                                            return _c(
+                                              "span",
+                                              {
+                                                staticClass: "map-marker",
+                                                style: {
+                                                  left: store.x_01 + "px",
+                                                  top: store.y_01 + "px",
+                                                  width: store.d_w + "px",
+                                                  height: store.d_h + "px"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.SelectStoreRoute(
+                                                      store_route
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("img", {
+                                                  attrs: { src: store.logo }
+                                                })
+                                              ]
+                                            )
+                                          })
+                                        : _vm._l(store.routes, function(
+                                            store_route
+                                          ) {
+                                            return _c(
+                                              "span",
+                                              {
+                                                staticClass: "map-marker",
+                                                style: {
+                                                  left: store.x_01 + "px",
+                                                  top: store.y_01 + "px",
+                                                  width: store.d_w + "px",
+                                                  height: store.d_h + "px"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.SelectStoreRoute(
+                                                      store_route
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("svg", {
+                                                  attrs: {
+                                                    viewBox:
+                                                      "0 0" +
+                                                      " " +
+                                                      store.d_w +
+                                                      " " +
+                                                      store.d_h
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          })
                                     ]
-                                  )
-                                })
+                                  })
+                                ]
                               : _vm._e()
                           ]
                         })
@@ -27277,7 +27342,29 @@ var render = function() {
             )
           ],
           1
-        )
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "buttons-bar buttons-bar-bottom" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-3" }, [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.atms_button()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                            Банкоматы\n                        "
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
       ])
     ])
   ])

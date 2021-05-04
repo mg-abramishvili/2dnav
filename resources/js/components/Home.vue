@@ -60,11 +60,24 @@
                             <template v-for="store in stores">
                                 <template v-for="s_scheme in store.schemes">
                                     <template v-if="s_scheme.pivot.scheme_id === current_floor">
-                                        <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
-                                            <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
-                                                <!--<text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>-->
-                                            </svg>
-                                        </span>
+                                        
+                                            
+                                            <template v-for="store_tag in store.tags">
+                                                <template v-if="store_tag.title === 'банкоматы' && atms">
+                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                                    <img :src="store.logo">
+                                                    </span>
+                                                </template>
+                                                <template v-else>
+                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                                    <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
+                                                        <!--<text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>-->
+                                                    </svg>
+                                                    </span>
+                                                </template>
+                                            </template>
+
+                                        
                                     </template>
                                 </template>
                             </template>
@@ -83,6 +96,16 @@
                             </button>
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="buttons-bar buttons-bar-bottom">
+                    <div class="row">
+                        <div class="col-3">
+                            <button @click="atms_button()">
+                                Банкоматы
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,6 +138,8 @@
                 current_floor: '1',
                 current_store_route: {},
                 current_slide: 1,
+
+                atms: false,
             }
         },
         created() {
@@ -222,6 +247,9 @@
                 this.search_panel = false;
                 this.category_panel = false;
                 this.special_panel = true;
+            },
+            atms_button() {
+                this.atms = true;
             }
         },
         components: {

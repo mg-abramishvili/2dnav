@@ -22,7 +22,13 @@
                 @forelse($routes as $route)
                 <tr>
                     <td style="text-align: left; padding-left: 20px; padding-right: 20px;">
-                        {{$route->title}}
+                        <small>T{{$routes_t}} →</small>
+                        <br>
+                        <span>
+                            @foreach($route->stores as $rs)
+                                {{$rs->title}}
+                            @endforeach
+                        </span>
                     </td>
                     <td style="width: 200px;">
                         <a href="/routes/delete/{{$route->id}}" class="btn btn-sm btn-danger">Удалить</a>
