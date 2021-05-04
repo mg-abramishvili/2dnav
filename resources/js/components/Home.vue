@@ -68,6 +68,11 @@
                                                     <img :src="store.logo">
                                                     </span>
                                                 </template>
+                                                <template v-else-if="store_tag.title === 'забота об инвалидах' && invalids">
+                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                                    <img :src="store.logo">
+                                                    </span>
+                                                </template>
                                                 <template v-else>
                                                     <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
                                                     <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
@@ -106,6 +111,11 @@
                                 Банкоматы
                             </button>
                         </div>
+                        <div class="col-3">
+                            <button @click="invalids_button()">
+                                Инвалиды
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,6 +150,7 @@
                 current_slide: 1,
 
                 atms: false,
+                invalids: false,
             }
         },
         created() {
@@ -253,7 +264,12 @@
                 this.special_panel = true;
             },
             atms_button() {
+                this.invalids = false;
                 this.atms = true;
+            },
+            invalids_button() {
+                this.atms = false;
+                this.invalids = true;
             }
         },
         components: {

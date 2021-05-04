@@ -2323,6 +2323,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2343,7 +2353,8 @@ __webpack_require__.r(__webpack_exports__);
       current_floor: '1',
       current_store_route: {},
       current_slide: 1,
-      atms: false
+      atms: false,
+      invalids: false
     };
   },
   created: function created() {
@@ -2458,7 +2469,12 @@ __webpack_require__.r(__webpack_exports__);
       this.special_panel = true;
     },
     atms_button: function atms_button() {
+      this.invalids = false;
       this.atms = true;
+    },
+    invalids_button: function invalids_button() {
+      this.atms = false;
+      this.invalids = true;
     }
   },
   components: {
@@ -27230,6 +27246,37 @@ var render = function() {
                                               ]
                                             )
                                           })
+                                        : store_tag.title ===
+                                            "забота об инвалидах" &&
+                                          _vm.invalids
+                                        ? _vm._l(store.routes, function(
+                                            store_route
+                                          ) {
+                                            return _c(
+                                              "span",
+                                              {
+                                                staticClass: "map-marker",
+                                                style: {
+                                                  left: store.x_01 + "px",
+                                                  top: store.y_01 + "px",
+                                                  width: store.d_w + "px",
+                                                  height: store.d_h + "px"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.SelectStoreRoute(
+                                                      store_route
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("img", {
+                                                  attrs: { src: store.logo }
+                                                })
+                                              ]
+                                            )
+                                          })
                                         : _vm._l(store.routes, function(
                                             store_route
                                           ) {
@@ -27363,6 +27410,24 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                            Банкоматы\n                        "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-3" }, [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.invalids_button()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                            Инвалиды\n                        "
                   )
                 ]
               )
