@@ -1,7 +1,7 @@
 <template>
     <div class="category_panel">
 
-        <div v-if="category_panel_index" class="category_panel_index">
+        <div v-show="category_panel_index" class="category_panel_index">
             <div class="row">
                 <template v-for="tag in tags">
                     <div v-if="tag.store.length" class="col-3">
@@ -16,7 +16,8 @@
             </div>
         </div>
 
-        <div v-else class="category_panel_inner">
+        <div v-show="!category_panel_index" class="category_panel_inner">
+            <button @click="category_panel_index = true">Назад</button>
             <div class="row">
                 <div v-for="store in stores" :key="store.id" class="col-3">
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">

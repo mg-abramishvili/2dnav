@@ -2013,6 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -25738,90 +25739,130 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "category_panel" }, [
-    _vm.category_panel_index
-      ? _c("div", { staticClass: "category_panel_index" }, [
-          _c(
-            "div",
-            { staticClass: "row" },
-            [
-              _vm._l(_vm.tags, function(tag) {
-                return [
-                  tag.store.length
-                    ? _c("div", { staticClass: "col-3" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "category_item",
-                            on: {
-                              click: function($event) {
-                                return _vm.FilterCategory(tag)
-                              }
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.category_panel_index,
+            expression: "category_panel_index"
+          }
+        ],
+        staticClass: "category_panel_index"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _vm._l(_vm.tags, function(tag) {
+              return [
+                tag.store.length
+                  ? _c("div", { staticClass: "col-3" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "category_item",
+                          on: {
+                            click: function($event) {
+                              return _vm.FilterCategory(tag)
                             }
-                          },
-                          [
-                            _vm._l(tag.markimages, function(markimage) {
-                              return _c("div", [
-                                _c("div", {
-                                  staticClass: "category_item_image",
-                                  style: {
-                                    "background-image":
-                                      "url(" + markimage.image + ")"
-                                  }
-                                })
-                              ])
-                            }),
-                            _vm._v(" "),
-                            _c("p", [_vm._v(_vm._s(tag.title))])
-                          ],
-                          2
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              })
-            ],
-            2
-          )
-        ])
-      : _c("div", { staticClass: "category_panel_inner" }, [
-          _c(
-            "div",
-            { staticClass: "row" },
-            _vm._l(_vm.stores, function(store) {
-              return _c(
-                "div",
-                { key: store.id, staticClass: "col-3" },
-                _vm._l(store.routes, function(store_route) {
-                  return _c(
-                    "div",
-                    {
-                      key: store_route.id,
-                      staticClass: "rl_st_item",
-                      on: {
-                        click: function($event) {
-                          return _vm.SelectStoreRoute(store_route)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", {
-                        staticClass: "rl_st_item_image",
-                        style: { "background-image": "url(" + store.logo + ")" }
-                      }),
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(store.title) +
-                          "\n                "
+                          }
+                        },
+                        [
+                          _vm._l(tag.markimages, function(markimage) {
+                            return _c("div", [
+                              _c("div", {
+                                staticClass: "category_item_image",
+                                style: {
+                                  "background-image":
+                                    "url(" + markimage.image + ")"
+                                }
+                              })
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(tag.title))])
+                        ],
+                        2
                       )
-                    ]
-                  )
-                }),
-                0
-              )
-            }),
-            0
-          )
-        ])
+                    ])
+                  : _vm._e()
+              ]
+            })
+          ],
+          2
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.category_panel_index,
+            expression: "!category_panel_index"
+          }
+        ],
+        staticClass: "category_panel_inner"
+      },
+      [
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                _vm.category_panel_index = true
+              }
+            }
+          },
+          [_vm._v("Назад")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.stores, function(store) {
+            return _c(
+              "div",
+              { key: store.id, staticClass: "col-3" },
+              _vm._l(store.routes, function(store_route) {
+                return _c(
+                  "div",
+                  {
+                    key: store_route.id,
+                    staticClass: "rl_st_item",
+                    on: {
+                      click: function($event) {
+                        return _vm.SelectStoreRoute(store_route)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", {
+                      staticClass: "rl_st_item_image",
+                      style: { "background-image": "url(" + store.logo + ")" }
+                    }),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(store.title) +
+                        "\n                "
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          }),
+          0
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
