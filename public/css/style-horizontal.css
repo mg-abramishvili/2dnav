@@ -111,6 +111,13 @@
 .buttons-bar-bottom {
     margin-top: 22vh;
 }
+.buttons-bar-bottom button {
+    height: 8vh;
+}
+.buttons-bar-bottom button img {
+    height: 5vh;
+    max-width: 5vh;
+}
 /* BUTTONS BAR */
 
 
@@ -209,6 +216,23 @@
     text-transform: uppercase;
 }
 /* CATEGORIES PANEL */
+
+
+
+/* TRANSPORT PANEL */
+.transport_panel {
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
+    height: 85vh;
+    top: 15vh;
+    margin-top: 0;
+    background: #fff;
+    padding: 1.5vh;
+    margin-left: -29vw;
+    overflow-y: auto;
+}
+/* TRANSPORT PANEL */
 
 
 
@@ -367,13 +391,13 @@
 .floor_buttons {
     position: absolute;
     right: 4vh;
-    top: 20vh;
+    top: 13vh;
     z-index: 5;
 }
 .floor_buttons button {
     display: block;
-    width: 8vh;
-    height: 8vh;
+    width: 7vh;
+    height: 7vh;
     border: 0.2vh solid #68D94C;
     background: none;
     font-size: 3vh;
@@ -440,5 +464,20 @@
 .hg-theme-default .hg-button.hg-standardBtn {
     height: 5vh !important;
     font-size: 3vh !important;
+}
+.hg-theme-default {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: keyboard_anim 0.5s linear;
+}
+@keyframes keyboard_anim {
+    from {
+        bottom: -50vh;
+    }
+    to {
+        bottom: 0;
+    }
 }
 /* KEYBOARD */

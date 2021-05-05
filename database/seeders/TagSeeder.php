@@ -120,6 +120,10 @@ class TagSeeder extends Seeder
             'id' => '27',
             'title' => 'забота об инвалидах',
         ],
+        [
+            'id' => '28',
+            'title' => 'туалеты',
+        ],
         ]);
     }
 }

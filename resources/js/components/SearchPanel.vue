@@ -5,18 +5,21 @@
         class="input"
         @input="onInputChange"
         placeholder="Поиск..."
+        @focus="keyboard = true"
         >
         <div id="myUL_wrapper">
         <div id="myUL" class="row" style="margin-top: 0.5vh;">
-            <div v-for="store in filtered_stores" :key="store.id" class="col-2">
-                <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
-                    <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store.logo + ')' }"></div>
-                    {{ store.title }}
+            <template v-for="store in filtered_stores">
+                <div v-if="store.routes.length" class="col-2">
+                    <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
+                        <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store.logo + ')' }"></div>
+                        {{ store.title }}
+                    </div>
                 </div>
-            </div>
+            </template>
         </div>
         </div>
-        <SimpleKeyboard @onChange="onChange" @onKeyPress="onKeyPress" :input="input"/>
+        <SimpleKeyboard v-show="keyboard" @onChange="onChange" @onKeyPress="onKeyPress" :input="input"/>
     </div>
 </template>
 
@@ -27,7 +30,8 @@
         data() {
             return {
                 stores: {},
-                input: ''
+                input: '',
+                keyboard: false,
             }
         },
         created() {
@@ -61,6 +65,7 @@
             },
             SelectStoreRoute(store_route) {
                 this.input = '',
+                this.keyboard = false,
                 this.$emit('search_panel_store_route', {
                     search_panel_store_route: store_route,
                 })

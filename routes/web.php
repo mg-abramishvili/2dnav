@@ -35,6 +35,7 @@ Route::post('markimages/file/{method}','App\Http\Controllers\MarkImageController
 // STORES
 Route::resource('/stores', StoreController::class)->middleware('auth')->middleware('auth');
 Route::get('stores/delete/{id}','App\Http\Controllers\StoreController@delete')->middleware('auth');
+Route::post('stores/file/{method}','App\Http\Controllers\StoreController@file')->middleware('auth');
 
 // TAGS
 Route::resource('/tags', TagController::class)->middleware('auth')->middleware('auth');

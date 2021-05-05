@@ -3,14 +3,16 @@
 
         <div v-if="category_panel_index" class="category_panel_index">
             <div class="row">
-                <div v-for="tag in tags" :key="tag.id" class="col-3">
-                    <div class="category_item" @click="FilterCategory(tag)">
-                        <div v-for="markimage in tag.markimages">
-                            <div class="category_item_image" v-bind:style="{ 'background-image': 'url(' + markimage.image + ')' }"></div>
+                <template v-for="tag in tags">
+                    <div v-if="tag.store.length" class="col-3">
+                        <div class="category_item" @click="FilterCategory(tag)">
+                            <div v-for="markimage in tag.markimages">
+                                <div class="category_item_image" v-bind:style="{ 'background-image': 'url(' + markimage.image + ')' }"></div>
+                            </div>
+                            <p>{{ tag.title }}</p>
                         </div>
-                        <p>{{ tag.title }}</p>
                     </div>
-                </div>
+                </template>
             </div>
         </div>
 

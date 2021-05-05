@@ -48,7 +48,7 @@ class ApiController extends Controller
 
     public function tags()
     {
-        return Tag::with('markimages')->get();
+        return Tag::with('markimages', 'store')->get();
     }
 
     public function routes()
@@ -58,7 +58,7 @@ class ApiController extends Controller
 	
 	public function routeItem($id)
     {
-        return Route::where('id', $id)->with('stores.tags', 'schemes', 'schemes2')->first();
+        return Route::where('id', $id)->with('stores.tags', 'schemes', 'schemes2', 'stores.schemes', 'stores.specials')->first();
     }
 
     public function specials()

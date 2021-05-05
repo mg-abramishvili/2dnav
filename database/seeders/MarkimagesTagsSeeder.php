@@ -152,6 +152,11 @@ class MarkimagesTagsSeeder extends Seeder
             'mark_image_id' => '27',
             'tag_id' => '27',
         ],
+        [
+            'id' => '28',
+            'mark_image_id' => '28',
+            'tag_id' => '28',
+        ],
         ]);
     }
 }

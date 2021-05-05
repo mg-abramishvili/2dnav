@@ -51,8 +51,8 @@ class StoreController extends Controller
     public function upload()
     {
 
-        if (request()->file('image')) {
-            $file = request()->file('image');
+        if (request()->file('logo')) {
+            $file = request()->file('logo');
 
             $filename = md5(time() . rand(1, 100000)) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path() . '/uploads', $filename);
@@ -83,11 +83,13 @@ class StoreController extends Controller
             'y_01' => 'required',
             'd_w' => 'required',
             'd_h' => 'required',
+            'logo' => 'required'
         ]);
 
         $data = request()->all();
         $stores = new Store();
         $stores->title = $data['title'];
+        $stores->logo = $data['logo'];
         $stores->keywords = $data['keywords'];
         $stores->x_01 = $data['x_01'];
         $stores->y_01 = $data['y_01'];
@@ -106,11 +108,13 @@ class StoreController extends Controller
             'schemes' => 'required',
             'x_01' => 'required',
             'y_01' => 'required',
+            'logo' => 'required'
         ]);
         
         $data = request()->all();
         $stores = Store::find($data['id']);
         $stores->title = $data['title'];
+        $stores->logo = $data['logo'];
         $stores->keywords = $data['keywords'];
         $stores->x_01 = $data['x_01'];
         $stores->y_01 = $data['y_01'];

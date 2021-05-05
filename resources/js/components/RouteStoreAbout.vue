@@ -4,6 +4,9 @@
             <img :src="csr.logo">
             <h3>{{csr.title}}, 
                 <span>Уровень
+                    <template v-for="csr_sch in csr.schemes">
+                        {{csr_sch.title}}
+                    </template>
                 </span>
             </h3>
             <ul>
@@ -13,6 +16,9 @@
             Режим работы:
                 10:00-20:00
             <hr>
+            <template v-for="csr_sp in csr.specials">
+                <img :src="csr_sp.image" style="width:100%;"/>
+            </template>
         </div>
     </div>
 </template>

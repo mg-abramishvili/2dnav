@@ -47,6 +47,8 @@
 
                     <RouteStoreAbout v-show="route_store_about_panel" v-bind:current_store_route="current_store_route.stores" />
 
+                    <TransportPanel v-show="transport_panel"/>
+
                     <div class="col-12" style="padding: 4vh">
 
                         <div id="map" style="position: relative; width: 800px; height: 450px;">
@@ -64,12 +66,17 @@
                                             
                                             <template v-for="store_tag in store.tags">
                                                 <template v-if="store_tag.title === 'банкоматы' && atms">
-                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute_atms(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
                                                     <img :src="store.logo">
                                                     </span>
                                                 </template>
                                                 <template v-else-if="store_tag.title === 'забота об инвалидах' && invalids">
-                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute_invalids(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                                    <img :src="store.logo">
+                                                    </span>
+                                                </template>
+                                                <template v-else-if="store_tag.title === 'туалеты' && toilets">
+                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute_toilets(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
                                                     <img :src="store.logo">
                                                     </span>
                                                 </template>
@@ -99,6 +106,9 @@
                             <button v-for="scheme in schemes.slice().reverse()" :key="scheme.id" @click="SelectFloor(scheme)">
                                 {{ scheme.title }}
                             </button>
+                            <br>
+                            <button>+</button>
+                            <button>-</button>
                         </div>
 
                     </div>
@@ -108,12 +118,22 @@
                     <div class="row">
                         <div class="col-3">
                             <button @click="atms_button()">
-                                Банкоматы
+                                <img src="/img/urs/credit-card.svg">
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button @click="toilets_button()">
+                                <img src="/img/urs/toilet1.svg">
                             </button>
                         </div>
                         <div class="col-3">
                             <button @click="invalids_button()">
-                                Инвалиды
+                                <img src="/img/urs/disabled-sign.svg">
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button @click="transport_button()">
+                                <img src="/img/urs/transport.svg">
                             </button>
                         </div>
                     </div>
@@ -130,6 +150,7 @@
     import SearchPanel from './SearchPanel';
     import CategoryPanel from './CategoryPanel';
     import SpecialPanel from './SpecialPanel';
+    import TransportPanel from './TransportPanel';
     import RouteStoreAbout from './RouteStoreAbout';
 
     export default {
@@ -144,6 +165,7 @@
                 category_panel: false,
                 special_panel: false,
                 route_store_about_panel: false,
+                transport_panel: false,
 
                 current_floor: '1',
                 current_store_route: {},
@@ -151,6 +173,7 @@
 
                 atms: false,
                 invalids: false,
+                toilets: false,
             }
         },
         created() {
@@ -181,6 +204,44 @@
             SelectStoreRoute(store_route) {
                 this.search_panel = false
                 this.atms = false
+                this.invalids = false
+                this.toilets = false
+                this.route_store_about_panel = true
+                this.current_store_route = store_route.id
+                this.current_floor = store_route.scheme_id
+                fetch(`/api/route/${this.current_store_route}`)
+                .then(response => response.json())
+                .then(json => {
+                    this.current_store_route = json;
+                    this.current_slide = 1;
+                });
+            },
+            SelectStoreRoute_atms(store_route) {
+                this.search_panel = false
+                this.route_store_about_panel = true
+                this.current_store_route = store_route.id
+                this.current_floor = store_route.scheme_id
+                fetch(`/api/route/${this.current_store_route}`)
+                .then(response => response.json())
+                .then(json => {
+                    this.current_store_route = json;
+                    this.current_slide = 1;
+                });
+            },
+            SelectStoreRoute_invalids(store_route) {
+                this.search_panel = false
+                this.route_store_about_panel = true
+                this.current_store_route = store_route.id
+                this.current_floor = store_route.scheme_id
+                fetch(`/api/route/${this.current_store_route}`)
+                .then(response => response.json())
+                .then(json => {
+                    this.current_store_route = json;
+                    this.current_slide = 1;
+                });
+            },
+            SelectStoreRoute_toilets(store_route) {
+                this.search_panel = false
                 this.route_store_about_panel = true
                 this.current_store_route = store_route.id
                 this.current_floor = store_route.scheme_id
@@ -194,6 +255,8 @@
             onSearchPanelStoreRoute(data) {
                 this.search_panel = false
                 this.atms = false
+                this.invalids = false
+                this.toilets = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.search_panel_store_route.id;
                 this.current_floor = data.search_panel_store_route.scheme_id
@@ -207,6 +270,8 @@
             onSpecialPanelStoreRoute(data) {
                 this.special_panel = false
                 this.atms = false
+                this.invalids = false
+                this.toilets = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.special_panel_store_route.id;
                 this.current_floor = data.special_panel_store_route.scheme_id
@@ -220,6 +285,8 @@
             onCategoryPanelStoreRoute(data) {
                 this.category_panel = false
                 this.atms = false
+                this.invalids = false
+                this.toilets = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.category_panel_store_route.id;
                 this.current_floor = data.category_panel_store_route.scheme_id
@@ -246,30 +313,54 @@
                 this.category_panel = false;
                 this.search_panel = false;
                 this.special_panel = false;
+                this.transport_panel = false;
                 this.route_store_about_panel = false;
             },
             search_panel_button() {
                 this.category_panel = false;
                 this.special_panel = false;
+                this.transport_panel = false;
                 this.search_panel = true;
             },
             category_panel_button() {
                 this.search_panel = false;
                 this.special_panel = false;
+                this.transport_panel = false;
                 this.category_panel = true;
             },
             special_panel_button() {
                 this.search_panel = false;
                 this.category_panel = false;
+                this.transport_panel = false;
                 this.special_panel = true;
             },
             atms_button() {
+                this.current_slide = 0;
+                this.toilets = false;
                 this.invalids = false;
+                this.transport_panel = false;
                 this.atms = true;
             },
             invalids_button() {
+                this.current_slide = 0;
                 this.atms = false;
+                this.toilets = false;
+                this.transport_panel = false;
                 this.invalids = true;
+            },
+            toilets_button() {
+                this.current_slide = 0;
+                this.atms = false;
+                this.invalids = false;
+                this.transport_panel = false;
+                this.toilets = true;
+            },
+            transport_button() {
+                this.current_slide = 0;
+                this.atms = false;
+                this.invalids = false;
+                this.toilets = false;
+                this.transport_panel = true;
             }
         },
         components: {
@@ -278,6 +369,7 @@
             SearchPanel,
             CategoryPanel,
             SpecialPanel,
+            TransportPanel,
             RouteStoreAbout
         }
     }

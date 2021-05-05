@@ -152,6 +152,11 @@ class MarkimagesSeeder extends Seeder
             'title' => 'cat27.jpg',
             'image' => '/img/urs/cat27.jpg',
         ],
+        [
+            'id' => '28',
+            'title' => 'cat28.jpg',
+            'image' => '/img/urs/cat28.jpg',
+        ],
         ]);
     }
 }
