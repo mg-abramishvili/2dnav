@@ -55,6 +55,7 @@
                 })
             },
             FilterCategory(tag) {
+                this.stores = {},
                 this.$parent.category_panel_index = false
                 fetch(`/api/stores_category_filter/${tag.title}`)
                     .then(response => response.json())

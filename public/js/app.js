@@ -2041,7 +2041,7 @@ __webpack_require__.r(__webpack_exports__);
     FilterCategory: function FilterCategory(tag) {
       var _this2 = this;
 
-      this.$parent.category_panel_index = false;
+      this.stores = {}, this.$parent.category_panel_index = false;
       fetch("/api/stores_category_filter/".concat(tag.title)).then(function (response) {
         return response.json();
       }).then(function (json) {
