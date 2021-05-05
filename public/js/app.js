@@ -2356,6 +2356,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2370,6 +2403,7 @@ __webpack_require__.r(__webpack_exports__);
       banners: [],
       schemes: [],
       stores: {},
+      banner_index: true,
       search_panel: false,
       category_panel: false,
       special_panel: false,
@@ -2408,6 +2442,7 @@ __webpack_require__.r(__webpack_exports__);
       this.atms = false;
       this.invalids = false;
       this.toilets = false;
+      this.banner_index = false;
       this.route_store_about_panel = true;
       this.current_store_route = store_route.id;
       this.current_floor = store_route.scheme_id;
@@ -2422,6 +2457,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.search_panel = false;
+      this.invalids = false;
+      this.toilets = false;
+      this.banner_index = false;
       this.route_store_about_panel = true;
       this.current_store_route = store_route.id;
       this.current_floor = store_route.scheme_id;
@@ -2436,6 +2474,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       this.search_panel = false;
+      this.atms = false;
+      this.toilets = false;
+      this.banner_index = false;
       this.route_store_about_panel = true;
       this.current_store_route = store_route.id;
       this.current_floor = store_route.scheme_id;
@@ -2450,6 +2491,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       this.search_panel = false;
+      this.atms = false;
+      this.invalids = false;
+      this.banner_index = false;
       this.route_store_about_panel = true;
       this.current_store_route = store_route.id;
       this.current_floor = store_route.scheme_id;
@@ -2467,6 +2511,7 @@ __webpack_require__.r(__webpack_exports__);
       this.atms = false;
       this.invalids = false;
       this.toilets = false;
+      this.banner_index = false;
       this.route_store_about_panel = true;
       this.current_store_route = data.search_panel_store_route.id;
       this.current_floor = data.search_panel_store_route.scheme_id;
@@ -2484,6 +2529,7 @@ __webpack_require__.r(__webpack_exports__);
       this.atms = false;
       this.invalids = false;
       this.toilets = false;
+      this.banner_index = false;
       this.route_store_about_panel = true;
       this.current_store_route = data.special_panel_store_route.id;
       this.current_floor = data.special_panel_store_route.scheme_id;
@@ -2501,6 +2547,7 @@ __webpack_require__.r(__webpack_exports__);
       this.atms = false;
       this.invalids = false;
       this.toilets = false;
+      this.banner_index = false;
       this.route_store_about_panel = true;
       this.current_store_route = data.category_panel_store_route.id;
       this.current_floor = data.category_panel_store_route.scheme_id;
@@ -2529,23 +2576,27 @@ __webpack_require__.r(__webpack_exports__);
       this.special_panel = false;
       this.transport_panel = false;
       this.route_store_about_panel = false;
+      this.banner_index = true;
     },
     search_panel_button: function search_panel_button() {
       this.category_panel = false;
       this.special_panel = false;
       this.transport_panel = false;
+      this.banner_index = false;
       this.search_panel = true;
     },
     category_panel_button: function category_panel_button() {
       this.search_panel = false;
       this.special_panel = false;
       this.transport_panel = false;
+      this.banner_index = false;
       this.category_panel = true;
     },
     special_panel_button: function special_panel_button() {
       this.search_panel = false;
       this.category_panel = false;
       this.transport_panel = false;
+      this.banner_index = false;
       this.special_panel = true;
     },
     atms_button: function atms_button() {
@@ -2553,6 +2604,7 @@ __webpack_require__.r(__webpack_exports__);
       this.toilets = false;
       this.invalids = false;
       this.transport_panel = false;
+      this.banner_index = false;
       this.atms = true;
     },
     invalids_button: function invalids_button() {
@@ -2560,6 +2612,7 @@ __webpack_require__.r(__webpack_exports__);
       this.atms = false;
       this.toilets = false;
       this.transport_panel = false;
+      this.banner_index = false;
       this.invalids = true;
     },
     toilets_button: function toilets_button() {
@@ -2567,6 +2620,7 @@ __webpack_require__.r(__webpack_exports__);
       this.atms = false;
       this.invalids = false;
       this.transport_panel = false;
+      this.banner_index = false;
       this.toilets = true;
     },
     transport_button: function transport_button() {
@@ -2574,6 +2628,7 @@ __webpack_require__.r(__webpack_exports__);
       this.atms = false;
       this.invalids = false;
       this.toilets = false;
+      this.banner_index = false;
       this.transport_panel = true;
     }
   },
@@ -27164,24 +27219,40 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-4-f" }, [
-        _c(
-          "div",
-          { staticClass: "sidebar" },
-          [
-            _c("div", { staticClass: "sidebar-header" }, [
-              _c("img", { attrs: { src: _vm.setup.logo } })
-            ]),
-            _vm._v(" "),
+        _c("div", { staticClass: "sidebar" }, [
+          _c("div", { staticClass: "sidebar-header" }, [
+            _c("img", {
+              attrs: { src: _vm.setup.logo },
+              on: {
+                click: function($event) {
+                  return _vm.home_panel_button()
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.banner_index,
+                  expression: "banner_index"
+                }
+              ]
+            },
             _vm._l(_vm.banners, function(banner) {
               return _c("div", {
                 key: banner.id,
                 staticClass: "sidebar-banner-slide",
                 style: { "background-image": "url(" + banner.adfile + ")" }
               })
-            })
-          ],
-          2
-        )
+            }),
+            0
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-8-f" }, [
@@ -27197,7 +27268,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/map.svg" } })]
+                [_vm._m(0)]
               )
             ]),
             _vm._v(" "),
@@ -27211,7 +27282,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/search.svg" } })]
+                [_vm._m(1)]
               )
             ]),
             _vm._v(" "),
@@ -27225,7 +27296,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/cats.svg" } })]
+                [_vm._m(2)]
               )
             ]),
             _vm._v(" "),
@@ -27239,7 +27310,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/sale.svg" } })]
+                [_vm._m(3)]
               )
             ])
           ])
@@ -27309,7 +27380,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "col-12", staticStyle: { padding: "4vh" } },
+              { staticClass: "col-12", staticStyle: { padding: "2vh" } },
               [
                 _c(
                   "div",
@@ -27602,7 +27673,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/credit-card.svg" } })]
+                [_vm._m(4)]
               )
             ]),
             _vm._v(" "),
@@ -27616,7 +27687,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/toilet1.svg" } })]
+                [_vm._m(5)]
               )
             ]),
             _vm._v(" "),
@@ -27630,7 +27701,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/disabled-sign.svg" } })]
+                [_vm._m(6)]
               )
             ]),
             _vm._v(" "),
@@ -27644,7 +27715,21 @@ var render = function() {
                     }
                   }
                 },
-                [_c("img", { attrs: { src: "/img/urs/transport.svg" } })]
+                [_vm._m(7)]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-3" }, [
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.transport_button()
+                    }
+                  }
+                },
+                [_vm._m(8)]
               )
             ])
           ])
@@ -27653,7 +27738,98 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/map.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Карта")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/search.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Магазины")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/cats.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Категории")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/sale.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Скидки")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/credit-card.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Банкоматы")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/toilet1.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Туалеты")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/disabled-sign.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Забота об "), _c("br"), _vm._v("инвалидах")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/transport.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Как уехать")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", { attrs: { src: "/img/urs/transport.svg" } }),
+      _vm._v(" "),
+      _c("i", [_vm._v("Как уехать")])
+    ])
+  }
+]
 render._withStripped = true
 
 

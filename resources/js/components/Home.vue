@@ -5,9 +5,10 @@
             <div class="col-4-f">
                 <div class="sidebar">
                     <div class="sidebar-header">
-                        <img :src="setup.logo">
+                        <img :src="setup.logo" @click="home_panel_button()">
                     </div>
-                    <div v-for="banner in banners" :key="banner.id" class="sidebar-banner-slide" v-bind:style="{ 'background-image': 'url(' + banner.adfile + ')' }">
+                    <div v-show="banner_index">
+                        <div v-for="banner in banners" :key="banner.id" class="sidebar-banner-slide" v-bind:style="{ 'background-image': 'url(' + banner.adfile + ')' }"></div>
                     </div>
                 </div>
             </div>
@@ -17,22 +18,34 @@
                     <div class="row">
                         <div class="col-3">
                             <button @click="home_panel_button()">
-                                <img src="/img/urs/map.svg">
+                                <span>
+                                    <img src="/img/urs/map.svg">
+                                    <i>Карта</i>
+                                </span>
                             </button>
                         </div>
                         <div class="col-3">
                             <button @click="search_panel_button()">
-                                <img src="/img/urs/search.svg">
+                                <span>
+                                    <img src="/img/urs/search.svg">
+                                    <i>Магазины</i>
+                                </span>
                             </button>
                         </div>
                         <div class="col-3">
                             <button @click="category_panel_button()">
-                                <img src="/img/urs/cats.svg">
+                                <span>
+                                    <img src="/img/urs/cats.svg">
+                                    <i>Категории</i>
+                                </span>
                             </button>
                         </div>
                         <div class="col-3">
                             <button @click="special_panel_button()">
-                                <img src="/img/urs/sale.svg">
+                                <span>
+                                    <img src="/img/urs/sale.svg">
+                                    <i>Скидки</i>
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -49,7 +62,7 @@
 
                     <TransportPanel v-show="transport_panel"/>
 
-                    <div class="col-12" style="padding: 4vh">
+                    <div class="col-12" style="padding: 2vh">
 
                         <div id="map" style="position: relative; width: 800px; height: 450px;">
                             <div v-for="scheme in schemes" :key="scheme.id" :id="'scheme_image_' + scheme.id" class="scheme_images">
@@ -118,22 +131,42 @@
                     <div class="row">
                         <div class="col-3">
                             <button @click="atms_button()">
-                                <img src="/img/urs/credit-card.svg">
+                                <span>
+                                    <img src="/img/urs/credit-card.svg">
+                                    <i>Банкоматы</i>
+                                </span>
                             </button>
                         </div>
                         <div class="col-3">
                             <button @click="toilets_button()">
-                                <img src="/img/urs/toilet1.svg">
+                                <span>
+                                    <img src="/img/urs/toilet1.svg">
+                                    <i>Туалеты</i>
+                                </span>
                             </button>
                         </div>
                         <div class="col-3">
                             <button @click="invalids_button()">
-                                <img src="/img/urs/disabled-sign.svg">
+                                <span>
+                                    <img src="/img/urs/disabled-sign.svg">
+                                    <i>Забота об <br>инвалидах</i>
+                                </span>
                             </button>
                         </div>
                         <div class="col-3">
                             <button @click="transport_button()">
-                                <img src="/img/urs/transport.svg">
+                                <span>
+                                    <img src="/img/urs/transport.svg">
+                                    <i>Как уехать</i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button @click="transport_button()">
+                                <span>
+                                    <img src="/img/urs/transport.svg">
+                                    <i>Как уехать</i>
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -161,6 +194,7 @@
                 schemes: [],
                 stores: {},
 
+                banner_index: true,
                 search_panel: false,
                 category_panel: false,
                 special_panel: false,
@@ -206,6 +240,7 @@
                 this.atms = false
                 this.invalids = false
                 this.toilets = false
+                this.banner_index = false
                 this.route_store_about_panel = true
                 this.current_store_route = store_route.id
                 this.current_floor = store_route.scheme_id
@@ -218,6 +253,9 @@
             },
             SelectStoreRoute_atms(store_route) {
                 this.search_panel = false
+                this.invalids = false
+                this.toilets = false
+                this.banner_index = false
                 this.route_store_about_panel = true
                 this.current_store_route = store_route.id
                 this.current_floor = store_route.scheme_id
@@ -230,6 +268,9 @@
             },
             SelectStoreRoute_invalids(store_route) {
                 this.search_panel = false
+                this.atms = false
+                this.toilets = false
+                this.banner_index = false
                 this.route_store_about_panel = true
                 this.current_store_route = store_route.id
                 this.current_floor = store_route.scheme_id
@@ -242,6 +283,9 @@
             },
             SelectStoreRoute_toilets(store_route) {
                 this.search_panel = false
+                this.atms = false
+                this.invalids = false
+                this.banner_index = false
                 this.route_store_about_panel = true
                 this.current_store_route = store_route.id
                 this.current_floor = store_route.scheme_id
@@ -257,6 +301,7 @@
                 this.atms = false
                 this.invalids = false
                 this.toilets = false
+                this.banner_index = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.search_panel_store_route.id;
                 this.current_floor = data.search_panel_store_route.scheme_id
@@ -272,6 +317,7 @@
                 this.atms = false
                 this.invalids = false
                 this.toilets = false
+                this.banner_index = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.special_panel_store_route.id;
                 this.current_floor = data.special_panel_store_route.scheme_id
@@ -287,6 +333,7 @@
                 this.atms = false
                 this.invalids = false
                 this.toilets = false
+                this.banner_index = false
                 this.route_store_about_panel = true
                 this.current_store_route = data.category_panel_store_route.id;
                 this.current_floor = data.category_panel_store_route.scheme_id
@@ -315,23 +362,27 @@
                 this.special_panel = false;
                 this.transport_panel = false;
                 this.route_store_about_panel = false;
+                this.banner_index = true
             },
             search_panel_button() {
                 this.category_panel = false;
                 this.special_panel = false;
                 this.transport_panel = false;
+                this.banner_index = false
                 this.search_panel = true;
             },
             category_panel_button() {
                 this.search_panel = false;
                 this.special_panel = false;
                 this.transport_panel = false;
+                this.banner_index = false
                 this.category_panel = true;
             },
             special_panel_button() {
                 this.search_panel = false;
                 this.category_panel = false;
                 this.transport_panel = false;
+                this.banner_index = false
                 this.special_panel = true;
             },
             atms_button() {
@@ -339,6 +390,7 @@
                 this.toilets = false;
                 this.invalids = false;
                 this.transport_panel = false;
+                this.banner_index = false
                 this.atms = true;
             },
             invalids_button() {
@@ -346,6 +398,7 @@
                 this.atms = false;
                 this.toilets = false;
                 this.transport_panel = false;
+                this.banner_index = false
                 this.invalids = true;
             },
             toilets_button() {
@@ -353,6 +406,7 @@
                 this.atms = false;
                 this.invalids = false;
                 this.transport_panel = false;
+                this.banner_index = false
                 this.toilets = true;
             },
             transport_button() {
@@ -360,6 +414,7 @@
                 this.atms = false;
                 this.invalids = false;
                 this.toilets = false;
+                this.banner_index = false
                 this.transport_panel = true;
             }
         },
