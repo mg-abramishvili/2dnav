@@ -1,7 +1,7 @@
 <template>
     <div class="category_panel">
 
-        <div v-show="category_panel_index" class="category_panel_index">
+        <div v-show="this.$parent.category_panel_index" class="category_panel_index">
             <div class="row">
                 <template v-for="tag in tags">
                     <div v-if="tag.store.length" class="col-3">
@@ -16,8 +16,8 @@
             </div>
         </div>
 
-        <div v-show="!category_panel_index" class="category_panel_inner">
-            <button @click="category_panel_index = true">Назад</button>
+        <div v-show="!this.$parent.category_panel_index" class="category_panel_inner">
+            <button @click="goToCatIndex()">Назад</button>
             <div class="row">
                 <div v-for="store in stores" :key="store.id" class="col-3">
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
@@ -36,7 +36,6 @@
             return {
                 tags: {},
                 stores: {},
-                category_panel_index: true,
             }
         },
         created() {
@@ -50,19 +49,22 @@
         },
         methods: {
             SelectStoreRoute(store_route) {
-                this.category_panel_index = true;
+                this.$parent.category_panel_index = true
                 this.$emit('category_panel_store_route', {
                     category_panel_store_route: store_route,
                 })
             },
             FilterCategory(tag) {
-                this.category_panel_index = false;
+                this.$parent.category_panel_index = false
                 fetch(`/api/stores_category_filter/${tag.title}`)
                     .then(response => response.json())
                     .then(json => {
                         this.stores = json;
                     });
             },
+            goToCatIndex() {
+                this.$parent.category_panel_index = true
+            }
         },
         components: {
         }

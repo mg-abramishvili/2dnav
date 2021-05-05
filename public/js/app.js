@@ -2018,8 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       tags: {},
-      stores: {},
-      category_panel_index: true
+      stores: {}
     };
   },
   created: function created() {
@@ -2034,7 +2033,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   methods: {
     SelectStoreRoute: function SelectStoreRoute(store_route) {
-      this.category_panel_index = true;
+      this.$parent.category_panel_index = true;
       this.$emit('category_panel_store_route', {
         category_panel_store_route: store_route
       });
@@ -2042,12 +2041,15 @@ __webpack_require__.r(__webpack_exports__);
     FilterCategory: function FilterCategory(tag) {
       var _this2 = this;
 
-      this.category_panel_index = false;
+      this.$parent.category_panel_index = false;
       fetch("/api/stores_category_filter/".concat(tag.title)).then(function (response) {
         return response.json();
       }).then(function (json) {
         _this2.stores = json;
       });
+    },
+    goToCatIndex: function goToCatIndex() {
+      this.$parent.category_panel_index = true;
     }
   },
   components: {}
@@ -2406,7 +2408,9 @@ __webpack_require__.r(__webpack_exports__);
       stores: {},
       banner_index: true,
       search_panel: false,
+      search_panel_input: '',
       category_panel: false,
+      category_panel_index: true,
       special_panel: false,
       route_store_about_panel: false,
       transport_panel: false,
@@ -2578,6 +2582,7 @@ __webpack_require__.r(__webpack_exports__);
       this.transport_panel = false;
       this.route_store_about_panel = false;
       this.banner_index = true;
+      this.category_panel_index = true;
     },
     search_panel_button: function search_panel_button() {
       this.category_panel = false;
@@ -2585,6 +2590,7 @@ __webpack_require__.r(__webpack_exports__);
       this.transport_panel = false;
       this.banner_index = false;
       this.search_panel = true;
+      this.category_panel_index = true;
     },
     category_panel_button: function category_panel_button() {
       this.search_panel = false;
@@ -2592,6 +2598,7 @@ __webpack_require__.r(__webpack_exports__);
       this.transport_panel = false;
       this.banner_index = false;
       this.category_panel = true;
+      this.category_panel_index = true;
     },
     special_panel_button: function special_panel_button() {
       this.search_panel = false;
@@ -2599,6 +2606,7 @@ __webpack_require__.r(__webpack_exports__);
       this.transport_panel = false;
       this.banner_index = false;
       this.special_panel = true;
+      this.category_panel_index = true;
     },
     atms_button: function atms_button() {
       this.current_slide = 0;
@@ -25746,8 +25754,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.category_panel_index,
-            expression: "category_panel_index"
+            value: this.$parent.category_panel_index,
+            expression: "this.$parent.category_panel_index"
           }
         ],
         staticClass: "category_panel_index"
@@ -25805,8 +25813,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: !_vm.category_panel_index,
-            expression: "!category_panel_index"
+            value: !this.$parent.category_panel_index,
+            expression: "!this.$parent.category_panel_index"
           }
         ],
         staticClass: "category_panel_inner"
@@ -25817,7 +25825,7 @@ var render = function() {
           {
             on: {
               click: function($event) {
-                _vm.category_panel_index = true
+                return _vm.goToCatIndex()
               }
             }
           },

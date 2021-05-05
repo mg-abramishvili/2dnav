@@ -184,6 +184,12 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    /*animation: rl_st_item_image_anim 0.25s linear;*/
+}
+@keyframes rl_st_item_image_anim {
+    0% { opacity: 0; }
+    99% { opacity: 0; }
+    100% { opacity: 1; }
 }
 /* SEARCH PANEL */
 
