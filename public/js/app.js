@@ -2583,6 +2583,7 @@ __webpack_require__.r(__webpack_exports__);
       this.route_store_about_panel = false;
       this.banner_index = true;
       this.category_panel_index = true;
+      this.current_slide = 0;
     },
     search_panel_button: function search_panel_button() {
       this.category_panel = false;
@@ -2591,6 +2592,7 @@ __webpack_require__.r(__webpack_exports__);
       this.banner_index = false;
       this.search_panel = true;
       this.category_panel_index = true;
+      this.current_slide = 0;
     },
     category_panel_button: function category_panel_button() {
       this.search_panel = false;
@@ -2599,6 +2601,7 @@ __webpack_require__.r(__webpack_exports__);
       this.banner_index = false;
       this.category_panel = true;
       this.category_panel_index = true;
+      this.current_slide = 0;
     },
     special_panel_button: function special_panel_button() {
       this.search_panel = false;
@@ -2607,6 +2610,7 @@ __webpack_require__.r(__webpack_exports__);
       this.banner_index = false;
       this.special_panel = true;
       this.category_panel_index = true;
+      this.current_slide = 0;
     },
     atms_button: function atms_button() {
       this.current_slide = 0;
