@@ -15,13 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            TagSeeder::class,
-            StoreSeeder::class,
             SetupSeeder::class,
-            SchemeSeeder::class,
-            MarkimagesSeeder::class,
-            MarkimagesTagsSeeder::class,
-            AdSeeder::class,
+
+            urs\SchemeSeeder::class,
+            urs\MarkimagesSeeder::class,
+            urs\MarkimagesTagsSeeder::class,
+            urs\TagSeeder::class,
+            //urs\StoreSeeder::class,
+            urs\AdSeeder::class,            
         ]);
     }
 }
