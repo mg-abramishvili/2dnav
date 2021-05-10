@@ -25908,7 +25908,7 @@ var render = function() {
             staticClass: "key-anim01",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -25960,7 +25960,7 @@ var render = function() {
             staticClass: "key-anim02",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26015,7 +26015,7 @@ var render = function() {
             staticClass: "key-anim03",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26070,7 +26070,7 @@ var render = function() {
             staticClass: "key-anim04",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26125,7 +26125,7 @@ var render = function() {
             staticClass: "key-anim05",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26180,7 +26180,7 @@ var render = function() {
             staticClass: "key-anim06",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26235,7 +26235,7 @@ var render = function() {
             staticClass: "key-anim07",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26290,7 +26290,7 @@ var render = function() {
             staticClass: "key-anim08",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26345,7 +26345,7 @@ var render = function() {
             staticClass: "key-anim09",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26400,7 +26400,7 @@ var render = function() {
             staticClass: "key-anim10",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26455,7 +26455,7 @@ var render = function() {
             staticClass: "key-anim11",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26510,7 +26510,7 @@ var render = function() {
             staticClass: "key-anim12",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26593,7 +26593,7 @@ var render = function() {
             staticClass: "key-anim01",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26645,7 +26645,7 @@ var render = function() {
             staticClass: "key-anim02",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26700,7 +26700,7 @@ var render = function() {
             staticClass: "key-anim03",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26755,7 +26755,7 @@ var render = function() {
             staticClass: "key-anim04",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26810,7 +26810,7 @@ var render = function() {
             staticClass: "key-anim05",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26865,7 +26865,7 @@ var render = function() {
             staticClass: "key-anim06",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26920,7 +26920,7 @@ var render = function() {
             staticClass: "key-anim07",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26975,7 +26975,7 @@ var render = function() {
             staticClass: "key-anim08",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27030,7 +27030,7 @@ var render = function() {
             staticClass: "key-anim09",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27085,7 +27085,7 @@ var render = function() {
             staticClass: "key-anim10",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27140,7 +27140,7 @@ var render = function() {
             staticClass: "key-anim11",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27195,7 +27195,7 @@ var render = function() {
             staticClass: "key-anim12",
             attrs: {
               fill: "none",
-              "stroke-width": "5px",
+              "stroke-width": "3px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +

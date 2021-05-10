@@ -347,11 +347,11 @@
     height: 450px;
 }
 .map-path circle {
-    r: 4;
+    r: 2;
 }
 .map-path circle:first-of-type,
 .map-path circle:last-of-type {
-    r: 7;
+    r: 4;
 }
 .scheme_images {
     position: absolute;
