@@ -2389,9 +2389,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -27493,7 +27490,8 @@ var render = function() {
                       return [
                         _vm._l(store.schemes, function(s_scheme) {
                           return [
-                            s_scheme.pivot.scheme_id === _vm.current_floor
+                            s_scheme.pivot.scheme_id.toString() ===
+                            _vm.current_floor
                               ? [
                                   _vm._l(store.tags, function(store_tag) {
                                     return [

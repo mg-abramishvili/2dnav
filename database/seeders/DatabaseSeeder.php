@@ -18,10 +18,14 @@ class DatabaseSeeder extends Seeder
             SetupSeeder::class,
 
             urs\SchemeSeeder::class,
+            urs\SchemeStoreSeeder::class,
             urs\MarkimagesSeeder::class,
             urs\MarkimagesTagsSeeder::class,
             urs\TagSeeder::class,
-            //urs\StoreSeeder::class,
+            urs\StoreSeeder::class,
+            urs\StoreTagSeeder::class,
+            urs\RouteSeeder::class,
+            urs\RouteStoreSeeder::class,
             urs\AdSeeder::class,            
         ]);
     }

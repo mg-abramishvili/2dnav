@@ -74,9 +74,7 @@
 
                             <template v-for="store in stores">
                                 <template v-for="s_scheme in store.schemes">
-                                    <template v-if="s_scheme.pivot.scheme_id === current_floor">
-                                        
-                                            
+                                    <template v-if="s_scheme.pivot.scheme_id.toString() === current_floor">
                                             <template v-for="store_tag in store.tags">
                                                 <template v-if="store_tag.title === 'банкоматы' && atms">
                                                     <span v-for="store_route in store.routes" @click="SelectStoreRoute_atms(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
@@ -101,7 +99,6 @@
                                                     </span>
                                                 </template>
                                             </template>
-
                                         
                                     </template>
                                 </template>
