@@ -160,7 +160,7 @@
     border: 0.2vh solid #A1A1A1;
 }
 #myUL_wrapper {
-    height: 45vh;
+    height: 73vh;
     overflow-x: hidden;
     overflow-y: auto;
     padding-bottom: 4vh;
@@ -200,12 +200,14 @@
     position: absolute;
     z-index: 10;
     width: 100vw;
-    height: 85vh;
     top: 15vh;
     margin-top: 0;
     background: #fff;
-    padding: 1.5vh;
+    padding: 0 1.5vh;
     margin-left: -19vw;
+    
+}
+.category_panel_inner {
     overflow-y: auto;
 }
 .category_item {
@@ -238,6 +240,24 @@
     margin: 0;
     color: #fff;
     font-weight: bold;
+    text-transform: uppercase;
+}
+.back_button {
+    border: 1px solid #68D94C;
+    padding: 1vh 3vh;
+    font-size: 2vh;
+    color: #68D94C;
+    display: inline-block;
+    vertical-align: middle;
+}
+.cat_header {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 3vh;
+    line-height: 1;
+    font-weight: 700;
+    margin: 0;
+    margin-left: 2vh;
     text-transform: uppercase;
 }
 /* CATEGORIES PANEL */

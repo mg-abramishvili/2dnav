@@ -621,6 +621,21 @@ class RouteStoreSeeder extends Seeder
                 'id' => 123,
                 'route_id' => 123,
                 'store_id' => 123
+            ],
+            [
+                'id' => 124,
+                'route_id' => 124,
+                'store_id' => 124
+            ],
+            [
+                'id' => 125,
+                'route_id' => 125,
+                'store_id' => 125
+            ],
+            [
+                'id' => 126,
+                'route_id' => 126,
+                'store_id' => 126
             ]
         ]);
     }

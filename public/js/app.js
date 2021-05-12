@@ -2014,11 +2014,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       tags: {},
-      stores: {}
+      stores: {},
+      tag_title: {}
     };
   },
   created: function created() {
@@ -2041,11 +2046,12 @@ __webpack_require__.r(__webpack_exports__);
     FilterCategory: function FilterCategory(tag) {
       var _this2 = this;
 
-      this.stores = {}, this.$parent.category_panel_index = false;
+      this.stores = {}, this.tag_title = '', this.$parent.category_panel_index = false;
       fetch("/api/stores_category_filter/".concat(tag.title)).then(function (response) {
         return response.json();
       }).then(function (json) {
         _this2.stores = json;
+        _this2.tag_title = tag.title;
       });
     },
     goToCatIndex: function goToCatIndex() {
@@ -2081,10 +2087,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      stores: {}
+      stores: {},
+      shortcut_title: ''
     };
   },
   created: function created() {
@@ -2103,6 +2112,10 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('category_panel_store_route', {
         category_panel_store_route: store_route
       });
+    },
+    home_panel_button: function home_panel_button() {
+      this.$parent.category_panel_shortcut = false;
+      this.$parent.banner_index = true;
     }
   },
   components: {}
@@ -2635,6 +2648,13 @@ __webpack_require__.r(__webpack_exports__);
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'развлечения';
     },
+    toilets_button: function toilets_button() {
+      this.current_slide = 0;
+      this.transport_panel = false;
+      this.banner_index = false;
+      this.category_panel_shortcut = true;
+      this.category_panel_shortcut_tag = 'туалеты';
+    },
     transport_button: function transport_button() {
       this.current_slide = 0;
       this.atms = false;
@@ -2667,6 +2687,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -2954,13 +2978,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
   },
   created: function created() {},
   computed: {},
-  methods: {},
+  methods: {
+    home_panel_button: function home_panel_button() {
+      this.$parent.transport_panel = false;
+      this.$parent.banner_index = true;
+    }
+  },
   components: {}
 });
 
@@ -25767,47 +25799,93 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "row" },
+          {
+            staticClass: "category_panel_inner",
+            staticStyle: { height: "83vh" }
+          },
           [
-            _vm._l(_vm.tags, function(tag) {
-              return [
-                tag.store.length
-                  ? _c("div", { staticClass: "col-3" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "category_item",
-                          on: {
-                            click: function($event) {
-                              return _vm.FilterCategory(tag)
-                            }
-                          }
-                        },
-                        [
-                          _vm._l(tag.markimages, function(markimage) {
-                            return _c("div", [
-                              _c("div", {
-                                staticClass: "category_item_image",
-                                style: {
-                                  "background-image":
-                                    "url(" + markimage.image + ")"
+            _c(
+              "div",
+              { staticClass: "row" },
+              [
+                _vm._l(_vm.tags, function(tag) {
+                  return [
+                    tag.store.length
+                      ? _c("div", { staticClass: "col-3" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "category_item",
+                              on: {
+                                click: function($event) {
+                                  return _vm.FilterCategory(tag)
                                 }
-                              })
-                            ])
-                          }),
-                          _vm._v(" "),
-                          _c("p", [_vm._v(_vm._s(tag.title))])
-                        ],
-                        2
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            })
-          ],
-          2
+                              }
+                            },
+                            [
+                              _vm._l(tag.markimages, function(markimage) {
+                                return _c("div", [
+                                  _c("div", {
+                                    staticClass: "category_item_image",
+                                    style: {
+                                      "background-image":
+                                        "url(" + markimage.image + ")"
+                                    }
+                                  })
+                                ])
+                              }),
+                              _vm._v(" "),
+                              _c("p", [_vm._v(_vm._s(tag.title))])
+                            ],
+                            2
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                })
+              ],
+              2
+            )
+          ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !this.$parent.category_panel_index,
+            expression: "!this.$parent.category_panel_index"
+          }
+        ],
+        staticClass: "back_button",
+        on: {
+          click: function($event) {
+            return _vm.goToCatIndex()
+          }
+        }
+      },
+      [_vm._v("Назад")]
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !this.$parent.category_panel_index,
+            expression: "!this.$parent.category_panel_index"
+          }
+        ],
+        staticClass: "cat_header"
+      },
+      [_vm._v(_vm._s(_vm.tag_title))]
     ),
     _vm._v(" "),
     _c(
@@ -25821,21 +25899,10 @@ var render = function() {
             expression: "!this.$parent.category_panel_index"
           }
         ],
-        staticClass: "category_panel_inner"
+        staticClass: "category_panel_inner",
+        staticStyle: { height: "78vh" }
       },
       [
-        _c(
-          "button",
-          {
-            on: {
-              click: function($event) {
-                return _vm.goToCatIndex()
-              }
-            }
-          },
-          [_vm._v("Назад")]
-        ),
-        _vm._v(" "),
         _c(
           "div",
           { staticClass: "row" },
@@ -25900,45 +25967,86 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "category_panel" }, [
-    _c("div", { staticClass: "category_panel_inner" }, [
-      _c(
-        "div",
-        { staticClass: "row" },
-        _vm._l(_vm.stores, function(store) {
-          return _c(
-            "div",
-            { key: store.id, staticClass: "col-3" },
-            _vm._l(store.routes, function(store_route) {
-              return _c(
-                "div",
-                {
-                  key: store_route.id,
-                  staticClass: "rl_st_item",
-                  on: {
-                    click: function($event) {
-                      return _vm.SelectStoreRoute(store_route)
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: this.$parent.category_panel_shortcut,
+            expression: "this.$parent.category_panel_shortcut"
+          }
+        ],
+        staticClass: "back_button",
+        on: {
+          click: function($event) {
+            return _vm.home_panel_button()
+          }
+        }
+      },
+      [_vm._v("Назад")]
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: this.$parent.category_panel_shortcut,
+            expression: "this.$parent.category_panel_shortcut"
+          }
+        ],
+        staticClass: "cat_header"
+      },
+      [_vm._v(_vm._s(this.$parent.category_panel_shortcut_tag))]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "category_panel_inner", staticStyle: { height: "83vh" } },
+      [
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.stores, function(store) {
+            return _c(
+              "div",
+              { key: store.id, staticClass: "col-3" },
+              _vm._l(store.routes, function(store_route) {
+                return _c(
+                  "div",
+                  {
+                    key: store_route.id,
+                    staticClass: "rl_st_item",
+                    on: {
+                      click: function($event) {
+                        return _vm.SelectStoreRoute(store_route)
+                      }
                     }
-                  }
-                },
-                [
-                  _c("div", {
-                    staticClass: "rl_st_item_image",
-                    style: { "background-image": "url(" + store.logo + ")" }
-                  }),
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(store.title) +
-                      "\n                "
-                  )
-                ]
-              )
-            }),
-            0
-          )
-        }),
-        0
-      )
-    ])
+                  },
+                  [
+                    _c("div", {
+                      staticClass: "rl_st_item_image",
+                      style: { "background-image": "url(" + store.logo + ")" }
+                    }),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(store.title) +
+                        "\n                "
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          }),
+          0
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -27436,17 +27544,11 @@ var render = function() {
         _c(
           "div",
           [
-            _c("SearchPanel", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.search_panel,
-                  expression: "search_panel"
-                }
-              ],
-              on: { search_panel_store_route: _vm.onSearchPanelStoreRoute }
-            }),
+            _vm.search_panel
+              ? _c("SearchPanel", {
+                  on: { search_panel_store_route: _vm.onSearchPanelStoreRoute }
+                })
+              : _vm._e(),
             _vm._v(" "),
             _c("CategoryPanel", {
               directives: [
@@ -27823,7 +27925,7 @@ var render = function() {
                 {
                   on: {
                     click: function($event) {
-                      return _vm.transport_button()
+                      return _vm.toilets_button()
                     }
                   }
                 },
@@ -28015,9 +28117,17 @@ var render = function() {
             0
           ),
           _vm._v(" "),
-          _c("hr"),
-          _vm._v("\n        Режим работы:\n            10:00-20:00\n        "),
-          _c("hr"),
+          csr.working_hours
+            ? _c("div", [
+                _c("hr"),
+                _vm._v(
+                  "\n        Режим работы:\n            " +
+                    _vm._s(csr.working_hours) +
+                    "\n        "
+                ),
+                _c("hr")
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _vm._l(csr.specials, function(csr_sp) {
             return [
@@ -28261,16 +28371,53 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "transport_panel" }, [
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: this.$parent.transport_panel,
+            expression: "this.$parent.transport_panel"
+          }
+        ],
+        staticClass: "back_button",
+        on: {
+          click: function($event) {
+            return _vm.home_panel_button()
+          }
+        }
+      },
+      [_vm._v("Назад")]
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: this.$parent.transport_panel,
+            expression: "this.$parent.transport_panel"
+          }
+        ],
+        staticClass: "cat_header"
+      },
+      [_vm._v("Как уехать")]
+    ),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "transport_panel" }, [
-      _c("h2", [_vm._v("Как уехать")]),
-      _vm._v(" "),
+    return _c("div", { staticStyle: { "margin-top": "3vh" } }, [
       _c("p", [_vm._v("Здесь будет текст о том, как уехать из ТЦ.")])
     ])
   }

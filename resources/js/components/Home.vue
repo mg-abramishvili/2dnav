@@ -52,7 +52,7 @@
                 </div>
                 
                 <div>
-                    <SearchPanel v-show="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
+                    <SearchPanel v-if="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
 
                     <CategoryPanel v-show="category_panel" @category_panel_store_route="onCategoryPanelStoreRoute"/>
                     <CategoryPanelShortcut v-if="category_panel_shortcut" @category_panel_store_route="onCategoryPanelStoreRoute"/>
@@ -144,7 +144,7 @@
                             </button>
                         </div>
                         <div class="col-3">
-                            <button @click="transport_button()">
+                            <button @click="toilets_button()">
                                 <span>
                                     <img src="/img/urs/toilet1.svg">
                                     <i>Туалеты</i>
@@ -369,6 +369,13 @@
                 this.banner_index = false
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'развлечения'
+            },
+            toilets_button() {
+                this.current_slide = 0;
+                this.transport_panel = false
+                this.banner_index = false
+                this.category_panel_shortcut = true
+                this.category_panel_shortcut_tag = 'туалеты'
             },
             transport_button() {
                 this.current_slide = 0;

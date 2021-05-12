@@ -621,6 +621,21 @@ class SchemeStoreSeeder extends Seeder
                 'id' => 125,
                 'scheme_id' => 3,
                 'store_id' => 123
+            ],
+            [
+                'id' => 126,
+                'scheme_id' => 1,
+                'store_id' => 124
+            ],
+            [
+                'id' => 127,
+                'scheme_id' => 2,
+                'store_id' => 125
+            ],
+            [
+                'id' => 128,
+                'scheme_id' => 3,
+                'store_id' => 126
             ]
         ]);
     }

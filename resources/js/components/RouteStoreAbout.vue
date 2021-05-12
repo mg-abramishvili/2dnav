@@ -12,10 +12,14 @@
             <ul>
                 <li v-for="tag in csr.tags" :key="tag.id">{{tag.title}}</li>
             </ul>
+
+            <div v-if="csr.working_hours">
             <hr>
             Режим работы:
-                10:00-20:00
+                {{ csr.working_hours }}
             <hr>
+            </div>
+
             <template v-for="csr_sp in csr.specials">
                 <img :src="csr_sp.image" style="width:100%;"/>
             </template>

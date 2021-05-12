@@ -931,6 +931,21 @@ class StoreTagSeeder extends Seeder
                 'id' => 190,
                 'store_id' => 123,
                 'tag_id' => 4
+            ],
+            [
+                'id' => 191,
+                'store_id' => 124,
+                'tag_id' => 28
+            ],
+            [
+                'id' => 192,
+                'store_id' => 125,
+                'tag_id' => 28
+            ],
+            [
+                'id' => 193,
+                'store_id' => 126,
+                'tag_id' => 28
             ]
         ]);
     }

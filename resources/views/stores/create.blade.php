@@ -179,6 +179,20 @@
                 </dd>
             </div>
 
+            <div class="row align-items-center mb-2">
+                <dt class="col-sm-3">
+                    Время работы
+                </dt>
+                <dd class="col-sm-9">
+                    <input type="text" class="form-control" name="working_hours">
+                    @if ($errors->has('working_hours'))
+                        <div class="alert alert-danger">
+                            Укажите Время работы
+                        </div>
+                    @endif
+                </dd>
+            </div>
+
             <div style="display:none;">
                 <div class="row align-items-center mb-2">
                     <dt class="col-sm-3">

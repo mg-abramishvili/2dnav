@@ -90,6 +90,7 @@ class StoreController extends Controller
         $stores = new Store();
         $stores->title = $data['title'];
         $stores->logo = $data['logo'];
+        $stores->working_hours = $data['working_hours'];
         $stores->keywords = $data['keywords'];
         $stores->x_01 = $data['x_01'];
         $stores->y_01 = $data['y_01'];
@@ -115,6 +116,7 @@ class StoreController extends Controller
         $stores = Store::find($data['id']);
         $stores->title = $data['title'];
         $stores->logo = $data['logo'];
+        $stores->working_hours = $data['working_hours'];
         $stores->keywords = $data['keywords'];
         $stores->x_01 = $data['x_01'];
         $stores->y_01 = $data['y_01'];
