@@ -323,9 +323,9 @@
 .key-anim10,
 .key-anim11,
 .key-anim12 {
-    stroke-dasharray: 10;
+    stroke-dasharray: 6;
     stroke-dashoffset: -2000;
-    animation: Drawpath 20s linear infinite;
+    animation: Drawpath 50s linear infinite;
 }
 @keyframes Drawpath {
     from {
@@ -369,11 +369,11 @@
     height: 450px;
 }
 .map-path circle {
-    r: 2;
+    r: 1;
 }
 .map-path circle:first-of-type,
 .map-path circle:last-of-type {
-    r: 4;
+    r: 3;
 }
 .scheme_images {
     position: absolute;

@@ -26106,7 +26106,7 @@ var render = function() {
             staticClass: "key-anim01",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26134,19 +26134,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_01,
                 y: _vm.current_store_route.y_01,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_begin))]
               )
             ]
@@ -26158,7 +26158,7 @@ var render = function() {
             staticClass: "key-anim02",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26189,19 +26189,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_02,
                 y: _vm.current_store_route.y_02,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26213,7 +26213,7 @@ var render = function() {
             staticClass: "key-anim03",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26244,19 +26244,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_03,
                 y: _vm.current_store_route.y_03,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26268,7 +26268,7 @@ var render = function() {
             staticClass: "key-anim04",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26299,19 +26299,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_04,
                 y: _vm.current_store_route.y_04,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26323,7 +26323,7 @@ var render = function() {
             staticClass: "key-anim05",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26354,19 +26354,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_05,
                 y: _vm.current_store_route.y_05,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26378,7 +26378,7 @@ var render = function() {
             staticClass: "key-anim06",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26409,19 +26409,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_06,
                 y: _vm.current_store_route.y_06,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26433,7 +26433,7 @@ var render = function() {
             staticClass: "key-anim07",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26464,19 +26464,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_07,
                 y: _vm.current_store_route.y_07,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26488,7 +26488,7 @@ var render = function() {
             staticClass: "key-anim08",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26519,19 +26519,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_08,
                 y: _vm.current_store_route.y_08,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26543,7 +26543,7 @@ var render = function() {
             staticClass: "key-anim09",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26574,19 +26574,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_09,
                 y: _vm.current_store_route.y_09,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26598,7 +26598,7 @@ var render = function() {
             staticClass: "key-anim10",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26629,19 +26629,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_10,
                 y: _vm.current_store_route.y_10,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26653,7 +26653,7 @@ var render = function() {
             staticClass: "key-anim11",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26684,19 +26684,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_11,
                 y: _vm.current_store_route.y_11,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26708,7 +26708,7 @@ var render = function() {
             staticClass: "key-anim12",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26739,19 +26739,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_12,
                 y: _vm.current_store_route.y_12,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_1_end))]
               )
             ]
@@ -26791,7 +26791,7 @@ var render = function() {
             staticClass: "key-anim01",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26819,19 +26819,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_101,
                 y: _vm.current_store_route.y_101,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_begin))]
               )
             ]
@@ -26843,7 +26843,7 @@ var render = function() {
             staticClass: "key-anim02",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26874,19 +26874,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_102,
                 y: _vm.current_store_route.y_102,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -26898,7 +26898,7 @@ var render = function() {
             staticClass: "key-anim03",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26929,19 +26929,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_103,
                 y: _vm.current_store_route.y_103,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -26953,7 +26953,7 @@ var render = function() {
             staticClass: "key-anim04",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -26984,19 +26984,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_104,
                 y: _vm.current_store_route.y_104,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27008,7 +27008,7 @@ var render = function() {
             staticClass: "key-anim05",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27039,19 +27039,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_105,
                 y: _vm.current_store_route.y_105,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27063,7 +27063,7 @@ var render = function() {
             staticClass: "key-anim06",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27094,19 +27094,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_106,
                 y: _vm.current_store_route.y_106,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27118,7 +27118,7 @@ var render = function() {
             staticClass: "key-anim07",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27149,19 +27149,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_107,
                 y: _vm.current_store_route.y_107,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27173,7 +27173,7 @@ var render = function() {
             staticClass: "key-anim08",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27204,19 +27204,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_108,
                 y: _vm.current_store_route.y_108,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27228,7 +27228,7 @@ var render = function() {
             staticClass: "key-anim09",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27259,19 +27259,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_109,
                 y: _vm.current_store_route.y_109,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27283,7 +27283,7 @@ var render = function() {
             staticClass: "key-anim10",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27314,19 +27314,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_110,
                 y: _vm.current_store_route.y_110,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27338,7 +27338,7 @@ var render = function() {
             staticClass: "key-anim11",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27369,19 +27369,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_111,
                 y: _vm.current_store_route.y_111,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
@@ -27393,7 +27393,7 @@ var render = function() {
             staticClass: "key-anim12",
             attrs: {
               fill: "none",
-              "stroke-width": "3px",
+              "stroke-width": "2px",
               stroke: "rgba(255,51,51,0.8)",
               d:
                 "M" +
@@ -27424,19 +27424,19 @@ var render = function() {
         ? _c(
             "text",
             {
-              staticStyle: { stroke: "#ffffff", "stroke-width": "0.5px" },
+              staticStyle: { stroke: "#ffffff", "stroke-width": "0.1px" },
               attrs: {
                 x: _vm.current_store_route.x_112,
                 y: _vm.current_store_route.y_112,
                 "font-family": "Verdana",
-                "font-size": "12",
+                "font-size": "7",
                 fill: "red"
               }
             },
             [
               _c(
                 "tspan",
-                { attrs: { dx: "-20", dy: "30", "font-weight": "bold" } },
+                { attrs: { dx: "-20", dy: "-6", "font-weight": "bold" } },
                 [_vm._v(_vm._s(_vm.current_store_route.t_2_end))]
               )
             ]
