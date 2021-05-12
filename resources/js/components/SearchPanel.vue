@@ -1,11 +1,10 @@
 <template>
     <div class="search_panel">
         <input
-        :value="input"
+        :value="this.$parent.search_panel_input"
         class="input"
-        @input="onInputChange"
         placeholder="Поиск..."
-        @focus="keyboard = true"
+        @focus="keyboard()"
         >
         <div id="myUL_wrapper">
         <div id="myUL" class="row" style="margin-top: 0.5vh;">
@@ -19,7 +18,7 @@
             </template>
         </div>
         </div>
-        <SimpleKeyboard v-show="keyboard" @onChange="onChange" @onKeyPress="onKeyPress" :input="input"/>
+        <SimpleKeyboard v-show="this.$parent.search_panel_keyboard" @onChange="onChange" @onKeyPress="onKeyPress" :input="this.$parent.search_panel_input"/>
     </div>
 </template>
 
@@ -31,7 +30,6 @@
             return {
                 stores: {},
                 input: '',
-                keyboard: false,
             }
         },
         created() {
@@ -43,32 +41,32 @@
         },
         computed: {
             filtered_stores: function () {
-                if (this.input.trim() === '') {
+                if (this.$parent.search_panel_input.trim() === '') {
                     return this.stores;
                 } else {
                     return this.stores.filter(item => {
-                        return item.title.toLowerCase().indexOf(this.input.toLowerCase()) >= 0 ||
-                               item.keywords.toLowerCase().indexOf(this.input.toLowerCase()) >= 0;
+                        return item.title.toLowerCase().indexOf(this.$parent.search_panel_input.toLowerCase()) >= 0 ||
+                               item.keywords.toLowerCase().indexOf(this.$parent.search_panel_input.toLowerCase()) >= 0;
                     });
                 }
             }
         },
         methods: {
             onChange(input) {
-                this.input = input;
+                this.$parent.search_panel_input = input;
             },
             onKeyPress(button) {
                 //console.log("button", button);
             },
-            onInputChange(input) {
-                this.input = input.target.value;
-            },
             SelectStoreRoute(store_route) {
-                this.input = '',
-                this.keyboard = false,
+                this.$parent.search_panel_input = '',
+                this.$parent.search_panel_keyboard = false,
                 this.$emit('search_panel_store_route', {
                     search_panel_store_route: store_route,
                 })
+            },
+            keyboard() {
+                this.$parent.search_panel_keyboard = true
             }
         },
         components: {

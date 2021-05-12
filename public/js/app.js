@@ -2477,6 +2477,7 @@ __webpack_require__.r(__webpack_exports__);
       banner_index: true,
       search_panel: false,
       search_panel_input: '',
+      search_panel_keyboard: false,
       category_panel: false,
       category_panel_index: true,
       category_panel_shortcut: false,
@@ -2612,6 +2613,8 @@ __webpack_require__.r(__webpack_exports__);
       this.transport_panel = false;
       this.banner_index = false;
       this.search_panel = true;
+      this.search_panel_input = '';
+      this.search_panel_keyboard = false;
       this.category_panel_index = true;
       this.category_panel_shortcut = false;
       this.current_slide = 0;
@@ -2775,14 +2778,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       stores: {},
-      input: '',
-      keyboard: false
+      input: ''
     };
   },
   created: function created() {
@@ -2798,28 +2799,28 @@ __webpack_require__.r(__webpack_exports__);
     filtered_stores: function filtered_stores() {
       var _this2 = this;
 
-      if (this.input.trim() === '') {
+      if (this.$parent.search_panel_input.trim() === '') {
         return this.stores;
       } else {
         return this.stores.filter(function (item) {
-          return item.title.toLowerCase().indexOf(_this2.input.toLowerCase()) >= 0 || item.keywords.toLowerCase().indexOf(_this2.input.toLowerCase()) >= 0;
+          return item.title.toLowerCase().indexOf(_this2.$parent.search_panel_input.toLowerCase()) >= 0 || item.keywords.toLowerCase().indexOf(_this2.$parent.search_panel_input.toLowerCase()) >= 0;
         });
       }
     }
   },
   methods: {
     onChange: function onChange(input) {
-      this.input = input;
+      this.$parent.search_panel_input = input;
     },
     onKeyPress: function onKeyPress(button) {//console.log("button", button);
     },
-    onInputChange: function onInputChange(input) {
-      this.input = input.target.value;
-    },
     SelectStoreRoute: function SelectStoreRoute(store_route) {
-      this.input = '', this.keyboard = false, this.$emit('search_panel_store_route', {
+      this.$parent.search_panel_input = '', this.$parent.search_panel_keyboard = false, this.$emit('search_panel_store_route', {
         search_panel_store_route: store_route
       });
+    },
+    keyboard: function keyboard() {
+      this.$parent.search_panel_keyboard = true;
     }
   },
   components: {
@@ -27562,11 +27563,17 @@ var render = function() {
         _c(
           "div",
           [
-            _vm.search_panel
-              ? _c("SearchPanel", {
-                  on: { search_panel_store_route: _vm.onSearchPanelStoreRoute }
-                })
-              : _vm._e(),
+            _c("SearchPanel", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.search_panel,
+                  expression: "search_panel"
+                }
+              ],
+              on: { search_panel_store_route: _vm.onSearchPanelStoreRoute }
+            }),
             _vm._v(" "),
             _c("CategoryPanel", {
               directives: [
@@ -28191,11 +28198,10 @@ var render = function() {
       _c("input", {
         staticClass: "input",
         attrs: { placeholder: "Поиск..." },
-        domProps: { value: _vm.input },
+        domProps: { value: this.$parent.search_panel_input },
         on: {
-          input: _vm.onInputChange,
           focus: function($event) {
-            _vm.keyboard = true
+            return _vm.keyboard()
           }
         }
       }),
@@ -28257,11 +28263,11 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.keyboard,
-            expression: "keyboard"
+            value: this.$parent.search_panel_keyboard,
+            expression: "this.$parent.search_panel_keyboard"
           }
         ],
-        attrs: { input: _vm.input },
+        attrs: { input: this.$parent.search_panel_input },
         on: { onChange: _vm.onChange, onKeyPress: _vm.onKeyPress }
       })
     ],

@@ -52,7 +52,7 @@
                 </div>
                 
                 <div>
-                    <SearchPanel v-if="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
+                    <SearchPanel v-show="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
 
                     <CategoryPanel v-show="category_panel" @category_panel_store_route="onCategoryPanelStoreRoute"/>
                     <CategoryPanelShortcut v-if="category_panel_shortcut" @category_panel_store_route="onCategoryPanelStoreRoute"/>
@@ -196,6 +196,7 @@
                 banner_index: true,
                 search_panel: false,
                 search_panel_input: '',
+                search_panel_keyboard: false,
                 category_panel: false,
                 category_panel_index: true,
                 category_panel_shortcut: false,
@@ -332,6 +333,8 @@
                 this.transport_panel = false;
                 this.banner_index = false
                 this.search_panel = true;
+                this.search_panel_input = ''
+                this.search_panel_keyboard = false
                 this.category_panel_index = true
                 this.category_panel_shortcut = false
                 this.current_slide = 0;
