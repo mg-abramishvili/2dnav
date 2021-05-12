@@ -337,6 +337,7 @@
                 this.search_panel_keyboard = false
                 this.category_panel_index = true
                 this.category_panel_shortcut = false
+                this.route_store_about_panel = false
                 this.current_slide = 0;
             },
             category_panel_button() {
@@ -346,6 +347,7 @@
                 this.banner_index = false
                 this.category_panel = true;
                 this.category_panel_shortcut = false
+                this.route_store_about_panel = false
                 this.category_panel_index = true
                 this.current_slide = 0;
             },
@@ -357,12 +359,14 @@
                 this.special_panel = true;
                 this.category_panel_index = true
                 this.category_panel_shortcut = false
+                this.route_store_about_panel = false
                 this.current_slide = 0;
             },
             atms_button() {
                 this.current_slide = 0;
                 this.transport_panel = false
                 this.banner_index = false
+                this.route_store_about_panel = false
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'банкоматы'
             },
@@ -370,6 +374,7 @@
                 this.current_slide = 0;
                 this.transport_panel = false
                 this.banner_index = false
+                this.route_store_about_panel = false
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'развлечения'
             },
@@ -377,6 +382,7 @@
                 this.current_slide = 0;
                 this.transport_panel = false
                 this.banner_index = false
+                this.route_store_about_panel = false
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'туалеты'
             },
@@ -386,6 +392,7 @@
                 this.invalids = false;
                 this.toilets = false;
                 this.banner_index = false
+                this.route_store_about_panel = false
                 this.transport_panel = true;
             }
         },

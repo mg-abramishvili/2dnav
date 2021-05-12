@@ -2617,6 +2617,7 @@ __webpack_require__.r(__webpack_exports__);
       this.search_panel_keyboard = false;
       this.category_panel_index = true;
       this.category_panel_shortcut = false;
+      this.route_store_about_panel = false;
       this.current_slide = 0;
     },
     category_panel_button: function category_panel_button() {
@@ -2626,6 +2627,7 @@ __webpack_require__.r(__webpack_exports__);
       this.banner_index = false;
       this.category_panel = true;
       this.category_panel_shortcut = false;
+      this.route_store_about_panel = false;
       this.category_panel_index = true;
       this.current_slide = 0;
     },
@@ -2637,12 +2639,14 @@ __webpack_require__.r(__webpack_exports__);
       this.special_panel = true;
       this.category_panel_index = true;
       this.category_panel_shortcut = false;
+      this.route_store_about_panel = false;
       this.current_slide = 0;
     },
     atms_button: function atms_button() {
       this.current_slide = 0;
       this.transport_panel = false;
       this.banner_index = false;
+      this.route_store_about_panel = false;
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'банкоматы';
     },
@@ -2650,6 +2654,7 @@ __webpack_require__.r(__webpack_exports__);
       this.current_slide = 0;
       this.transport_panel = false;
       this.banner_index = false;
+      this.route_store_about_panel = false;
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'развлечения';
     },
@@ -2657,6 +2662,7 @@ __webpack_require__.r(__webpack_exports__);
       this.current_slide = 0;
       this.transport_panel = false;
       this.banner_index = false;
+      this.route_store_about_panel = false;
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'туалеты';
     },
@@ -2666,6 +2672,7 @@ __webpack_require__.r(__webpack_exports__);
       this.invalids = false;
       this.toilets = false;
       this.banner_index = false;
+      this.route_store_about_panel = false;
       this.transport_panel = true;
     }
   },
