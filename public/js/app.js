@@ -2018,6 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2072,6 +2073,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -25930,9 +25932,17 @@ var render = function() {
                     _vm._v(
                       "\n                    " +
                         _vm._s(store.title) +
-                        "\n                "
-                    )
-                  ]
+                        "\n                    "
+                    ),
+                    _vm._l(store.schemes, function(st_sch) {
+                      return _c(
+                        "span",
+                        { key: st_sch.id, staticStyle: { color: "#999" } },
+                        [_vm._v("(уровень " + _vm._s(st_sch.title) + ")")]
+                      )
+                    })
+                  ],
+                  2
                 )
               }),
               0
@@ -26035,9 +26045,17 @@ var render = function() {
                     _vm._v(
                       "\n                    " +
                         _vm._s(store.title) +
-                        "\n                "
-                    )
-                  ]
+                        "\n                    "
+                    ),
+                    _vm._l(store.schemes, function(st_sch) {
+                      return _c(
+                        "span",
+                        { key: st_sch.id, staticStyle: { color: "#999" } },
+                        [_vm._v("(уровень " + _vm._s(st_sch.title) + ")")]
+                      )
+                    })
+                  ],
+                  2
                 )
               }),
               0

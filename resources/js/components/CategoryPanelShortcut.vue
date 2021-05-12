@@ -8,6 +8,7 @@
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
                         <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store.logo + ')' }"></div>
                         {{ store.title }}
+                        <span v-for="st_sch in store.schemes" :key="st_sch.id" style="color: #999">(уровень {{st_sch.title}})</span>
                     </div>
                 </div>
             </div>

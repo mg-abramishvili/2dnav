@@ -175,7 +175,7 @@
 }
 .rl_st_item {
     padding: 3vh;
-    border: 0.2vh solid #a1a1a1;
+    background: #f5f5f5;
     margin-top: 2vh;
     text-align: center;
 }
@@ -210,11 +210,13 @@
 .category_panel_inner {
     overflow-y: auto;
 }
+.category_panel_inner .col-3 {
+    padding-right: 1vh;
+    padding-left: 1vh;
+}
 .category_item {
     height: 17vh;
-    padding: 2vh;
-    margin: 2vh;
-    border: 0.1vh solid #888;
+    margin-bottom: 2vh;
     position: relative;
 }
 .category_item_image {
