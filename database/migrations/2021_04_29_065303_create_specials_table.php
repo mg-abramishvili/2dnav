@@ -17,7 +17,7 @@ class CreateSpecialsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('text')->nullable();
-            $table->string('image')->nullable();
+            $table->string('specialfile')->nullable();
             $table->timestamps();
         });
     }

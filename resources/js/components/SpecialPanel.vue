@@ -4,7 +4,7 @@
             <div v-for="special in specials" :key="special.id" class="col-4">
                 <div v-for="store in special.stores" :key="store.id">
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
-                        <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + special.image + ')' }"></div>
+                        <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + special.specialfile + ')' }"></div>
                         {{ store.title }}
                     </div>
                 </div>

@@ -309,6 +309,10 @@
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
+
+.special_panel .rl_st_item {
+    height: 28vh;
+}
 /* SPECIAL PANEL */
 
 

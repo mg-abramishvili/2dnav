@@ -3458,6 +3458,15 @@ __webpack_require__.r(__webpack_exports__);
       this.category_panel_shortcut_tag = 'туалеты';
       this.panzoom.reset();
     },
+    invalids_button: function invalids_button() {
+      this.current_slide = 0;
+      this.transport_panel = false;
+      this.banner_index = false;
+      this.route_store_about_panel = false;
+      this.category_panel_shortcut = true;
+      this.category_panel_shortcut_tag = 'забота об инвалидах';
+      this.panzoom.reset();
+    },
     transport_button: function transport_button() {
       this.current_slide = 0;
       this.atms = false;
@@ -3521,6 +3530,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   beforeMount: function beforeMount() {
     this.activateActivityTracker();
+    document.oncontextmenu = new Function("return false;");
   },
   beforeDestroy: function beforeDestroy() {
     this.deactivateActivityTracker();
@@ -3841,6 +3851,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -28892,7 +28915,7 @@ var render = function() {
                 {
                   on: {
                     click: function($event) {
-                      return _vm.transport_button()
+                      return _vm.invalids_button()
                     }
                   }
                 },
@@ -29304,7 +29327,7 @@ var render = function() {
                     _c("div", {
                       staticClass: "rl_st_item_image",
                       style: {
-                        "background-image": "url(" + special.image + ")"
+                        "background-image": "url(" + special.specialfile + ")"
                       }
                     }),
                     _vm._v(
@@ -29393,9 +29416,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticStyle: { "margin-top": "3vh" } }, [
-      _c("p", [_vm._v("Здесь будет текст о том, как уехать из ТЦ.")])
-    ])
+    return _c(
+      "div",
+      { staticStyle: { "margin-top": "3vh", "font-size": "3vh" } },
+      [
+        _c("p", [_c("strong", [_vm._v("Автобус")])]),
+        _vm._v(" "),
+        _c("ul", [
+          _c("li", [_vm._v("4")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("5")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("5A")])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("p", [_c("strong", [_vm._v("Троллейбус")])]),
+        _vm._v(" "),
+        _c("ul", [
+          _c("li", [_vm._v("1")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("7А")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("7Б")])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

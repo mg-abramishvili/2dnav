@@ -162,7 +162,7 @@
                             </button>
                         </div>
                         <div class="col-3">
-                            <button @click="transport_button()">
+                            <button @click="invalids_button()">
                                 <span>
                                     <img src="/img/urs/disabled-sign.svg">
                                     <i>Забота об <br>инвалидах</i>
@@ -430,6 +430,15 @@
                 this.category_panel_shortcut_tag = 'туалеты'
                 this.panzoom.reset()
             },
+            invalids_button() {
+                this.current_slide = 0;
+                this.transport_panel = false
+                this.banner_index = false
+                this.route_store_about_panel = false
+                this.category_panel_shortcut = true
+                this.category_panel_shortcut_tag = 'забота об инвалидах'
+                this.panzoom.reset()
+            },
             transport_button() {
                 this.current_slide = 0;
                 this.atms = false;
@@ -486,6 +495,7 @@
         },
         beforeMount() {
             this.activateActivityTracker();
+            document.oncontextmenu = new Function("return false;");
         },
 
         beforeDestroy() {

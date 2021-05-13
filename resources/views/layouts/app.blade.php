@@ -72,6 +72,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/ads">Баннеры</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/specials">Скидки</a>
+                        </li>
                         <!--<li class="nav-item">
                             <a class="nav-link" href="/adds">Слайдер №2</a>
                         </li>-->
