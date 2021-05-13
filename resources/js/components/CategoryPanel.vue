@@ -2,7 +2,7 @@
     <div class="category_panel">
 
         <div v-show="this.$parent.category_panel_index" class="category_panel_index">
-            <div class="category_panel_inner" style="height: 83vh;">
+            <div class="category_panel_inner" style="height: 85vh;" id="category_panel_inner">
                 <div class="row">
                     <template v-for="tag in tags">
                         <div v-if="tag.store.length" class="col-3">

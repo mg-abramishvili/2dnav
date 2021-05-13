@@ -122,7 +122,7 @@
     line-height: 1.1;
 }
 .buttons-bar-bottom {
-    margin-top: 32vh;
+    margin-top: 6vh;
     margin-left: -19vw;
 }
 .buttons-bar-bottom button {
@@ -146,8 +146,8 @@
     position: absolute;
     z-index: 10;
     width: 100vw;
-    height: 85vh;
-    top: 15vh;
+    height: 87vh;
+    top: 11.5vh;
     margin-top: 0;
     background: #fff;
     padding: 1.5vh;
@@ -160,7 +160,7 @@
     border: 0.2vh solid #A1A1A1;
 }
 #myUL_wrapper {
-    height: 73vh;
+    height: 77vh;
     overflow-x: hidden;
     overflow-y: auto;
     padding-bottom: 4vh;
@@ -178,6 +178,8 @@
     background: #f5f5f5;
     margin-top: 2vh;
     text-align: center;
+    height: 17vh;
+    position: relative;
 }
 .rl_st_item_image {
     height: 9vh;
@@ -200,10 +202,11 @@
     position: absolute;
     z-index: 10;
     width: 100vw;
-    top: 15vh;
+    height: 87vh;
+    top: 11.5vh;
     margin-top: 0;
     background: #fff;
-    padding: 0 1.5vh;
+    padding: 1.5vh;
     margin-left: -19vw;
     
 }
@@ -271,8 +274,8 @@
     position: absolute;
     z-index: 10;
     width: 100vw;
-    height: 85vh;
-    top: 15vh;
+    height: 87vh;
+    top: 11.5vh;
     margin-top: 0;
     background: #fff;
     padding: 1.5vh;
@@ -418,7 +421,7 @@
 }
 .prevnextbutton {
     position: absolute;
-    bottom: -29vh;
+    bottom: 13vh;
     z-index: 1;
 }
 .prevnextbutton {
@@ -429,9 +432,11 @@
     display: block;
     margin: 0 auto;
     width: 20vw;
-    left: 0;
+    left: 50%;
     right: 0;
     border: 0;
+    transform: translateX(-50%);
+    margin-left: 10vw;
 }
 .prevnextbutton:focus {
     outline: none;
@@ -441,6 +446,9 @@
     right: 2vh;
     top: 13vh;
     z-index: 5;
+    background-color: #fff;
+    padding: 0.5vh;
+    border-radius: 0.5vh;
 }
 .floor_buttons button {
     display: block;
@@ -453,6 +461,9 @@
     border-radius: 1vh;
     font-weight: bold;
     color: #68D94C;
+}
+.floor_buttons button:last-of-type {
+    margin-bottom: 0;
 }
 .floor_buttons button:focus {
     outline: none;

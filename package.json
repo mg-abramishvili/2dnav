@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@panzoom/panzoom": "^4.4.0",
         "moment": "^2.29.1",
         "simple-keyboard": "^3.0.26",
         "simple-keyboard-layouts": "^3.0.27",

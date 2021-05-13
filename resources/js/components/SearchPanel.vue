@@ -1,5 +1,5 @@
 <template>
-    <div class="search_panel">
+    <div class="search_panel" id="search_panel">
         <input
         :value="this.$parent.search_panel_input"
         class="input"
@@ -11,8 +11,16 @@
             <template v-for="store in filtered_stores">
                 <div v-if="store.routes.length" class="col-2">
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
+                        
                         <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store.logo + ')' }"></div>
-                        {{ store.title }}
+                        
+                        <div v-if="store.logo">
+                            {{ store.title }}
+                        </div>
+                        <div v-else style="font-size: 3vh; position: absolute; top: 50%; transform: translateY(-50%); left: 0.5vh; right: 0.5vh;">
+                            {{ store.title }}
+                        </div>
+                        
                     </div>
                 </div>
             </template>

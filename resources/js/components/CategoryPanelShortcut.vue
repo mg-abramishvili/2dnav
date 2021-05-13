@@ -2,7 +2,7 @@
     <div class="category_panel">
         <button v-show="this.$parent.category_panel_shortcut" @click="home_panel_button()" class="back_button">Назад</button>
         <p v-show="this.$parent.category_panel_shortcut" class="cat_header">{{ this.$parent.category_panel_shortcut_tag }}</p>
-        <div class="category_panel_inner" style="height: 83vh;">
+        <div class="category_panel_inner" style="height: 85vh;">
             <div class="row">
                 <div v-for="store in stores" :key="store.id" class="col-3">
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">

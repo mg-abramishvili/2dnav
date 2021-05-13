@@ -63,8 +63,8 @@
 
                     <TransportPanel v-show="transport_panel"/>
 
-                    <div class="col-12" style="padding: 2vh">
-
+                    <div class="col-12" style="padding: 2vh; height: 70vh;">
+                        <div id="panzoom" style="height: 68vh;">
                         <div id="map" style="position: relative; width: 800px; height: 450px;">
                             <div v-for="scheme in schemes" :key="scheme.id" :id="'scheme_image_' + scheme.id" class="scheme_images">
                                 <img v-show="scheme.id.toString() === current_floor" :src="scheme.image" style="width:800px; height:450px;">
@@ -105,6 +105,18 @@
                                 </template>
                             </template>
                         </div>
+                        </div>
+
+                        <div class="floor_buttons">
+                            <button v-for="scheme in schemes.slice().reverse()" :key="scheme.id" @click="SelectFloor(scheme)">
+                                {{ scheme.title }}
+                            </button>
+                            <br>
+                            <button @click="zoom(1)">+</button>
+                            <button @click="zoom(-1)">-</button>
+                        </div>
+
+                    </div>
 
                         <button v-if="current_slide === 2" @click="PrevScheme(current_store_route)" class="prevnextbutton prev_button">
                             Начало маршрута
@@ -112,17 +124,6 @@
                         <button v-if="current_store_route.schemes2 && current_store_route.schemes2.length > 0 && current_slide === 1" @click="NextScheme(current_store_route)" class="prevnextbutton next_button">
                             Продолжить маршрут
                         </button>
-
-                        <div class="floor_buttons">
-                            <button v-for="scheme in schemes.slice().reverse()" :key="scheme.id" @click="SelectFloor(scheme)">
-                                {{ scheme.title }}
-                            </button>
-                            <br>
-                            <button>+</button>
-                            <button>-</button>
-                        </div>
-
-                    </div>
                 </div>
 
                 <div class="buttons-bar buttons-bar-bottom">
@@ -184,8 +185,12 @@
     import SpecialPanel from './SpecialPanel';
     import TransportPanel from './TransportPanel';
     import RouteStoreAbout from './RouteStoreAbout';
+    import Panzoom from '@panzoom/panzoom'
 
     export default {
+        props: {
+            options: {type: Object, default: () => {}},
+        },
         data() {
             return {
                 setup: {},
@@ -235,6 +240,13 @@
                 .then(response => (
                     this.banners = response.data
                 ));
+        },
+        mounted() {
+            this.panzoom = Panzoom(document.getElementById('panzoom'), {
+                minScale: 1,
+                maxScale: 2,
+                contain: 'outside',
+            })
         },
         computed: {
         },
@@ -307,14 +319,17 @@
             SelectFloor(scheme) {
                 this.current_floor = scheme.id.toString();
                 this.current_slide = 0;
+                this.panzoom.reset()
             },
             PrevScheme(current_store_route) {
                 this.current_floor = current_store_route.scheme_id
                 this.current_slide = 1
+                this.panzoom.reset()
             },
             NextScheme(current_store_route) {
                 this.current_floor = current_store_route.scheme2_id
                 this.current_slide = 2
+                this.panzoom.reset()
             },
             home_panel_button() {
                 this.category_panel = false;
@@ -326,6 +341,9 @@
                 this.category_panel_index = true
                 this.category_panel_shortcut = false
                 this.current_slide = 0;
+                this.panzoom.reset()
+                document.getElementById('category_panel_inner').scrollTop = 0;
+                document.getElementById('myUL_wrapper').scrollTop = 0;
             },
             search_panel_button() {
                 this.category_panel = false;
@@ -339,6 +357,8 @@
                 this.category_panel_shortcut = false
                 this.route_store_about_panel = false
                 this.current_slide = 0;
+                this.panzoom.reset()
+                document.getElementById('myUL_wrapper').scrollTop = 0;
             },
             category_panel_button() {
                 this.search_panel = false;
@@ -350,6 +370,8 @@
                 this.route_store_about_panel = false
                 this.category_panel_index = true
                 this.current_slide = 0;
+                this.panzoom.reset()
+                document.getElementById('category_panel_inner').scrollTop = 0;
             },
             special_panel_button() {
                 this.search_panel = false;
@@ -361,6 +383,7 @@
                 this.category_panel_shortcut = false
                 this.route_store_about_panel = false
                 this.current_slide = 0;
+                this.panzoom.reset()
             },
             atms_button() {
                 this.current_slide = 0;
@@ -369,6 +392,7 @@
                 this.route_store_about_panel = false
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'банкоматы'
+                this.panzoom.reset()
             },
             entertainment_button() {
                 this.current_slide = 0;
@@ -377,6 +401,7 @@
                 this.route_store_about_panel = false
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'развлечения'
+                this.panzoom.reset()
             },
             toilets_button() {
                 this.current_slide = 0;
@@ -385,6 +410,7 @@
                 this.route_store_about_panel = false
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'туалеты'
+                this.panzoom.reset()
             },
             transport_button() {
                 this.current_slide = 0;
@@ -394,6 +420,10 @@
                 this.banner_index = false
                 this.route_store_about_panel = false
                 this.transport_panel = true;
+                this.panzoom.reset()
+            },
+            zoom(level){
+                level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
             }
         },
         components: {
@@ -404,7 +434,8 @@
             CategoryPanelShortcut,
             SpecialPanel,
             TransportPanel,
-            RouteStoreAbout
+            RouteStoreAbout,
+            Panzoom
         }
     }
 </script>
