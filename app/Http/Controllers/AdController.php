@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ad;
+use App\Models\Store;
 
 class AdController extends Controller
 {
@@ -15,14 +16,16 @@ class AdController extends Controller
 
     public function create()
     {
-        return view('ads.create');
+        $stores = Store::all();
+        return view('ads.create', compact('stores'));
     }
 
     public function edit($id)
     {
 
         $ads = Ad::find($id);
-        return view('ads.edit', compact('ads'));
+        $stores = Store::all();
+        return view('ads.edit', compact('ads', 'stores'));
 
 
     }
@@ -63,6 +66,7 @@ class AdController extends Controller
     {
         $ads = Ad::find($id);
         $ads->delete();
+        $ads->stores()->detach();
         return redirect('/ads');
     }
 
@@ -78,6 +82,11 @@ class AdController extends Controller
         $ads->title = $data['title'];
         $ads->adfile = $data['adfile'];
         $ads->save();
+        if($data['stores'] == 'no_store') {
+            $ads->stores()->detach();
+        } else {
+            $ads->stores()->attach($request->stores, ['ad_id' => $ads->id]);
+        }
         return redirect('/ads');
     }
 
@@ -93,6 +102,11 @@ class AdController extends Controller
         $ads->title = $data['title'];
         $ads->adfile = $data['adfile'];
         $ads->save();
+        if($data['stores'] == 'no_store') {
+            $ads->stores()->detach();
+        } else {
+            $ads->stores()->attach($request->stores, ['ad_id' => $ads->id]);
+        }
         return redirect('/ads');
     }
 }

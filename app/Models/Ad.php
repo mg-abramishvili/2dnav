@@ -12,4 +12,9 @@ class Ad extends Model
     protected $fillable = [
         'title', 'adfile'
     ];
+
+    public function stores()
+    {
+        return $this->belongsToMany('App\Models\Store');
+    }
 }

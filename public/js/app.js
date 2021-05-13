@@ -3022,15 +3022,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CurrentRoutePathSlide1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CurrentRoutePathSlide1 */ "./resources/js/components/CurrentRoutePathSlide1.vue");
-/* harmony import */ var _CurrentRoutePathSlide2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CurrentRoutePathSlide2 */ "./resources/js/components/CurrentRoutePathSlide2.vue");
-/* harmony import */ var _SearchPanel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchPanel */ "./resources/js/components/SearchPanel.vue");
-/* harmony import */ var _CategoryPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CategoryPanel */ "./resources/js/components/CategoryPanel.vue");
-/* harmony import */ var _CategoryPanelShortcut__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CategoryPanelShortcut */ "./resources/js/components/CategoryPanelShortcut.vue");
-/* harmony import */ var _SpecialPanel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SpecialPanel */ "./resources/js/components/SpecialPanel.vue");
-/* harmony import */ var _TransportPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TransportPanel */ "./resources/js/components/TransportPanel.vue");
-/* harmony import */ var _RouteStoreAbout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RouteStoreAbout */ "./resources/js/components/RouteStoreAbout.vue");
-/* harmony import */ var _panzoom_panzoom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @panzoom/panzoom */ "./node_modules/@panzoom/panzoom/dist/panzoom.es.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./resources/js/constants.js");
+/* harmony import */ var _CurrentRoutePathSlide1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CurrentRoutePathSlide1 */ "./resources/js/components/CurrentRoutePathSlide1.vue");
+/* harmony import */ var _CurrentRoutePathSlide2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CurrentRoutePathSlide2 */ "./resources/js/components/CurrentRoutePathSlide2.vue");
+/* harmony import */ var _SearchPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchPanel */ "./resources/js/components/SearchPanel.vue");
+/* harmony import */ var _CategoryPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CategoryPanel */ "./resources/js/components/CategoryPanel.vue");
+/* harmony import */ var _CategoryPanelShortcut__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CategoryPanelShortcut */ "./resources/js/components/CategoryPanelShortcut.vue");
+/* harmony import */ var _SpecialPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SpecialPanel */ "./resources/js/components/SpecialPanel.vue");
+/* harmony import */ var _TransportPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TransportPanel */ "./resources/js/components/TransportPanel.vue");
+/* harmony import */ var _RouteStoreAbout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./RouteStoreAbout */ "./resources/js/components/RouteStoreAbout.vue");
+/* harmony import */ var _panzoom_panzoom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @panzoom/panzoom */ "./node_modules/@panzoom/panzoom/dist/panzoom.es.js");
 //
 //
 //
@@ -3209,6 +3210,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -3247,7 +3258,10 @@ __webpack_require__.r(__webpack_exports__);
       current_slide: 1,
       atms: false,
       invalids: false,
-      toilets: false
+      toilets: false,
+      isInactive: false,
+      userActivityThrottlerTimeout: null,
+      userActivityTimeout: null
     };
   },
   created: function created() {
@@ -3267,7 +3281,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   mounted: function mounted() {
-    this.panzoom = Object(_panzoom_panzoom__WEBPACK_IMPORTED_MODULE_8__["default"])(document.getElementById('panzoom'), {
+    this.panzoom = Object(_panzoom_panzoom__WEBPACK_IMPORTED_MODULE_9__["default"])(document.getElementById('panzoom'), {
       minScale: 1,
       maxScale: 2,
       contain: 'outside'
@@ -3456,18 +3470,73 @@ __webpack_require__.r(__webpack_exports__);
     },
     zoom: function zoom(level) {
       level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn();
+    },
+    adminPanel: function adminPanel(e) {
+      if (e.keyCode === 81 && e.ctrlKey) {
+        window.location.href = "/login";
+      }
+    },
+    activateActivityTracker: function activateActivityTracker() {
+      window.addEventListener("click", this.userActivityThrottler);
+      window.addEventListener("touchstart", this.userActivityThrottler);
+      window.addEventListener("mousemove", this.userActivityThrottler);
+      window.addEventListener("scroll", this.userActivityThrottler);
+    },
+    deactivateActivityTracker: function deactivateActivityTracker() {
+      window.removeEventListener("click", this.userActivityThrottler);
+      window.removeEventListener("touchstart", this.userActivityThrottler);
+      window.removeEventListener("mousemove", this.userActivityThrottler);
+      window.removeEventListener("scroll", this.userActivityThrottler);
+    },
+    resetUserActivityTimeout: function resetUserActivityTimeout() {
+      var _this6 = this;
+
+      clearTimeout(this.userActivityTimeout);
+      this.userActivityTimeout = setTimeout(function () {
+        _this6.userActivityThrottler();
+
+        _this6.inactiveUserAction();
+      }, _constants__WEBPACK_IMPORTED_MODULE_0__["INACTIVE_USER_TIME_THRESHOLD"]);
+    },
+    userActivityThrottler: function userActivityThrottler() {
+      var _this7 = this;
+
+      if (this.isInactive) {
+        this.isInactive = false;
+      }
+
+      if (!this.userActivityThrottlerTimeout) {
+        this.userActivityThrottlerTimeout = setTimeout(function () {
+          _this7.resetUserActivityTimeout();
+
+          clearTimeout(_this7.userActivityThrottlerTimeout);
+          _this7.userActivityThrottlerTimeout = null;
+        }, _constants__WEBPACK_IMPORTED_MODULE_0__["USER_ACTIVITY_THROTTLER_TIME"]);
+      }
+    },
+    inactiveUserAction: function inactiveUserAction() {
+      this.home_panel_button();
+      document.getElementById("home_logo").focus();
     }
   },
+  beforeMount: function beforeMount() {
+    this.activateActivityTracker();
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.deactivateActivityTracker();
+    clearTimeout(this.userActivityTimeout);
+    clearTimeout(this.userActivityThrottlerTimeout);
+  },
   components: {
-    CurrentRoutePathSlide1: _CurrentRoutePathSlide1__WEBPACK_IMPORTED_MODULE_0__["default"],
-    CurrentRoutePathSlide2: _CurrentRoutePathSlide2__WEBPACK_IMPORTED_MODULE_1__["default"],
-    SearchPanel: _SearchPanel__WEBPACK_IMPORTED_MODULE_2__["default"],
-    CategoryPanel: _CategoryPanel__WEBPACK_IMPORTED_MODULE_3__["default"],
-    CategoryPanelShortcut: _CategoryPanelShortcut__WEBPACK_IMPORTED_MODULE_4__["default"],
-    SpecialPanel: _SpecialPanel__WEBPACK_IMPORTED_MODULE_5__["default"],
-    TransportPanel: _TransportPanel__WEBPACK_IMPORTED_MODULE_6__["default"],
-    RouteStoreAbout: _RouteStoreAbout__WEBPACK_IMPORTED_MODULE_7__["default"],
-    Panzoom: _panzoom_panzoom__WEBPACK_IMPORTED_MODULE_8__["default"]
+    CurrentRoutePathSlide1: _CurrentRoutePathSlide1__WEBPACK_IMPORTED_MODULE_1__["default"],
+    CurrentRoutePathSlide2: _CurrentRoutePathSlide2__WEBPACK_IMPORTED_MODULE_2__["default"],
+    SearchPanel: _SearchPanel__WEBPACK_IMPORTED_MODULE_3__["default"],
+    CategoryPanel: _CategoryPanel__WEBPACK_IMPORTED_MODULE_4__["default"],
+    CategoryPanelShortcut: _CategoryPanelShortcut__WEBPACK_IMPORTED_MODULE_5__["default"],
+    SpecialPanel: _SpecialPanel__WEBPACK_IMPORTED_MODULE_6__["default"],
+    TransportPanel: _TransportPanel__WEBPACK_IMPORTED_MODULE_7__["default"],
+    RouteStoreAbout: _RouteStoreAbout__WEBPACK_IMPORTED_MODULE_8__["default"],
+    Panzoom: _panzoom_panzoom__WEBPACK_IMPORTED_MODULE_9__["default"]
   }
 });
 
@@ -28286,14 +28355,40 @@ var render = function() {
                 }
               ]
             },
-            _vm._l(_vm.banners, function(banner) {
-              return _c("div", {
-                key: banner.id,
-                staticClass: "sidebar-banner-slide",
-                style: { "background-image": "url(" + banner.adfile + ")" }
+            [
+              _vm._l(_vm.banners.slice(0, 1), function(banner) {
+                return [
+                  banner.stores.length
+                    ? [
+                        _vm._l(banner.stores, function(store) {
+                          return _vm._l(store.routes, function(store_route) {
+                            return _c("div", {
+                              key: store_route + "_bnr".id,
+                              staticClass: "sidebar-banner-slide",
+                              style: {
+                                "background-image": "url(" + banner.adfile + ")"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.SelectStoreRoute(store_route)
+                                }
+                              }
+                            })
+                          })
+                        })
+                      ]
+                    : [
+                        _c("div", {
+                          staticClass: "sidebar-banner-slide",
+                          style: {
+                            "background-image": "url(" + banner.adfile + ")"
+                          }
+                        })
+                      ]
+                ]
               })
-            }),
-            0
+            ],
+            2
           )
         ])
       ]),
@@ -28305,6 +28400,7 @@ var render = function() {
               _c(
                 "button",
                 {
+                  attrs: { id: "home_logo" },
                   on: {
                     click: function($event) {
                       return _vm.home_panel_button()
@@ -45416,6 +45512,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TransportPanel_vue_vue_type_template_id_7d1bfa06___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/constants.js":
+/*!***********************************!*\
+  !*** ./resources/js/constants.js ***!
+  \***********************************/
+/*! exports provided: INACTIVE_USER_TIME_THRESHOLD, USER_ACTIVITY_THROTTLER_TIME */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INACTIVE_USER_TIME_THRESHOLD", function() { return INACTIVE_USER_TIME_THRESHOLD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER_ACTIVITY_THROTTLER_TIME", function() { return USER_ACTIVITY_THROTTLER_TIME; });
+var INACTIVE_USER_TIME_THRESHOLD = 180000;
+var USER_ACTIVITY_THROTTLER_TIME = 1000;
 
 /***/ }),
 

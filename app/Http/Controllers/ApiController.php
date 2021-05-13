@@ -26,7 +26,7 @@ class ApiController extends Controller
 
     public function banners()
     {
-        return Ad::all();
+        return Ad::with('stores.routes')->get();
     }
 
     public function stores()

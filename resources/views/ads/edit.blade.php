@@ -43,6 +43,26 @@
                 </dd>
             </div>
 
+            <div class="row align-items-center mb-2">
+                <dt class="col-sm-3">
+                    Помещение
+                </dt>
+                <dd class="col-sm-9">
+                    <select name="stores" class="form-control">
+                        <option value="no_store" @if($ads->stores == 'no_stores') selected @endif>Без привязки</option>
+                        @foreach($stores as $store)
+                            <option value="{{ $store->id }}" @foreach($ads->stores as $a) @if($store->id == $a->id)selected="selected"@endif @endforeach>{{ $store->title }}</option>
+                        @endforeach
+                    </select>
+
+                    @if ($errors->has('stores'))
+                        <div class="alert alert-danger">
+                            Укажите помещение
+                        </div>
+                    @endif
+                </dd>
+            </div>
+
             <button type="submit" class="btn btn-lg btn-success">Сохранить</button>
         </form>
     </div>

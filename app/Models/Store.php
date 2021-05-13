@@ -34,4 +34,9 @@ class Store extends Model
     {
         return $this->belongsToMany('App\Models\Special');
     }
+
+    public function ads()
+    {
+        return $this->belongsToMany('App\Models\Ad');
+    }
 }

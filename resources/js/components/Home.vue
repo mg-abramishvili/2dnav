@@ -8,7 +8,16 @@
                         <img :src="setup.logo" @click="home_panel_button()">
                     </div>
                     <div v-show="banner_index">
-                        <div v-for="banner in banners" :key="banner.id" class="sidebar-banner-slide" v-bind:style="{ 'background-image': 'url(' + banner.adfile + ')' }"></div>
+                        <template v-for="banner in banners.slice(0,1)">
+                            <template v-if="banner.stores.length">
+                                <template v-for="store in banner.stores">
+                                    <div v-for="store_route in store.routes" :key="store_route + '_bnr'.id" @click="SelectStoreRoute(store_route)" class="sidebar-banner-slide" v-bind:style="{ 'background-image': 'url(' + banner.adfile + ')' }"></div>
+                                </template>
+                            </template>
+                            <template v-else>
+                                <div class="sidebar-banner-slide" v-bind:style="{ 'background-image': 'url(' + banner.adfile + ')' }"></div>
+                            </template>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -17,7 +26,7 @@
                 <div class="buttons-bar">
                     <div class="row">
                         <div class="col-3">
-                            <button @click="home_panel_button()">
+                            <button @click="home_panel_button()" id="home_logo">
                                 <span>
                                     <img src="/img/urs/map.svg">
                                     <i>Карта</i>
@@ -177,6 +186,11 @@
 </template>
 
 <script>
+    import {
+    INACTIVE_USER_TIME_THRESHOLD,
+    USER_ACTIVITY_THROTTLER_TIME
+    } from "../constants";
+
     import CurrentRoutePathSlide1 from './CurrentRoutePathSlide1';
     import CurrentRoutePathSlide2 from './CurrentRoutePathSlide2';
     import SearchPanel from './SearchPanel';
@@ -217,6 +231,10 @@
                 atms: false,
                 invalids: false,
                 toilets: false,
+
+                isInactive: false,
+                userActivityThrottlerTimeout: null,
+                userActivityTimeout: null
             }
         },
         created() {
@@ -424,7 +442,56 @@
             },
             zoom(level){
                 level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
+            },
+            adminPanel: function(e) {
+                if (e.keyCode === 81 && e.ctrlKey) {
+                    window.location.href = "/login";
+                }
+            },
+            activateActivityTracker() {
+                window.addEventListener("click", this.userActivityThrottler);
+                window.addEventListener("touchstart", this.userActivityThrottler);
+                window.addEventListener("mousemove", this.userActivityThrottler);
+                window.addEventListener("scroll", this.userActivityThrottler);
+            },
+            deactivateActivityTracker() {
+                window.removeEventListener("click", this.userActivityThrottler);
+                window.removeEventListener("touchstart", this.userActivityThrottler);
+                window.removeEventListener("mousemove", this.userActivityThrottler);
+                window.removeEventListener("scroll", this.userActivityThrottler);
+            },
+            resetUserActivityTimeout() {
+                clearTimeout(this.userActivityTimeout);
+                this.userActivityTimeout = setTimeout(() => {
+                    this.userActivityThrottler();
+                    this.inactiveUserAction();
+                }, INACTIVE_USER_TIME_THRESHOLD);
+            },
+            userActivityThrottler() {
+                if (this.isInactive) {
+                    this.isInactive = false;
+                }
+                if (!this.userActivityThrottlerTimeout) {
+                    this.userActivityThrottlerTimeout = setTimeout(() => {
+                    this.resetUserActivityTimeout();
+                    clearTimeout(this.userActivityThrottlerTimeout);
+                    this.userActivityThrottlerTimeout = null;
+                    }, USER_ACTIVITY_THROTTLER_TIME);
+                }
+            },
+            inactiveUserAction() {
+                this.home_panel_button();
+                document.getElementById("home_logo").focus();
             }
+        },
+        beforeMount() {
+            this.activateActivityTracker();
+        },
+
+        beforeDestroy() {
+            this.deactivateActivityTracker();
+            clearTimeout(this.userActivityTimeout);
+            clearTimeout(this.userActivityThrottlerTimeout);
         },
         components: {
             CurrentRoutePathSlide1,
