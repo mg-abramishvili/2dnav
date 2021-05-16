@@ -22,4 +22,9 @@ class Scheme extends Model
     {
         return $this->belongsToMany('App\Models\Store');
     }
+
+    public function kiosks()
+    {
+        return $this->belongsToMany('App\Models\Kiosk');
+    }
 }

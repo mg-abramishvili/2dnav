@@ -3211,14 +3211,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3242,6 +3234,8 @@ __webpack_require__.r(__webpack_exports__);
       banners: [],
       schemes: [],
       stores: {},
+      kiosk: {},
+      kiosk_show: false,
       banner_index: true,
       search_panel: false,
       search_panel_input: '',
@@ -3279,6 +3273,9 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/banners').then(function (response) {
       return _this.banners = response.data;
     });
+    axios.get("/api/kiosk/".concat(this.$route.params.id)).then(function (response) {
+      return _this.kiosk = response.data;
+    });
   },
   mounted: function mounted() {
     this.panzoom = Object(_panzoom_panzoom__WEBPACK_IMPORTED_MODULE_9__["default"])(document.getElementById('panzoom'), {
@@ -3306,6 +3303,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.current_store_route = json;
         _this2.current_slide = 1;
       });
+      this.kiosk_show = false;
     },
     onSearchPanelStoreRoute: function onSearchPanelStoreRoute(data) {
       var _this3 = this;
@@ -3324,6 +3322,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.current_store_route = json;
         _this3.current_slide = 1;
       });
+      this.kiosk_show = false;
     },
     onSpecialPanelStoreRoute: function onSpecialPanelStoreRoute(data) {
       var _this4 = this;
@@ -3342,6 +3341,7 @@ __webpack_require__.r(__webpack_exports__);
         _this4.current_store_route = json;
         _this4.current_slide = 1;
       });
+      this.kiosk_show = false;
     },
     onCategoryPanelStoreRoute: function onCategoryPanelStoreRoute(data) {
       var _this5 = this;
@@ -3361,21 +3361,25 @@ __webpack_require__.r(__webpack_exports__);
         _this5.current_store_route = json;
         _this5.current_slide = 1;
       });
+      this.kiosk_show = false;
     },
     SelectFloor: function SelectFloor(scheme) {
       this.current_floor = scheme.id.toString();
       this.current_slide = 0;
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     PrevScheme: function PrevScheme(current_store_route) {
       this.current_floor = current_store_route.scheme_id;
       this.current_slide = 1;
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     NextScheme: function NextScheme(current_store_route) {
       this.current_floor = current_store_route.scheme2_id;
       this.current_slide = 2;
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     home_panel_button: function home_panel_button() {
       this.category_panel = false;
@@ -3390,6 +3394,7 @@ __webpack_require__.r(__webpack_exports__);
       this.panzoom.reset();
       document.getElementById('category_panel_inner').scrollTop = 0;
       document.getElementById('myUL_wrapper').scrollTop = 0;
+      this.kiosk_show = false;
     },
     search_panel_button: function search_panel_button() {
       this.category_panel = false;
@@ -3405,6 +3410,7 @@ __webpack_require__.r(__webpack_exports__);
       this.current_slide = 0;
       this.panzoom.reset();
       document.getElementById('myUL_wrapper').scrollTop = 0;
+      this.kiosk_show = false;
     },
     category_panel_button: function category_panel_button() {
       this.search_panel = false;
@@ -3418,6 +3424,7 @@ __webpack_require__.r(__webpack_exports__);
       this.current_slide = 0;
       this.panzoom.reset();
       document.getElementById('category_panel_inner').scrollTop = 0;
+      this.kiosk_show = false;
     },
     special_panel_button: function special_panel_button() {
       this.search_panel = false;
@@ -3430,6 +3437,7 @@ __webpack_require__.r(__webpack_exports__);
       this.route_store_about_panel = false;
       this.current_slide = 0;
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     atms_button: function atms_button() {
       this.current_slide = 0;
@@ -3439,6 +3447,7 @@ __webpack_require__.r(__webpack_exports__);
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'банкоматы';
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     entertainment_button: function entertainment_button() {
       this.current_slide = 0;
@@ -3448,6 +3457,7 @@ __webpack_require__.r(__webpack_exports__);
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'развлечения';
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     toilets_button: function toilets_button() {
       this.current_slide = 0;
@@ -3457,6 +3467,7 @@ __webpack_require__.r(__webpack_exports__);
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'туалеты';
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     invalids_button: function invalids_button() {
       this.current_slide = 0;
@@ -3466,6 +3477,7 @@ __webpack_require__.r(__webpack_exports__);
       this.category_panel_shortcut = true;
       this.category_panel_shortcut_tag = 'забота об инвалидах';
       this.panzoom.reset();
+      this.kiosk_show = false;
     },
     transport_button: function transport_button() {
       this.current_slide = 0;
@@ -3475,6 +3487,13 @@ __webpack_require__.r(__webpack_exports__);
       this.banner_index = false;
       this.route_store_about_panel = false;
       this.transport_panel = true;
+      this.panzoom.reset();
+      this.kiosk_show = false;
+    },
+    WhereAmI: function WhereAmI(kiosk) {
+      this.current_floor = kiosk.schemes[0].pivot.scheme_id.toString();
+      this.current_slide = 0;
+      this.kiosk_show = true;
       this.panzoom.reset();
     },
     zoom: function zoom(level) {
@@ -3529,8 +3548,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   beforeMount: function beforeMount() {
-    this.activateActivityTracker();
-    document.oncontextmenu = new Function("return false;");
+    this.activateActivityTracker(); //document.oncontextmenu = new Function("return false;");
   },
   beforeDestroy: function beforeDestroy() {
     this.deactivateActivityTracker();
@@ -28412,6 +28430,18 @@ var render = function() {
               })
             ],
             2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.WhereAmI(_vm.kiosk)
+                }
+              }
+            },
+            [_vm._v("Где я?")]
           )
         ])
       ]),
@@ -28619,145 +28649,77 @@ var render = function() {
                         _vm._v(" "),
                         _vm._l(_vm.stores, function(store) {
                           return [
-                            _vm._l(store.schemes, function(s_scheme) {
-                              return [
-                                s_scheme.pivot.scheme_id.toString() ===
-                                _vm.current_floor
-                                  ? [
-                                      _vm._l(store.tags, function(store_tag) {
+                            store.schemes[0].pivot.scheme_id.toString() ===
+                            _vm.current_floor
+                              ? [
+                                  _vm._l(store.tags, function(store_tag) {
+                                    return [
+                                      _vm._l(store.routes, function(
+                                        store_route
+                                      ) {
                                         return [
-                                          store_tag.title === "банкоматы" &&
-                                          _vm.atms
-                                            ? _vm._l(store.routes, function(
-                                                store_route
-                                              ) {
-                                                return _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "map-marker",
-                                                    style: {
-                                                      left: store.x_01 + "px",
-                                                      top: store.y_01 + "px",
-                                                      width: store.d_w + "px",
-                                                      height: store.d_h + "px"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.SelectStoreRoute_atms(
-                                                          store_route
-                                                        )
-                                                      }
-                                                    }
+                                          store_route.kiosk_number.toString() ===
+                                          _vm.kiosk.kiosk.toString()
+                                            ? _c(
+                                                "span",
+                                                {
+                                                  staticClass: "map-marker",
+                                                  style: {
+                                                    left: store.x_01 + "px",
+                                                    top: store.y_01 + "px",
+                                                    width: store.d_w + "px",
+                                                    height: store.d_h + "px"
                                                   },
-                                                  [
-                                                    _c("img", {
-                                                      attrs: { src: store.logo }
-                                                    })
-                                                  ]
-                                                )
-                                              })
-                                            : store_tag.title ===
-                                                "забота об инвалидах" &&
-                                              _vm.invalids
-                                            ? _vm._l(store.routes, function(
-                                                store_route
-                                              ) {
-                                                return _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "map-marker",
-                                                    style: {
-                                                      left: store.x_01 + "px",
-                                                      top: store.y_01 + "px",
-                                                      width: store.d_w + "px",
-                                                      height: store.d_h + "px"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.SelectStoreRoute_invalids(
-                                                          store_route
-                                                        )
-                                                      }
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.SelectStoreRoute(
+                                                        store_route
+                                                      )
                                                     }
-                                                  },
-                                                  [
-                                                    _c("img", {
-                                                      attrs: { src: store.logo }
-                                                    })
-                                                  ]
-                                                )
-                                              })
-                                            : store_tag.title === "туалеты" &&
-                                              _vm.toilets
-                                            ? _vm._l(store.routes, function(
-                                                store_route
-                                              ) {
-                                                return _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "map-marker",
-                                                    style: {
-                                                      left: store.x_01 + "px",
-                                                      top: store.y_01 + "px",
-                                                      width: store.d_w + "px",
-                                                      height: store.d_h + "px"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.SelectStoreRoute_toilets(
-                                                          store_route
-                                                        )
-                                                      }
+                                                  }
+                                                },
+                                                [
+                                                  _c("svg", {
+                                                    attrs: {
+                                                      viewBox:
+                                                        "0 0" +
+                                                        " " +
+                                                        store.d_w +
+                                                        " " +
+                                                        store.d_h
                                                     }
-                                                  },
-                                                  [
-                                                    _c("img", {
-                                                      attrs: { src: store.logo }
-                                                    })
-                                                  ]
-                                                )
-                                              })
-                                            : _vm._l(store.routes, function(
-                                                store_route
-                                              ) {
-                                                return _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "map-marker",
-                                                    style: {
-                                                      left: store.x_01 + "px",
-                                                      top: store.y_01 + "px",
-                                                      width: store.d_w + "px",
-                                                      height: store.d_h + "px"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.SelectStoreRoute(
-                                                          store_route
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c("svg", {
-                                                      attrs: {
-                                                        viewBox:
-                                                          "0 0" +
-                                                          " " +
-                                                          store.d_w +
-                                                          " " +
-                                                          store.d_h
-                                                      }
-                                                    })
-                                                  ]
-                                                )
-                                              })
+                                                  })
+                                                ]
+                                              )
+                                            : _vm._e()
                                         ]
                                       })
                                     ]
-                                  : _vm._e()
-                              ]
-                            })
+                                  })
+                                ]
+                              : _vm._e()
+                          ]
+                        }),
+                        _vm._v(" "),
+                        _vm._l(_vm.kiosk.schemes, function(s_kiosk) {
+                          return [
+                            s_kiosk.id.toString() === _vm.current_floor
+                              ? [
+                                  _vm.kiosk_show
+                                    ? _c("div", {
+                                        staticClass: "kiosk",
+                                        style: {
+                                          left: _vm.kiosk.x + "px",
+                                          top: _vm.kiosk.y + "px",
+                                          position: "absolute",
+                                          width: "5px",
+                                          height: "5px",
+                                          background: "red"
+                                        }
+                                      })
+                                    : _vm._e()
+                                ]
+                              : _vm._e()
                           ]
                         })
                       ],
@@ -45575,7 +45537,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INACTIVE_USER_TIME_THRESHOLD", function() { return INACTIVE_USER_TIME_THRESHOLD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER_ACTIVITY_THROTTLER_TIME", function() { return USER_ACTIVITY_THROTTLER_TIME; });
-var INACTIVE_USER_TIME_THRESHOLD = 180000;
+var INACTIVE_USER_TIME_THRESHOLD = 30000;
 var USER_ACTIVITY_THROTTLER_TIME = 1000;
 
 /***/ }),
@@ -45593,7 +45555,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Home.vue */ "./resources/js/components/Home.vue");
 
 var routes = [{
-  path: '/vue-index',
+  path: '/vue-index/:id',
   name: 'vue-index',
   component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }];

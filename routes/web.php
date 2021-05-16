@@ -10,6 +10,7 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\MarkImageController;
+use App\Http\Controllers\KioskController;
 use App\Http\Controllers\SetupController;
 
 // SCHEMES
@@ -50,6 +51,10 @@ Route::post('ads/file/{method}','App\Http\Controllers\AdController@file')->middl
 Route::resource('/specials', SpecialController::class);
 Route::get('specials/delete/{id}','App\Http\Controllers\SpecialController@delete')->middleware('auth');
 Route::post('specials/file/{method}','App\Http\Controllers\SpecialController@file')->middleware('auth');
+
+// STORES
+Route::resource('/kiosks', KioskController::class)->middleware('auth')->middleware('auth');
+Route::get('kiosks/delete/{id}','App\Http\Controllers\KioskController@delete')->middleware('auth');
 
 // Setup
 Route::resource('/setup', SetupController::class)->middleware('auth');

@@ -9,6 +9,7 @@ use App\Models\Store;
 use App\Models\Tag;
 use App\Models\Route;
 use App\Models\Special;
+use App\Models\Kiosk;
 use App\Http\Resources\RouteResource;
 use Illuminate\Http\Request;
 
@@ -64,5 +65,10 @@ class ApiController extends Controller
     public function specials()
     {
         return Special::with('stores.routes')->get();
+    }
+
+    public function kioskItem($kiosk)
+    {
+        return Kiosk::where('kiosk', $kiosk)->with('schemes')->first();
     }
 }

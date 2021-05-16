@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
             urs\StoreTagSeeder::class,
             urs\RouteSeeder::class,
             urs\RouteStoreSeeder::class,
-            urs\AdSeeder::class,            
+            urs\AdSeeder::class,
+            urs\KioskSeeder::class,
+            urs\KioskSchemeSeeder::class,
         ]);
     }
 }

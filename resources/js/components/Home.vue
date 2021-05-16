@@ -19,6 +19,7 @@
                             </template>
                         </template>
                     </div>
+                    <div @click="WhereAmI(kiosk)">Где я?</div>
                 </div>
             </div>
 
@@ -83,36 +84,27 @@
                             <CurrentRoutePathSlide2 v-if="current_slide === 2" v-bind:current_store_route="current_store_route"/>
 
                             <template v-for="store in stores">
-                                <template v-for="s_scheme in store.schemes">
-                                    <template v-if="s_scheme.pivot.scheme_id.toString() === current_floor">
-                                            <template v-for="store_tag in store.tags">
-                                                <template v-if="store_tag.title === 'банкоматы' && atms">
-                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute_atms(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
-                                                    <img :src="store.logo">
-                                                    </span>
-                                                </template>
-                                                <template v-else-if="store_tag.title === 'забота об инвалидах' && invalids">
-                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute_invalids(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
-                                                    <img :src="store.logo">
-                                                    </span>
-                                                </template>
-                                                <template v-else-if="store_tag.title === 'туалеты' && toilets">
-                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute_toilets(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
-                                                    <img :src="store.logo">
-                                                    </span>
-                                                </template>
-                                                <template v-else>
-                                                    <span v-for="store_route in store.routes" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
-                                                    <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
-                                                        <!--<text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>-->
-                                                    </svg>
-                                                    </span>
-                                                </template>
-                                            </template>
-                                        
+                                <template v-if="store.schemes[0].pivot.scheme_id.toString() === current_floor">
+                                            
+                                    <template v-for="store_tag in store.tags">
+                                        <template v-for="store_route in store.routes">
+                                            <span v-if="store_route.kiosk_number.toString() === kiosk.kiosk.toString()" @click="SelectStoreRoute(store_route)" class="map-marker" v-bind:style="{ left: store.x_01 + 'px', top: store.y_01 + 'px', width: store.d_w + 'px', height: store.d_h + 'px' }">
+                                                <svg :viewBox="'0 0' + ' ' + store.d_w + ' ' + store.d_h">
+                                                    <!--<text :x="store.d_w / 2" :y="store.d_h / 2" text-anchor="middle" alignment-baseline="middle" :font-size="store.d_w * 0.15" style="text-transform: uppercase; color: #fff;">{{store.title}}</text>-->
+                                                </svg>
+                                            </span>
+                                        </template>
                                     </template>
+                                        
                                 </template>
                             </template>
+                            
+                            <template v-for="s_kiosk in kiosk.schemes">
+                                <template v-if="s_kiosk.id.toString() === current_floor">
+                                    <div v-if="kiosk_show" class="kiosk" v-bind:style="{ 'left': kiosk.x + 'px', 'top': kiosk.y + 'px', 'position': 'absolute', 'width': '5px', 'height': '5px', 'background': 'red' }"></div>
+                                </template>
+                            </template>
+
                         </div>
                         </div>
 
@@ -211,6 +203,8 @@
                 banners: [],
                 schemes: [],
                 stores: {},
+                kiosk: {},
+                kiosk_show: false,
 
                 banner_index: true,
                 search_panel: false,
@@ -258,6 +252,11 @@
                 .then(response => (
                     this.banners = response.data
                 ));
+            axios
+                .get(`/api/kiosk/${this.$route.params.id}`)
+                .then(response => (
+                    this.kiosk = response.data
+                ));
         },
         mounted() {
             this.panzoom = Panzoom(document.getElementById('panzoom'), {
@@ -284,6 +283,7 @@
                     this.current_store_route = json;
                     this.current_slide = 1;
                 });
+                this.kiosk_show = false
             },
             onSearchPanelStoreRoute(data) {
                 this.search_panel = false
@@ -300,6 +300,7 @@
                     this.current_store_route = json;
                     this.current_slide = 1;
                 });
+                this.kiosk_show = false
             },
             onSpecialPanelStoreRoute(data) {
                 this.special_panel = false
@@ -316,6 +317,7 @@
                     this.current_store_route = json;
                     this.current_slide = 1;
                 });
+                this.kiosk_show = false
             },
             onCategoryPanelStoreRoute(data) {
                 this.category_panel = false
@@ -333,21 +335,25 @@
                     this.current_store_route = json;
                     this.current_slide = 1;
                 });
+                this.kiosk_show = false
             },
             SelectFloor(scheme) {
                 this.current_floor = scheme.id.toString();
                 this.current_slide = 0;
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             PrevScheme(current_store_route) {
                 this.current_floor = current_store_route.scheme_id
                 this.current_slide = 1
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             NextScheme(current_store_route) {
                 this.current_floor = current_store_route.scheme2_id
                 this.current_slide = 2
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             home_panel_button() {
                 this.category_panel = false;
@@ -362,6 +368,7 @@
                 this.panzoom.reset()
                 document.getElementById('category_panel_inner').scrollTop = 0;
                 document.getElementById('myUL_wrapper').scrollTop = 0;
+                this.kiosk_show = false
             },
             search_panel_button() {
                 this.category_panel = false;
@@ -377,6 +384,7 @@
                 this.current_slide = 0;
                 this.panzoom.reset()
                 document.getElementById('myUL_wrapper').scrollTop = 0;
+                this.kiosk_show = false
             },
             category_panel_button() {
                 this.search_panel = false;
@@ -390,6 +398,7 @@
                 this.current_slide = 0;
                 this.panzoom.reset()
                 document.getElementById('category_panel_inner').scrollTop = 0;
+                this.kiosk_show = false
             },
             special_panel_button() {
                 this.search_panel = false;
@@ -402,6 +411,7 @@
                 this.route_store_about_panel = false
                 this.current_slide = 0;
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             atms_button() {
                 this.current_slide = 0;
@@ -411,6 +421,7 @@
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'банкоматы'
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             entertainment_button() {
                 this.current_slide = 0;
@@ -420,6 +431,7 @@
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'развлечения'
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             toilets_button() {
                 this.current_slide = 0;
@@ -429,6 +441,7 @@
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'туалеты'
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             invalids_button() {
                 this.current_slide = 0;
@@ -438,6 +451,7 @@
                 this.category_panel_shortcut = true
                 this.category_panel_shortcut_tag = 'забота об инвалидах'
                 this.panzoom.reset()
+                this.kiosk_show = false
             },
             transport_button() {
                 this.current_slide = 0;
@@ -447,6 +461,13 @@
                 this.banner_index = false
                 this.route_store_about_panel = false
                 this.transport_panel = true;
+                this.panzoom.reset()
+                this.kiosk_show = false
+            },
+            WhereAmI(kiosk) {
+                this.current_floor = kiosk.schemes[0].pivot.scheme_id.toString();
+                this.current_slide = 0;
+                this.kiosk_show = true
                 this.panzoom.reset()
             },
             zoom(level){
@@ -495,7 +516,7 @@
         },
         beforeMount() {
             this.activateActivityTracker();
-            document.oncontextmenu = new Function("return false;");
+            //document.oncontextmenu = new Function("return false;");
         },
 
         beforeDestroy() {

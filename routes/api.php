@@ -19,3 +19,5 @@ Route::get('/route/{id}','App\Http\Controllers\ApiController@routeItem');
 Route::get('banners','App\Http\Controllers\ApiController@banners');
 
 Route::get('specials','App\Http\Controllers\ApiController@specials');
+
+Route::get('/kiosk/{kiosk}','App\Http\Controllers\ApiController@kioskItem');
