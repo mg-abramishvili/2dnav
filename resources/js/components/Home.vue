@@ -62,6 +62,8 @@
                 </div>
                 
                 <div>
+                    <ActivationPanel v-if="nta === 'y'" />
+
                     <SearchPanel v-show="search_panel" @search_panel_store_route="onSearchPanelStoreRoute"/>
 
                     <CategoryPanel v-show="category_panel" @category_panel_store_route="onCategoryPanelStoreRoute"/>
@@ -190,6 +192,7 @@
     import CategoryPanelShortcut from './CategoryPanelShortcut';
     import SpecialPanel from './SpecialPanel';
     import TransportPanel from './TransportPanel';
+    import ActivationPanel from './ActivationPanel';
     import RouteStoreAbout from './RouteStoreAbout';
     import Panzoom from '@panzoom/panzoom'
 
@@ -199,6 +202,7 @@
         },
         data() {
             return {
+                nta: 'y',
                 setup: {},
                 banners: [],
                 schemes: [],
@@ -235,7 +239,8 @@
             axios
                 .get('/api/setup')
                 .then(response => (
-                    this.setup = response.data
+                    this.setup = response.data,
+                    this.nta = response.data.nta
                 ));
             axios
                 .get('/api/schemes')
@@ -264,6 +269,13 @@
                 maxScale: 2,
                 contain: 'outside',
             })
+            this._keyListener = function(e) {
+                if (e.key === 'q' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    window.location.href = '/login'
+                }
+            };
+            document.addEventListener('keydown', this._keyListener.bind(this));
         },
         computed: {
         },
@@ -473,11 +485,6 @@
             zoom(level){
                 level === -1 ? this.panzoom.zoomOut() : this.panzoom.zoomIn()
             },
-            adminPanel: function(e) {
-                if (e.keyCode === 81 && e.ctrlKey) {
-                    window.location.href = "/login";
-                }
-            },
             activateActivityTracker() {
                 window.addEventListener("click", this.userActivityThrottler);
                 window.addEventListener("touchstart", this.userActivityThrottler);
@@ -523,6 +530,7 @@
             this.deactivateActivityTracker();
             clearTimeout(this.userActivityTimeout);
             clearTimeout(this.userActivityThrottlerTimeout);
+            document.removeEventListener('keydown', this._keyListener);
         },
         components: {
             CurrentRoutePathSlide1,
@@ -533,7 +541,8 @@
             SpecialPanel,
             TransportPanel,
             RouteStoreAbout,
-            Panzoom
+            Panzoom,
+            ActivationPanel
         }
     }
 </script>

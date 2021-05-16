@@ -11,21 +11,23 @@
 </head>
 <body>
 
+    @php
+        $host1file = './host1.txt';
+        $host2file = './host2.txt';
+        $host1 = file($host1file);
+        $host2 = file($host2file);
+        
+        foreach ($host1 as $host1line) {
+            echo '<div id="a_host1" style="display: none;">'.$host1line.'</div>';
+        }
+
+        foreach ($host2 as $host2line) {
+            echo '<div id="a_host2" style="display: none;">'.$host2line.'</div>';
+        }
+    @endphp
+
     <div id="app"></div>
     
     <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-        //document.oncontextmenu = new Function("return false;");
-    </script>
-    <script>
-        document.onkeydown = function(e){
-            e = e || window.event;
-            var key = e.which || e.keyCode;
-            // CTRL + Q
-            if(key == 81 && e.ctrlKey){
-                window.location.href = "/login";
-            }
-        }        
-    </script>
 </body>
 </html>

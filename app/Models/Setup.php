@@ -10,6 +10,6 @@ class Setup extends Model
     use HasFactory;
 
     protected $fillable = [
-        'color',
+        'color', 'nta'
     ];
 }

@@ -12,6 +12,7 @@ class CreateSetupsTable extends Migration
             $table->id();
             $table->string('logo');
             $table->string('color');
+            $table->string('nta')->default('y');
             $table->timestamps();
         });
     }

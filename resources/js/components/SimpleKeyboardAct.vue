@@ -1,5 +1,5 @@
 <template>
-  <div :class="keyboardClass"></div>
+  <div :class="keyboardActClass"></div>
 </template>
 
 <script>
@@ -8,10 +8,10 @@ import "simple-keyboard/build/css/index.css";
 import layout from "simple-keyboard-layouts/build/layouts/russian";
 
 export default {
-  name: "SimpleKeyboard",
+  name: "SimpleKeyboardAct",
   props: {
-    keyboardClass: {
-      default: "simple-keyboard",
+    keyboardActClass: {
+      default: "simple-keyboard-act",
       type: String
     },
     input: {
@@ -19,33 +19,22 @@ export default {
     }
   },
   data: () => ({
-    keyboard: null
+    keyboardAct: null
   }),
   mounted() {
-    this.keyboard = new Keyboard(this.keyboardClass, {
+    this.keyboardAct = new Keyboard(this.keyboardActClass, {
       onChange: this.onChange,
       onKeyPress: this.onKeyPress,
       //...layout,
   layout: {
     default: [
       "1 2 3 4 5 6 7 8 9 0",
-      "Й Ц У К Е Н Г Ш Щ З Х Ъ",
-      "Ф Ы В А П Р О Л Д Ж Э",
-      "Я Ч С М И Т Ь Б Ю ! ? , . -",
-      "{shift} {space} {bksp}"
-    ],
-    shift: [
-      "1 2 3 4 5 6 7 8 9 0",
       "Q W E R T Y U I O P",
       'A S D F G H J K L',
-      "Z X C V B N M ! ? , . -",
-      "{shift} {space} {bksp}"
+      "Z X C V B N M - {bksp}"
     ]},
         display: {
     '{bksp}': '←',
-    '{enter}': 'ENTER',
-    '{shift}': 'RU/EN',
-    '{space}': '_______________',
     }
     });
   },
@@ -62,17 +51,17 @@ export default {
       if (button === "{shift}" || button === "{lock}") this.handleShift();
     },
     handleShift() {
-      let currentLayout = this.keyboard.options.layoutName;
+      let currentLayout = this.keyboardAct.options.layoutName;
       let shiftToggle = currentLayout === "default" ? "shift" : "default";
 
-      this.keyboard.setOptions({
+      this.keyboardAct.setOptions({
         layoutName: shiftToggle
       });
     }
   },
   watch: {
     input(input) {
-      this.keyboard.setInput(input);
+      this.keyboardAct.setInput(input);
     }
   }
 };

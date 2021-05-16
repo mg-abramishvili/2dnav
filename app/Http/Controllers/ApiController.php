@@ -20,6 +20,15 @@ class ApiController extends Controller
         return Setup::where('id', '1')->first();
     }
 
+    public function setup_post(Request $request)
+    {
+        $data = request()->all();
+        $setup = Setup::first();
+        $setup->nta = $data['nta'];
+        $setup->save();
+        return 'OK';
+    }
+
     public function schemes()
     {
         return Scheme::orderBy('id', 'desc')->get();

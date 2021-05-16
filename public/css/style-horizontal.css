@@ -1,3 +1,12 @@
+html {
+    animation: html 1s linear;
+}
+@keyframes html {
+    0% { opacity: 0; }
+    90% { opacity: 0; }
+    100% { opacity: 1 }
+}
+
 .container {
     margin: 0;
     padding: 0;
@@ -535,6 +544,8 @@
     bottom: 0;
     left: 0;
     right: 0;
+}
+.simple-keyboard {
     animation: keyboard_anim 0.5s linear;
 }
 @keyframes keyboard_anim {

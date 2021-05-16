@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('setup','App\Http\Controllers\ApiController@setup');
+Route::post('setup','App\Http\Controllers\ApiController@setup_post');
 
 Route::get('schemes','App\Http\Controllers\ApiController@schemes');
 
