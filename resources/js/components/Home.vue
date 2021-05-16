@@ -483,6 +483,8 @@
                 this.current_floor = kiosk.schemes[0].pivot.scheme_id.toString();
                 this.current_slide = 0;
                 this.kiosk_show = true
+                this.route_store_about_panel = false
+                this.banner_index = true
                 this.panzoom.reset()
             },
             zoom(level){

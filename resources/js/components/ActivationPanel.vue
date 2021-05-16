@@ -45,30 +45,34 @@
                         .get(`http://touchlab.su/api/key/view/${this.input}`)
                         .then(response => {
                             this.activate_response = true
-                            if(response.data.status === 'waiting') {
-                                axios
-                                .post(`http://touchlab.su/api/key/activate/${this.input}`, {status: 'active'} )
-                                .then(response => {
-                                    this.activate_response = true
-                                    this.activate_response_text = 'Активация прошла успешно'
-                                    this.$parent.activated = 'n'
+                            if(response.data.programs[0].title_code === '2dnav') {
+                                if(response.data.status === 'waiting') {
                                     axios
-                                        .post(`/api/setup`, {nta: 'n'} )
-                                        .then(response => {
-                                            this.$parent.activated = 'n'
-                                            window.location.reload();
-                                        })
-                                        .catch(err => {
-                                            this.activate_response = true
-                                            this.activate_response_text = 'Ошибка активации' + err
-                                        })
-                                })
-                                .catch(err => {
-                                    this.activate_response = true
-                                    this.activate_response_text = 'Ошибка активации' + err
-                                })
+                                    .post(`http://touchlab.su/api/key/activate/${this.input}`, {status: 'active'} )
+                                    .then(response => {
+                                        this.activate_response = true
+                                        this.activate_response_text = 'Активация прошла успешно'
+                                        this.$parent.activated = 'n'
+                                        axios
+                                            .post(`/api/setup`, {nta: 'n'} )
+                                            .then(response => {
+                                                this.$parent.activated = 'n'
+                                                window.location.reload();
+                                            })
+                                            .catch(err => {
+                                                this.activate_response = true
+                                                this.activate_response_text = 'Ошибка активации' + err
+                                            })
+                                    })
+                                    .catch(err => {
+                                        this.activate_response = true
+                                        this.activate_response_text = 'Ошибка активации' + err
+                                    })
+                                } else {
+                                    this.activate_response_text = 'Ключ уже был активирован'
+                                }
                             } else {
-                                this.activate_response_text = 'Ключ уже был активирован'
+                                this.activate_response_text = 'Ключ от другого типа ПО'
                             }
                         })
                         .catch(err => {

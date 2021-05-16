@@ -2773,28 +2773,32 @@ __webpack_require__.r(__webpack_exports__);
         axios.get("http://touchlab.su/api/key/view/".concat(this.input)).then(function (response) {
           _this.activate_response = true;
 
-          if (response.data.status === 'waiting') {
-            axios.post("http://touchlab.su/api/key/activate/".concat(_this.input), {
-              status: 'active'
-            }).then(function (response) {
-              _this.activate_response = true;
-              _this.activate_response_text = 'Активация прошла успешно';
-              _this.$parent.activated = 'n';
-              axios.post("/api/setup", {
-                nta: 'n'
+          if (response.data.programs[0].title_code === '2dnav') {
+            if (response.data.status === 'waiting') {
+              axios.post("http://touchlab.su/api/key/activate/".concat(_this.input), {
+                status: 'active'
               }).then(function (response) {
+                _this.activate_response = true;
+                _this.activate_response_text = 'Активация прошла успешно';
                 _this.$parent.activated = 'n';
-                window.location.reload();
+                axios.post("/api/setup", {
+                  nta: 'n'
+                }).then(function (response) {
+                  _this.$parent.activated = 'n';
+                  window.location.reload();
+                })["catch"](function (err) {
+                  _this.activate_response = true;
+                  _this.activate_response_text = 'Ошибка активации' + err;
+                });
               })["catch"](function (err) {
                 _this.activate_response = true;
                 _this.activate_response_text = 'Ошибка активации' + err;
               });
-            })["catch"](function (err) {
-              _this.activate_response = true;
-              _this.activate_response_text = 'Ошибка активации' + err;
-            });
+            } else {
+              _this.activate_response_text = 'Ключ уже был активирован';
+            }
           } else {
-            _this.activate_response_text = 'Ключ уже был активирован';
+            _this.activate_response_text = 'Ключ от другого типа ПО';
           }
         })["catch"](function (err) {
           _this.activate_response = true;
@@ -3610,6 +3614,8 @@ __webpack_require__.r(__webpack_exports__);
       this.current_floor = kiosk.schemes[0].pivot.scheme_id.toString();
       this.current_slide = 0;
       this.kiosk_show = true;
+      this.route_store_about_panel = false;
+      this.banner_index = true;
       this.panzoom.reset();
     },
     zoom: function zoom(level) {
