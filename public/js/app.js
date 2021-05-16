@@ -2856,6 +2856,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2910,6 +2915,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3122,6 +3132,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ActivationPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ActivationPanel */ "./resources/js/components/ActivationPanel.vue");
 /* harmony import */ var _RouteStoreAbout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./RouteStoreAbout */ "./resources/js/components/RouteStoreAbout.vue");
 /* harmony import */ var _panzoom_panzoom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @panzoom/panzoom */ "./node_modules/@panzoom/panzoom/dist/panzoom.es.js");
+//
+//
+//
 //
 //
 //
@@ -4057,25 +4070,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      transport: ''
+    };
   },
-  created: function created() {},
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/transport/1').then(function (response) {
+      return _this.transport = response.data;
+    });
+  },
   computed: {},
   methods: {
     home_panel_button: function home_panel_button() {
@@ -27126,11 +27133,36 @@ var render = function() {
                       staticClass: "rl_st_item_image",
                       style: { "background-image": "url(" + store.logo + ")" }
                     }),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(store.title) +
-                        "\n                    "
-                    ),
+                    _vm._v(" "),
+                    store.logo
+                      ? _c("div", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(store.title) +
+                              "\n                    "
+                          )
+                        ])
+                      : _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              "font-size": "3vh",
+                              position: "absolute",
+                              top: "50%",
+                              transform: "translateY(-50%)",
+                              left: "0.5vh",
+                              right: "0.5vh"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(store.title) +
+                                "\n                    "
+                            )
+                          ]
+                        ),
+                    _vm._v(" "),
                     _vm._l(store.schemes, function(st_sch) {
                       return _c(
                         "span",
@@ -27239,11 +27271,36 @@ var render = function() {
                       staticClass: "rl_st_item_image",
                       style: { "background-image": "url(" + store.logo + ")" }
                     }),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(store.title) +
-                        "\n                    "
-                    ),
+                    _vm._v(" "),
+                    store.logo
+                      ? _c("div", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(store.title) +
+                              "\n                    "
+                          )
+                        ])
+                      : _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              "font-size": "3vh",
+                              position: "absolute",
+                              top: "50%",
+                              transform: "translateY(-50%)",
+                              left: "0.5vh",
+                              right: "0.5vh"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(store.title) +
+                                "\n                    "
+                            )
+                          ]
+                        ),
+                    _vm._v(" "),
                     _vm._l(store.schemes, function(st_sch) {
                       return _c(
                         "span",
@@ -28722,13 +28779,18 @@ var render = function() {
           _c(
             "div",
             {
+              staticClass: "whereami",
               on: {
                 click: function($event) {
                   return _vm.WhereAmI(_vm.kiosk)
                 }
               }
             },
-            [_vm._v("Где я?")]
+            [
+              _c("img", { attrs: { src: "/img/maps-and-flags.svg" } }),
+              _vm._v(" "),
+              _c("span", [_vm._v("Где я?")])
+            ]
           )
         ])
       ]),
@@ -29001,9 +29063,10 @@ var render = function() {
                                           left: _vm.kiosk.x + "px",
                                           top: _vm.kiosk.y + "px",
                                           position: "absolute",
-                                          width: "5px",
-                                          height: "5px",
-                                          background: "red"
+                                          width: "8px",
+                                          height: "8px",
+                                          background: "red",
+                                          "border-radius": "100%"
                                         }
                                       })
                                     : _vm._e()
@@ -29683,45 +29746,13 @@ var render = function() {
       [_vm._v("Как уехать")]
     ),
     _vm._v(" "),
-    _vm._m(0)
+    _c("div", {
+      staticStyle: { "margin-top": "3vh", "font-size": "3vh" },
+      domProps: { innerHTML: _vm._s(_vm.transport.text) }
+    })
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { "margin-top": "3vh", "font-size": "3vh" } },
-      [
-        _c("p", [_c("strong", [_vm._v("Автобус")])]),
-        _vm._v(" "),
-        _c("ul", [
-          _c("li", [_vm._v("4")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("5")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("5A")])
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("p", [_c("strong", [_vm._v("Троллейбус")])]),
-        _vm._v(" "),
-        _c("ul", [
-          _c("li", [_vm._v("1")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("3")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("7А")]),
-          _vm._v(" "),
-          _c("li", [_vm._v("7Б")])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

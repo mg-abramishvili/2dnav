@@ -22,3 +22,5 @@ Route::get('banners','App\Http\Controllers\ApiController@banners');
 Route::get('specials','App\Http\Controllers\ApiController@specials');
 
 Route::get('/kiosk/{kiosk}','App\Http\Controllers\ApiController@kioskItem');
+
+Route::get('/transport/{id}','App\Http\Controllers\ApiController@transport');

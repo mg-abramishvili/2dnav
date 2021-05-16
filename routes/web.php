@@ -12,6 +12,7 @@ use App\Http\Controllers\MarkController;
 use App\Http\Controllers\MarkImageController;
 use App\Http\Controllers\KioskController;
 use App\Http\Controllers\SetupController;
+use App\Http\Controllers\TransportController;
 
 // SCHEMES
 Route::resource('/schemes', SchemeController::class)->middleware('auth');
@@ -52,9 +53,12 @@ Route::resource('/specials', SpecialController::class);
 Route::get('specials/delete/{id}','App\Http\Controllers\SpecialController@delete')->middleware('auth');
 Route::post('specials/file/{method}','App\Http\Controllers\SpecialController@file')->middleware('auth');
 
-// STORES
+// KIOSKS
 Route::resource('/kiosks', KioskController::class)->middleware('auth')->middleware('auth');
 Route::get('kiosks/delete/{id}','App\Http\Controllers\KioskController@delete')->middleware('auth');
+
+// TRANSPORT
+Route::resource('/transports', TransportController::class);
 
 // Setup
 Route::resource('/setup', SetupController::class)->middleware('auth');

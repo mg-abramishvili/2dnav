@@ -18,6 +18,9 @@
     <script src="{{ asset('js/filepond.js') }}"></script>
     <script src="{{ asset('js/filepond.jquery.js') }}"></script>
 
+    <link href="{{ asset('css/summernote.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/summernote.min.js') }}"></script>
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -77,6 +80,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/kiosks">Киоски</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/transports/1/edit">Как уехать</a>
                         </li>
                         <!--<li class="nav-item">
                             <a class="nav-link" href="/adds">Слайдер №2</a>

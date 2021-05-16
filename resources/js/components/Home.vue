@@ -19,7 +19,10 @@
                             </template>
                         </template>
                     </div>
-                    <div @click="WhereAmI(kiosk)">Где я?</div>
+                    <div @click="WhereAmI(kiosk)" class="whereami">
+                        <img src="/img/maps-and-flags.svg">
+                        <span>Где я?</span>
+                    </div>
                 </div>
             </div>
 
@@ -103,7 +106,7 @@
                             
                             <template v-for="s_kiosk in kiosk.schemes">
                                 <template v-if="s_kiosk.id.toString() === current_floor">
-                                    <div v-if="kiosk_show" class="kiosk" v-bind:style="{ 'left': kiosk.x + 'px', 'top': kiosk.y + 'px', 'position': 'absolute', 'width': '5px', 'height': '5px', 'background': 'red' }"></div>
+                                    <div v-if="kiosk_show" class="kiosk" v-bind:style="{ 'left': kiosk.x + 'px', 'top': kiosk.y + 'px', 'position': 'absolute', 'width': '8px', 'height': '8px', 'background': 'red', 'border-radius': '100%' }"></div>
                                 </template>
                             </template>
 

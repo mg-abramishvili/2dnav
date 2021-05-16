@@ -10,6 +10,7 @@ use App\Models\Tag;
 use App\Models\Route;
 use App\Models\Special;
 use App\Models\Kiosk;
+use App\Models\Transport;
 use App\Http\Resources\RouteResource;
 use Illuminate\Http\Request;
 
@@ -79,5 +80,10 @@ class ApiController extends Controller
     public function kioskItem($kiosk)
     {
         return Kiosk::where('kiosk', $kiosk)->with('schemes')->first();
+    }
+
+    public function transport($id)
+    {
+        return Transport::where('id', '1')->first();
     }
 }

@@ -74,6 +74,27 @@ html {
     background-position: 50% 50%;
     height: 56vh;
 }
+.whereami {
+    border: 0.1vh solid #68D94C;
+    position: absolute;
+    bottom: 14vh;
+    right: 2vh;
+    padding: 1vh 2vh;
+    border-radius: 3vh;
+}
+.whereami span {
+    font-weight: bold;
+    font-size: 2vh;
+    color: #319319;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+}
+.whereami img {
+    width: 3.5vh;
+    display: inline-block;
+    vertical-align: middle;
+}
 /* SIDEBAR */
 
 
@@ -482,6 +503,15 @@ html {
     outline: none;
     background-color: #ccc;
     color: #fff;
+}
+.kiosk {
+    margin-top: -1px;
+    animation: kiosk 1s linear infinite;
+}
+@keyframes kiosk {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
 /* ROUTES & MAP */
 

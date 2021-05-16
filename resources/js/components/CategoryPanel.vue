@@ -26,7 +26,12 @@
                 <div v-for="store in stores" :key="store.id" class="col-3">
                     <div v-for="store_route in store.routes" :key="store_route.id" @click="SelectStoreRoute(store_route)" class="rl_st_item">
                         <div class="rl_st_item_image" v-bind:style="{ 'background-image': 'url(' + store.logo + ')' }"></div>
-                        {{ store.title }}
+                        <div v-if="store.logo">
+                            {{ store.title }}
+                        </div>
+                        <div v-else style="font-size: 3vh; position: absolute; top: 50%; transform: translateY(-50%); left: 0.5vh; right: 0.5vh;">
+                            {{ store.title }}
+                        </div>
                         <span v-for="st_sch in store.schemes" :key="st_sch.id" style="color: #999">(уровень {{st_sch.title}})</span>
                     </div>
                 </div>
