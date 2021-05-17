@@ -528,7 +528,7 @@
         },
         beforeMount() {
             this.activateActivityTracker();
-            //document.oncontextmenu = new Function("return false;");
+            document.oncontextmenu = new Function("return false;");
         },
 
         beforeDestroy() {
