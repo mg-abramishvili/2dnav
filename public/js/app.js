@@ -29391,7 +29391,7 @@ var render = function() {
             _c(
               "span",
               [
-                _vm._v("Уровень\n                "),
+                _vm._v("Этаж\n                "),
                 _vm._l(csr.schemes, function(csr_sch) {
                   return [
                     _vm._v(
@@ -46087,8 +46087,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www_2dnav\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www_2dnav\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\projects\2dnav\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\projects\2dnav\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

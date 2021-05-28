@@ -3,7 +3,7 @@
         <div v-for="csr in current_store_route" :key="csr.id">
             <img :src="csr.logo">
             <h3>{{csr.title}}, 
-                <span>Уровень
+                <span>Этаж
                     <template v-for="csr_sch in csr.schemes">
                         {{csr_sch.title}}
                     </template>
